@@ -102,7 +102,7 @@ const About = () => {
       <div className="relative">
         <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
           <img
-            src="/lovable-uploads/1b594179-11a8-4158-8891-0d269d378ec2.jpg" // Update with actual public image path if needed
+            src="/corevalue1.png" // Update with actual public image path if needed
             alt="Team working with data"
             className="object-cover w-full h-full"
           />
