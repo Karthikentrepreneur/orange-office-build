@@ -299,7 +299,7 @@ const Index = () => {
 
       {/* Founder 2 */}
       <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
-        <img alt="Mr. Bennet Rajesh" className="w-54 h-54 mx-auto rounded-full object-cover mb-4" src="/lovable-uploads/63451b16-a48b-46f0-9042-c2ad7cf36f81.png" />
+        <img alt="Mr. Bennet Rajesh" className="w-54 h-54 mx-auto rounded-full mb-4 object-fill" src="/lovable-uploads/b209460f-effa-4fb7-be91-68119e782e4e.png" />
         <h3 className="text-lg font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
         <p className="text-gray-600 text-sm mb-3">
