@@ -302,7 +302,7 @@ const Index = () => {
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-gray-800 font-bold text-2xl">Mr. Bennet Rajesh</h3>
           <p className="text-orange-600 mb-2 font-bold text-xl">Chief Technology Officer</p>
-          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.</p>
+          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.His technical interests and proficiency include Product Thinking, Microservices, DevOps, Containerization, Enterprise Integration, Cloud Computing, and Security.</p>
           <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
