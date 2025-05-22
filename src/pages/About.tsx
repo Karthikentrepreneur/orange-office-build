@@ -94,7 +94,7 @@ const About = () => {
         <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200 my-0">
           <img
               // Update with actual public image path if needed
-              alt="Team working with data" className="object-cover w-full h-full" src="/lovable-uploads/5f253e86-3d8c-47a6-8305-ae76ef30adaf.png" />
+              alt="Team working with data" className="object-cover w-full h-full" src="/lovable-uploads/d51cac68-97ba-47e3-8f1a-50f4fb40719a.png" />
         </div>
       </div>
 
