@@ -19,8 +19,8 @@ export const Header = () => {
     to: "/services",
     label: "Services"
   }, {
-    to: "/management",
-    label: "Management"
+    to: "/our-team",
+    label: "Our Team"
   }, {
     to: "/careers",
     label: "Careers"
