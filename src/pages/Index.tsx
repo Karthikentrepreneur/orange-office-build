@@ -289,7 +289,7 @@ const Index = () => {
         <p className="text-gray-600 text-sm mb-3">
           35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
         </p>
-        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
           Know More
         </a>
       </div>
