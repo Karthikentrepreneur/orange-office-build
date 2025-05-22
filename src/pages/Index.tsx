@@ -285,8 +285,8 @@ const Index = () => {
           <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-xl font-semibold text-gray-800">Mr. Sudhir KU</h3>
-          <p className="text-orange-600 text-sm font-medium mb-2">Director</p>
+          <h3 className="text-xl text-gray-800 font-bold">Mr. Sudhir KU</h3>
+          <p className="text-orange-600 text-sm mb-2 font-bold">Director</p>
           <p className="text-gray-600 text-sm mb-4">
             35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
           </p>
@@ -302,8 +302,8 @@ const Index = () => {
           <img alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-xl font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
-          <p className="text-orange-600 text-sm font-medium mb-2">Chief Technology Officer</p>
+          <h3 className="text-xl text-gray-800 font-bold">Mr. Bennet Rajesh</h3>
+          <p className="text-orange-600 text-sm mb-2 font-bold">Chief Technology Officer</p>
           <p className="text-gray-600 text-sm mb-4">
             27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
           </p>
