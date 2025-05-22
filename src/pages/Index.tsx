@@ -260,69 +260,66 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-  {/* Decorative Background Elements */}
+
+{/* Founder */}
+
+     <section className="py-12 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+  {/* Decorative Background */}
   <div className="absolute inset-0 z-0 overflow-hidden">
-    <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
-    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-amber-200/5 to-orange-300/10 blur-[80px]"></div>
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/5 to-orange-300/10 blur-[80px]"></div>
   </div>
 
-  {/* Section Title */}
+  {/* Section Header */}
   <div className="container mx-auto px-4 relative z-10">
-    <div className="text-center mb-12">
-      <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+    <div className="text-center mb-10">
+      <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
         Our Core Leadership
       </h2>
-      <p className="text-gray-600 max-w-xl mx-auto text-lg">
+      <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
         The visionaries behind Orange Office Technologies
       </p>
     </div>
 
-    {/* 2x2 Grid of Founders */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {/* Founder 1: Sudhir KU */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+    {/* 2x2 Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Founder Card 1 */}
+      <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
         <img
           src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
           alt="Mr. Sudhir KU"
-          className="w-32 h-32 rounded-full object-cover mb-4"
+          className="w-24 h-24 mx-auto rounded-full object-cover mb-3"
         />
-        <h3 className="text-xl font-bold text-gray-800">Mr. Sudhir KU</h3>
-        <p className="text-orange-600 font-medium">Director</p>
-        <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+        <h3 className="text-lg font-semibold text-gray-800">Mr. Sudhir KU</h3>
+        <p className="text-orange-600 text-sm font-medium mb-1">Director</p>
+        <p className="text-gray-600 text-sm mb-3">
           35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
         </p>
         <a
           href="/founders/sudhir-ku"
-          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
         >
           Know More
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
         </a>
       </div>
 
-      {/* Founder 2: Bennet Rajesh */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+      {/* Founder Card 2 */}
+      <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
         <img
           src="/lovable-uploads/cto-bennet.png"
           alt="Mr. Bennet Rajesh"
-          className="w-32 h-32 rounded-full object-cover mb-4"
+          className="w-24 h-24 mx-auto rounded-full object-cover mb-3"
         />
-        <h3 className="text-xl font-bold text-gray-800">Mr. Bennet Rajesh</h3>
-        <p className="text-orange-600 font-medium">Chief Technology Officer</p>
-        <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+        <h3 className="text-lg font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
+        <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
+        <p className="text-gray-600 text-sm mb-3">
           27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
         </p>
         <a
           href="/founders/bennet-rajesh"
-          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
         >
           Know More
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
         </a>
       </div>
     </div>
