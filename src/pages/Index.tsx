@@ -285,11 +285,9 @@ const Index = () => {
           <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-xl text-gray-800 font-bold">Mr. Sudhir KU</h3>
-          <p className="text-orange-600 text-sm mb-2 font-bold">Director</p>
-          <p className="text-gray-600 text-sm mb-4">
-            35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
-          </p>
+          <h3 className="text-gray-800 font-bold text-2xl">Mr. Sudhir KU</h3>
+          <p className="text-orange-600 mb-2 font-bold text-xl">Director</p>
+          <p className="text-gray-600 mb-4 text-base">35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.His career reflects a rare blend of perseverance, adaptability, and forward-thinking leadership.Starting his professional journey in 1991 in the courier industry, Mr. Sudhir gradually advanced into the logistics and freight forwarding sector.</p>
           <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
@@ -302,11 +300,9 @@ const Index = () => {
           <img alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-xl text-gray-800 font-bold">Mr. Bennet Rajesh</h3>
-          <p className="text-orange-600 text-sm mb-2 font-bold">Chief Technology Officer</p>
-          <p className="text-gray-600 text-sm mb-4">
-            27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
-          </p>
+          <h3 className="text-gray-800 font-bold text-2xl">Mr. Bennet Rajesh</h3>
+          <p className="text-orange-600 mb-2 font-bold text-xl">Chief Technology Officer</p>
+          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.Mr. Bennet is an advocate for Agile methodologies, Continuous Delivery, and Automation, ensuring that every project is efficiently delivered with a high degree of innovation and quality.</p>
           <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
