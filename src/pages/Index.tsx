@@ -260,108 +260,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Founders Section - Dual Card Design */}
-<section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-  {/* Background Elements */}
+      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+  {/* Decorative Background Elements */}
   <div className="absolute inset-0 z-0 overflow-hidden">
     <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-amber-200/5 to-orange-300/10 blur-[80px]"></div>
   </div>
 
-  {/* Wave Separator */}
-  <svg className="absolute top-0 left-0 w-full text-white" style={{ transform: "translateY(-1px)" }} fill="currentColor" viewBox="0 0 1440 50">
-    <path d="M0,40L80,36.7C160,33,320,27,480,23.3C640,20,800,20,960,23.3C1120,27,1280,33,1360,36.7L1440,40L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
-  </svg>
-
+  {/* Section Title */}
   <div className="container mx-auto px-4 relative z-10">
-    {/* Section Header */}
-    <div className="text-center mb-12 animate-on-scroll">
-      <h2 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-4 text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
-        Meet Our Leaders
+    <div className="text-center mb-12">
+      <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+        Our Core Leadership
       </h2>
-      <p className="text-gray-600 max-w-2xl mx-auto text-lg">Driving innovation and excellence at Orange Office Technologies</p>
+      <p className="text-gray-600 max-w-xl mx-auto text-lg">
+        The visionaries behind Orange Office Technologies
+      </p>
     </div>
 
-    {/* Founder Card - Mr. Sudhir KU */}
-    <div className="max-w-6xl mx-auto mb-12">
-      <div className="border-none overflow-hidden bg-white group animate-on-scroll rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-0">
-          {/* Image Section */}
-          <div className="relative lg:col-span-5 h-full min-h-[300px] md:min-h-[400px]">
-            <div className="absolute top-4 left-4 z-20">
-              <div className="bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-full font-medium text-sm shadow-lg border border-white/30 backdrop-blur-sm py-[7px] px-[2px]">
-                35+ Years Experience
-              </div>
-            </div>
-            <div className="absolute inset-0 overflow-hidden">
-              <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-center scale-100 group-hover:scale-105 transition-all duration-1000 ease-out object-contain" />
-              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent"></div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-              <h3 className="text-2xl font-bold text-white mb-0">Mr. Sudhir KU</h3>
-              <p className="text-white/90 text-sm">Director</p>
-            </div>
-          </div>
-          {/* Bio Section */}
-          <div className="p-6 lg:p-8 lg:col-span-7 flex flex-col justify-center py-[56px] px-[40px] mx-0 my-[35px]">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-200">
-              A Legacy of Excellence in Global Logistics
-            </h3>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-              With over <span className="font-semibold text-orange-600">three decades of pioneering expertise</span>, Mr. Sudhir KU has revolutionized how freight forwarding companies operate globally through specialized back-office services and technological innovation.
-            </p>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-              His leadership in operational efficiency and global client relations has made Orange Office Technologies a trusted industry partner.
-            </p>
-            <Link to="/founders" className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg">
-              Know More  
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+    {/* 2x2 Grid of Founders */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Founder 1: Sudhir KU */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+        <img
+          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
+          alt="Mr. Sudhir KU"
+          className="w-32 h-32 rounded-full object-cover mb-4"
+        />
+        <h3 className="text-xl font-bold text-gray-800">Mr. Sudhir KU</h3>
+        <p className="text-orange-600 font-medium">Director</p>
+        <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+          35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
+        </p>
+        <a
+          href="/founders/sudhir-ku"
+          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          Know More
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
-    </div>
 
-    {/* CTO Card - Mr. Bennet Rajesh */}
-    <div className="max-w-6xl mx-auto">
-      <div className="border-none overflow-hidden bg-white group animate-on-scroll rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-0">
-          {/* Image Section */}
-          <div className="relative lg:col-span-5 h-full min-h-[300px] md:min-h-[400px]">
-            <div className="absolute top-4 left-4 z-20">
-              <div className="bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-full font-medium text-sm shadow-lg border border-white/30 backdrop-blur-sm py-[7px] px-[2px]">
-                27+ Years Experience
-              </div>
-            </div>
-            <div className="absolute inset-0 overflow-hidden">
-              <img src="/lovable-uploads/cto-bennet.png" alt="Mr. Bennet Rajesh" className="w-full h-full object-center scale-100 group-hover:scale-105 transition-all duration-1000 ease-out object-contain" />
-              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent"></div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-              <h3 className="text-2xl font-bold text-white mb-0">Mr. Bennet Rajesh</h3>
-              <p className="text-white/90 text-sm">Chief Technology Officer</p>
-            </div>
-          </div>
-          {/* Bio Section */}
-          <div className="p-6 lg:p-8 lg:col-span-7 flex flex-col justify-center py-[56px] px-[40px] mx-0 my-[35px]">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-orange-200">
-              Architecting cutting-edge solutions to redefine industry standards.
-            </h3>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-              With <span className="font-semibold text-orange-600">27 years of experience</span> in software development, Mr. Bennet Rajesh Mohan is a highly skilled Java Enterprise Architect, Developer, and Mentor with a proven track record of building scalable systems.
-            </p>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-              His deep expertise in Java, Spring, MERN, Microservices, and DevOps ensures efficient, innovative project delivery. He champions Agile methods, continuous delivery, and automation.
-            </p>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-              As CTO, he leads Orange Office Technologies’ tech strategy—driving innovation, cloud integration, product thinking, and enterprise security.
-            </p>
-            <Link to="/founders" className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg">
-              Know More  
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+      {/* Founder 2: Bennet Rajesh */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+        <img
+          src="/lovable-uploads/cto-bennet.png"
+          alt="Mr. Bennet Rajesh"
+          className="w-32 h-32 rounded-full object-cover mb-4"
+        />
+        <h3 className="text-xl font-bold text-gray-800">Mr. Bennet Rajesh</h3>
+        <p className="text-orange-600 font-medium">Chief Technology Officer</p>
+        <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+          27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
+        </p>
+        <a
+          href="/founders/bennet-rajesh"
+          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          Know More
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
   </div>
