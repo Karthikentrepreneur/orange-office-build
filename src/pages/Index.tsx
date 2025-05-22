@@ -339,17 +339,7 @@ const Index = () => {
                     title: "Digital Innovation",
                     description: "Leading tech adaptation",
                     icon: "💻"
-                  }].map((achievement, index) => <div key={index} className="bg-gray-50 p-3 rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300 flex items-center gap-2">
-                        <div className="bg-amber-100 w-8 h-8 rounded-full flex items-center justify-center text-lg shrink-0">
-                          {achievement.icon}
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-800 text-sm">
-                            {achievement.title}
-                          </h4>
-                          <p className="text-gray-600 text-xs">{achievement.description}</p>
-                        </div>
-                      </div>)}
+                  }].map((achievement, index) => {})}
                   </div>
                   
                   {/* CTA Button */}
