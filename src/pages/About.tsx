@@ -52,21 +52,48 @@ const About = () => {
     <h2 className="text-4xl font-extrabold text-center text-orange-600 mb-12">ORANGE DEFINED</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       
-      {/* Left: ORANGE Acronym Breakdown */}
+      {/* Left: ORANGE Acronym Breakdown with Descriptions */}
       <div className="space-y-6">
         {[
-          { letter: "O", title: "Operational Excellence" },
-          { letter: "R", title: "Resource Optimization" },
-          { letter: "A", title: "Automation-Driven Processes" },
-          { letter: "N", title: "Next-Gen Technology" },
-          { letter: "G", title: "Global Support" },
-          { letter: "E", title: "Efficiency in Execution" },
+          {
+            letter: "O",
+            title: "Operational Excellence",
+            description: "Streamlining operations to achieve superior performance and consistency.",
+          },
+          {
+            letter: "R",
+            title: "Resource Optimization",
+            description: "Utilizing resources efficiently to maximize value and minimize waste.",
+          },
+          {
+            letter: "A",
+            title: "Automation-Driven Processes",
+            description: "Leveraging technology to automate repetitive tasks and increase speed.",
+          },
+          {
+            letter: "N",
+            title: "Next-Gen Technology",
+            description: "Integrating the latest technological advancements into logistics solutions.",
+          },
+          {
+            letter: "G",
+            title: "Global Support",
+            description: "Providing scalable support and services across international markets.",
+          },
+          {
+            letter: "E",
+            title: "Efficiency in Execution",
+            description: "Ensuring timely, cost-effective, and precise execution of operations.",
+          },
         ].map((item, index) => (
-          <div key={index} className="flex items-center space-x-4">
+          <div key={index} className="flex items-start space-x-4">
             <div className="w-10 h-10 bg-orange-500 text-white font-bold rounded flex items-center justify-center text-xl">
               {item.letter}
             </div>
-            <h3 className="text-lg font-medium text-gray-800">{item.title}</h3>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+              <p className="text-gray-600 text-sm">{item.description}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -75,7 +102,7 @@ const About = () => {
       <div className="relative">
         <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
           <img
-            src="/office.png" // Replace this with actual image path
+            src="/1b594179-11a8-4158-8891-0d269d378ec2.jpg" // Update with actual public image path if needed
             alt="Team working with data"
             className="object-cover w-full h-full"
           />
