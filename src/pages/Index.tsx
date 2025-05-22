@@ -280,7 +280,7 @@ const Index = () => {
     </div>
 
     {/* 4-Column Grid with center 2 cards */}
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-4 gap-6">
       {/* Empty left card */}
       <div></div>
 
