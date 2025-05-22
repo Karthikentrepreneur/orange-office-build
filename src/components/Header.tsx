@@ -36,9 +36,7 @@ export const Header = () => {
               <img alt="Orange Office Technologies" className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-110 sm:h-10" src="/lovable-uploads/1c509753-a7c8-4889-be12-c391eed30fe3.png" />
               <div className="ml-2 flex flex-col">
                 <Link to="/" className="group" aria-label="Home">
-                  <span className="font-heading text-base sm:text-lg md:text-xl font-semibold text-gray-800 group-hover:text-orange-500 transition-colors duration-300">
-                    Orange Office Technologies
-                  </span>
+                  <span className="font-heading text-base sm:text-lg md:text-xl font-semibold text-gray-800 group-hover:text-orange-500 transition-colors duration-300">Orange Office Technologies Pvt Ltd</span>
                 </Link>
                 <p className="font-medium text-gray-800 text-xs sm:text-sm">Logistics KPO Excellence</p>
               </div>
