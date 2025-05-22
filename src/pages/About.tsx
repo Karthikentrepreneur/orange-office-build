@@ -49,7 +49,7 @@ const About = () => {
       {/* ORANGE Defined Section */}
 <section className="py-20 bg-orange-50">
   <div className="container mx-auto px-6">
-    <h2 className="text-4xl font-extrabold text-center text-orange-600 mb-12">ORANGE DEFINED</h2>
+    <h2 className="text-4xl font-extrabold text-center text-orange-600 mb-12">Our Core Values</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       
       {/* Left: ORANGE Acronym Breakdown with Descriptions */}
@@ -102,7 +102,7 @@ const About = () => {
       <div className="relative">
         <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
           <img
-            src="/1b594179-11a8-4158-8891-0d269d378ec2.jpg" // Update with actual public image path if needed
+            src="/lovable-uploads/1b594179-11a8-4158-8891-0d269d378ec2.jpg" // Update with actual public image path if needed
             alt="Team working with data"
             className="object-cover w-full h-full"
           />
