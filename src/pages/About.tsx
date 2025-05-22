@@ -46,45 +46,42 @@ const About = () => {
       {/* Mission & Vision */}
       
 
-      {/* Core Values */}
+      {/* ORANGE Defined Section */}
 <section className="py-20 bg-orange-50">
   <div className="container mx-auto px-6">
-    <h2 className="text-4xl font-extrabold mb-12 text-center text-orange-600">Our Core Values</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {[
-        {
-          title: "Excellence",
-          description: "Delivering high-quality solutions that exceed expectations."
-        },
-        {
-          title: "Innovation",
-          description: "Pioneering new approaches to logistics challenges."
-        },
-        {
-          title: "Integrity",
-          description: "Operating with transparency, honesty, and accountability."
-        },
-        {
-          title: "Collaboration",
-          description: "Working together to achieve shared success."
-        },
-        {
-          title: "Agility",
-          description: "Adapting quickly to changing market conditions."
-        },
-        {
-          title: "Client Focus",
-          description: "Placing client needs at the center of our operations."
-        }
-      ].map((value, index) => (
-        <div
-          key={index}
-          className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border-t-4 border-orange-500"
-        >
-          <h3 className="text-2xl font-semibold text-gray-800 mb-2">{value.title}</h3>
-          <p className="text-gray-600">{value.description}</p>
+    <h2 className="text-4xl font-extrabold text-center text-orange-600 mb-12">ORANGE DEFINED</h2>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      
+      {/* Left: ORANGE Acronym Breakdown */}
+      <div className="space-y-6">
+        {[
+          { letter: "O", title: "Operational Excellence" },
+          { letter: "R", title: "Resource Optimization" },
+          { letter: "A", title: "Automation-Driven Processes" },
+          { letter: "N", title: "Next-Gen Technology" },
+          { letter: "G", title: "Global Support" },
+          { letter: "E", title: "Efficiency in Execution" },
+        ].map((item, index) => (
+          <div key={index} className="flex items-center space-x-4">
+            <div className="w-10 h-10 bg-orange-500 text-white font-bold rounded flex items-center justify-center text-xl">
+              {item.letter}
+            </div>
+            <h3 className="text-lg font-medium text-gray-800">{item.title}</h3>
+          </div>
+        ))}
+      </div>
+
+      {/* Right: Image Section */}
+      <div className="relative">
+        <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
+          <img
+            src="/path-to-your-image.jpg" // Replace this with actual image path
+            alt="Team working with data"
+            className="object-cover w-full h-full"
+          />
         </div>
-      ))}
+      </div>
+
     </div>
   </div>
 </section>
