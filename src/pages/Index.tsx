@@ -280,7 +280,7 @@ const Index = () => {
     {/* 2x1 Grid Layout */}
     <div className="grid md:grid-cols-2 gap-8">
       {/* Card 1 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center my-0">
         <div className="lg:w-1/2 w-full h-auto">
           <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
         </div>
@@ -302,7 +302,7 @@ const Index = () => {
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-gray-800 font-bold text-2xl">Mr. Bennet Rajesh</h3>
           <p className="text-orange-600 mb-2 font-bold text-xl">Chief Technology Officer</p>
-          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.Mr. Bennet is an advocate for Agile methodologies, Continuous Delivery, and Automation, ensuring that every project is efficiently delivered with a high degree of innovation and quality.</p>
+          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.</p>
           <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
