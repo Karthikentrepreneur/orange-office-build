@@ -271,9 +271,7 @@ const Index = () => {
   <div className="container mx-auto px-4 relative z-10">
     <div className="text-center mb-8">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">Meet Our Team</h2>
-      <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
-        The visionaries behind Orange Office Technologies
-      </p>
+      <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">The force behind OOT's innovation and global success</p>
     </div>
 
     {/* Centered 2x2 layout with 2 center cards */}
