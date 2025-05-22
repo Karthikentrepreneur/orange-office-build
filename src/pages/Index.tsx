@@ -282,47 +282,33 @@ const Index = () => {
     {/* 2x2 Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-start">
       {/* Founder 1 */}
-      <div className="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg transition">
-        <img
-          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
-          alt="Mr. Sudhir KU"
-          className="w-full h-56 object-cover mb-3"
-        />
+      <div className="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg transition py-[80px]">
+        <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-56 object-cover mb-3" />
         <h3 className="text-base font-semibold text-gray-800">Mr. Sudhir KU</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Director</p>
         <p className="text-gray-600 text-sm mb-2">
           35+ years in freight forwarding and back-office solutions, driving global growth and excellence.
         </p>
-        <a
-          href="/founders/sudhir-ku"
-          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition"
-        >
+        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition">
           Know More
         </a>
       </div>
 
       {/* Founder 2 */}
       <div className="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg transition">
-        <img
-          alt="Mr. Bennet Rajesh"
-          src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
-          className="w-full h-56 object-cover mb-3"
-        />
+        <img alt="Mr. Bennet Rajesh" src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png" className="w-full h-56 object-cover mb-3" />
         <h3 className="text-base font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
         <p className="text-gray-600 text-sm mb-2">
           27+ years of enterprise software and cloud innovation, leading digital transformation.
         </p>
-        <a
-          href="/founders/bennet-rajesh"
-          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition"
-        >
+        <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition">
           Know More
         </a>
       </div>
     </div>
   </div>
-</section>
+    </section>
 
 
       {/* About Us Section with Enhanced Layout */}
