@@ -270,29 +270,25 @@ const Index = () => {
   <div className="container mx-auto px-4 relative z-10">
     <div className="text-center mb-12">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
-        Our Core Leadership
+       Meet Our Team
       </h2>
       <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
-        The visionaries behind Orange Office Technologies
+        The force behind OOT's innovation and global success
       </p>
     </div>
 
-    {/* 2x2 Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      
-      {/* Empty top-left card */}
-      <div></div>
-
-      {/* Card 1: Sudhir */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-        <div className="md:w-1/2 w-full">
+    {/* Cards Stack Vertically: 1x2 Layout */}
+    <div className="space-y-8">
+      {/* Card 1 */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2 w-full h-[300px] md:h-[320px]">
           <img
             src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
             alt="Mr. Sudhir KU"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="md:w-1/2 w-full p-6 text-center md:text-left flex flex-col justify-center">
+        <div className="md:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Sudhir KU</h3>
           <p className="text-orange-600 text-sm font-medium mb-2">Director</p>
           <p className="text-gray-600 text-sm mb-4">
@@ -307,16 +303,16 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Card 2: Bennet */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
-        <div className="md:w-1/2 w-full">
+      {/* Card 2 */}
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2 w-full h-[300px] md:h-[320px]">
           <img
             src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
             alt="Mr. Bennet Rajesh"
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="md:w-1/2 w-full p-6 text-center md:text-left flex flex-col justify-center">
+        <div className="md:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
           <p className="text-orange-600 text-sm font-medium mb-2">Chief Technology Officer</p>
           <p className="text-gray-600 text-sm mb-4">
@@ -330,13 +326,9 @@ const Index = () => {
           </a>
         </div>
       </div>
-
-      {/* Empty bottom-right card */}
-      <div></div>
     </div>
   </div>
 </section>
-
 
 
       {/* About Us Section with Enhanced Layout */}
