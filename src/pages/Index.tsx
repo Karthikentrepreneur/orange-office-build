@@ -261,7 +261,7 @@ const Index = () => {
       </section>
 
 
-    <section className="py-12 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+    <section className="py-8 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
   {/* Decorative Background */}
   <div className="absolute inset-0 z-0 overflow-hidden">
     <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
@@ -269,46 +269,60 @@ const Index = () => {
   </div>
 
   {/* Section Header */}
-  <div className="max-w-6xl mx-auto px-4 relative z-10">
-    <div className="text-center mb-10">
+  <div className="max-w-5xl mx-auto px-4 relative z-10">
+    <div className="text-center mb-6">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
         Our Core Leadership
       </h2>
-      <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
+      <p className="text-gray-600 max-w-xl mx-auto mt-1 text-base md:text-lg">
         The visionaries behind Orange Office Technologies
       </p>
     </div>
 
-    {/* Centered 2x2 Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
+    {/* 2x2 Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-start">
       {/* Founder 1 */}
-      <div className="bg-white rounded-xl shadow-md p-6 flex flex-col text-center hover:shadow-xl transition max-w-sm mx-auto">
-        <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-64 mb-4 object-contain" />
-        <h3 className="text-lg font-semibold text-gray-800">Mr. Sudhir KU</h3>
+      <div className="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg transition">
+        <img
+          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
+          alt="Mr. Sudhir KU"
+          className="w-full h-56 object-cover mb-3"
+        />
+        <h3 className="text-base font-semibold text-gray-800">Mr. Sudhir KU</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Director</p>
-        <p className="text-gray-600 text-sm mb-3">
-          35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
+        <p className="text-gray-600 text-sm mb-2">
+          35+ years in freight forwarding and back-office solutions, driving global growth and excellence.
         </p>
-        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+        <a
+          href="/founders/sudhir-ku"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition"
+        >
           Know More
         </a>
       </div>
 
       {/* Founder 2 */}
-      <div className="bg-white rounded-xl shadow-md p-6 flex flex-col text-center hover:shadow-xl transition max-w-sm mx-auto">
-        <img alt="Mr. Bennet Rajesh" src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png" className="w-full h-64 mb-4 object-contain" />
-        <h3 className="text-lg font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
+      <div className="bg-white rounded-xl shadow p-5 text-center hover:shadow-lg transition">
+        <img
+          alt="Mr. Bennet Rajesh"
+          src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
+          className="w-full h-56 object-cover mb-3"
+        />
+        <h3 className="text-base font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
-        <p className="text-gray-600 text-sm mb-3">
-          27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
+        <p className="text-gray-600 text-sm mb-2">
+          27+ years of enterprise software and cloud innovation, leading digital transformation.
         </p>
-        <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+        <a
+          href="/founders/bennet-rajesh"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded hover:from-orange-600 hover:to-amber-600 transition"
+        >
           Know More
         </a>
       </div>
     </div>
   </div>
-    </section>
+</section>
 
 
       {/* About Us Section with Enhanced Layout */}
