@@ -47,46 +47,38 @@ const About = () => {
       
 
       {/* ORANGE Defined Section */}
-<section className="py-20 bg-orange-50">
+    <section className="py-20 bg-orange-50">
   <div className="container mx-auto px-6">
     <h2 className="text-4xl font-extrabold text-center text-orange-600 mb-12">Our Core Values</h2>
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
       
       {/* Left: ORANGE Acronym Breakdown with Descriptions */}
       <div className="space-y-6">
-        {[
-          {
-            letter: "O",
-            title: "Operational Excellence",
-            description: "Streamlining operations to achieve superior performance and consistency.",
-          },
-          {
-            letter: "R",
-            title: "Resource Optimization",
-            description: "Utilizing resources efficiently to maximize value and minimize waste.",
-          },
-          {
-            letter: "A",
-            title: "Automation-Driven Processes",
-            description: "Leveraging technology to automate repetitive tasks and increase speed.",
-          },
-          {
-            letter: "N",
-            title: "Next-Gen Technology",
-            description: "Integrating the latest technological advancements into logistics solutions.",
-          },
-          {
-            letter: "G",
-            title: "Global Support",
-            description: "Providing scalable support and services across international markets.",
-          },
-          {
-            letter: "E",
-            title: "Efficiency in Execution",
-            description: "Ensuring timely, cost-effective, and precise execution of operations.",
-          },
-        ].map((item, index) => (
-          <div key={index} className="flex items-start space-x-4">
+        {[{
+              letter: "O",
+              title: "Operational Excellence",
+              description: "Streamlining operations to achieve superior performance and consistency."
+            }, {
+              letter: "R",
+              title: "Resource Optimization",
+              description: "Utilizing resources efficiently to maximize value and minimize waste."
+            }, {
+              letter: "A",
+              title: "Automation-Driven Processes",
+              description: "Leveraging technology to automate repetitive tasks and increase speed."
+            }, {
+              letter: "N",
+              title: "Next-Gen Technology",
+              description: "Integrating the latest technological advancements into logistics solutions."
+            }, {
+              letter: "G",
+              title: "Global Support",
+              description: "Providing scalable support and services across international markets."
+            }, {
+              letter: "E",
+              title: "Efficiency in Execution",
+              description: "Ensuring timely, cost-effective, and precise execution of operations."
+            }].map((item, index) => <div key={index} className="flex items-start space-x-4">
             <div className="w-10 h-10 bg-orange-500 text-white font-bold rounded flex items-center justify-center text-xl">
               {item.letter}
             </div>
@@ -94,24 +86,21 @@ const About = () => {
               <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
               <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
-          </div>
-        ))}
+          </div>)}
       </div>
 
       {/* Right: Image Section */}
       <div className="relative">
-        <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
+        <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200 my-0">
           <img
-            src="/corevalue1.png" // Update with actual public image path if needed
-            alt="Team working with data"
-            className="object-cover w-full h-full"
-          />
+              // Update with actual public image path if needed
+              alt="Team working with data" className="object-cover w-full h-full" src="/lovable-uploads/5f253e86-3d8c-47a6-8305-ae76ef30adaf.png" />
         </div>
       </div>
 
     </div>
   </div>
-</section>
+    </section>
 
 
       {/* CTA Section */}
