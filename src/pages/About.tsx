@@ -47,35 +47,48 @@ const About = () => {
       
 
       {/* Core Values */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 text-center">Our Core Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[{
-            title: "Excellence",
-            description: "Delivering high-quality solutions that exceed expectations."
-          }, {
-            title: "Innovation",
-            description: "Pioneering new approaches to logistics challenges."
-          }, {
-            title: "Integrity",
-            description: "Operating with transparency, honesty, and accountability."
-          }, {
-            title: "Collaboration",
-            description: "Working together to achieve shared success."
-          }, {
-            title: "Agility",
-            description: "Adapting quickly to changing market conditions."
-          }, {
-            title: "Client Focus",
-            description: "Placing client needs at the center of our operations."
-          }].map((value, index) => <div key={index} className="p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow bg-slate-200 text-orange-500">
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>)}
-          </div>
+<section className="py-20 bg-orange-50">
+  <div className="container mx-auto px-6">
+    <h2 className="text-4xl font-extrabold mb-12 text-center text-orange-600">Our Core Values</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {[
+        {
+          title: "Excellence",
+          description: "Delivering high-quality solutions that exceed expectations."
+        },
+        {
+          title: "Innovation",
+          description: "Pioneering new approaches to logistics challenges."
+        },
+        {
+          title: "Integrity",
+          description: "Operating with transparency, honesty, and accountability."
+        },
+        {
+          title: "Collaboration",
+          description: "Working together to achieve shared success."
+        },
+        {
+          title: "Agility",
+          description: "Adapting quickly to changing market conditions."
+        },
+        {
+          title: "Client Focus",
+          description: "Placing client needs at the center of our operations."
+        }
+      ].map((value, index) => (
+        <div
+          key={index}
+          className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow border-t-4 border-orange-500"
+        >
+          <h3 className="text-2xl font-semibold text-gray-800 mb-2">{value.title}</h3>
+          <p className="text-gray-600">{value.description}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-center">
