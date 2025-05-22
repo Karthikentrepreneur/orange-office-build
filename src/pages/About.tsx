@@ -75,7 +75,7 @@ const About = () => {
       <div className="relative">
         <div className="rounded-xl overflow-hidden shadow-lg border-4 border-orange-200">
           <img
-            src="/path-to-your-image.jpg" // Replace this with actual image path
+            src="/office.png" // Replace this with actual image path
             alt="Team working with data"
             className="object-cover w-full h-full"
           />
