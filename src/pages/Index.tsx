@@ -269,7 +269,7 @@ const Index = () => {
   </div>
 
   {/* Section Header */}
-  <div className="container mx-auto px-4 relative z-10">
+  <div className="max-w-6xl mx-auto px-4 relative z-10">
     <div className="text-center mb-10">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
         Our Core Leadership
@@ -279,43 +279,50 @@ const Index = () => {
       </p>
     </div>
 
-    {/* 4-Column Grid with center 2 cards */}
-    <div className="grid grid-cols-4 gap-6">
-      {/* Empty left card */}
-      <div></div>
-
+    {/* Centered 2x2 Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center">
       {/* Founder 1 */}
-      <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
-        <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-54 h-54 mx-auto rounded-full mb-4 object-cover" />
+      <div className="bg-white rounded-xl shadow-md p-6 flex flex-col text-center hover:shadow-xl transition max-w-sm mx-auto">
+        <img
+          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
+          alt="Mr. Sudhir KU"
+          className="w-full h-64 object-cover mb-4"
+        />
         <h3 className="text-lg font-semibold text-gray-800">Mr. Sudhir KU</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Director</p>
         <p className="text-gray-600 text-sm mb-3">
           35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
         </p>
-        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+        <a
+          href="/founders/sudhir-ku"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
+        >
           Know More
         </a>
       </div>
 
       {/* Founder 2 */}
-      <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
-        <img alt="Mr. Bennet Rajesh" className="w-54 h-54 mx-auto rounded-full mb-4 object-fill" src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png" />
+      <div className="bg-white rounded-xl shadow-md p-6 flex flex-col text-center hover:shadow-xl transition max-w-sm mx-auto">
+        <img
+          alt="Mr. Bennet Rajesh"
+          src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
+          className="w-full h-64 object-cover mb-4"
+        />
         <h3 className="text-lg font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
         <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
         <p className="text-gray-600 text-sm mb-3">
           27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
         </p>
-        <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+        <a
+          href="/founders/bennet-rajesh"
+          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
+        >
           Know More
         </a>
       </div>
-
-      {/* Empty right card */}
-      <div></div>
     </div>
   </div>
-    </section>
-
+</section>
 
 
       {/* About Us Section with Enhanced Layout */}
