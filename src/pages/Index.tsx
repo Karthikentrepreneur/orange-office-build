@@ -281,14 +281,21 @@ const Index = () => {
     {/* 2x2 Grid of Founders */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {/* Founder 1: Sudhir KU */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300 mx-[100px]">
-        <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-32 h-32 rounded-full object-cover mb-4" />
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+        <img
+          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
+          alt="Mr. Sudhir KU"
+          className="w-32 h-32 rounded-full object-cover mb-4"
+        />
         <h3 className="text-xl font-bold text-gray-800">Mr. Sudhir KU</h3>
         <p className="text-orange-600 font-medium">Director</p>
         <p className="text-gray-600 mt-2 text-sm leading-relaxed">
           35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
         </p>
-        <a href="/founders/sudhir-ku" className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg">
+        <a
+          href="/founders/sudhir-ku"
+          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+        >
           Know More
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -297,14 +304,21 @@ const Index = () => {
       </div>
 
       {/* Founder 2: Bennet Rajesh */}
-      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300 mx-[101px]">
-        <img src="/lovable-uploads/cto-bennet.png" alt="Mr. Bennet Rajesh" className="w-32 h-32 rounded-full object-cover mb-4" />
+      <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition duration-300">
+        <img
+          src="/lovable-uploads/cto-bennet.png"
+          alt="Mr. Bennet Rajesh"
+          className="w-32 h-32 rounded-full object-cover mb-4"
+        />
         <h3 className="text-xl font-bold text-gray-800">Mr. Bennet Rajesh</h3>
         <p className="text-orange-600 font-medium">Chief Technology Officer</p>
         <p className="text-gray-600 mt-2 text-sm leading-relaxed">
           27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
         </p>
-        <a href="/founders/bennet-rajesh" className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg">
+        <a
+          href="/founders/bennet-rajesh"
+          className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white py-2 px-4 rounded-lg font-medium text-sm transition-all duration-300 shadow-md hover:shadow-lg"
+        >
           Know More
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -313,7 +327,7 @@ const Index = () => {
       </div>
     </div>
   </div>
-    </section>
+</section>
 
 
       {/* About Us Section with Enhanced Layout */}
