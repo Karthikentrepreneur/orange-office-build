@@ -282,11 +282,7 @@ const Index = () => {
       {/* Card 1 */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 w-full h-auto">
-          <img
-            src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
-            alt="Mr. Sudhir KU"
-            className="w-full h-full object-contain"
-          />
+          <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Sudhir KU</h3>
@@ -294,10 +290,7 @@ const Index = () => {
           <p className="text-gray-600 text-sm mb-4">
             35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
           </p>
-          <a
-            href="/founders/sudhir-ku"
-            className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
-          >
+          <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
         </div>
@@ -306,11 +299,7 @@ const Index = () => {
       {/* Card 2 */}
       <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 w-full h-auto">
-          <img
-            src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
-            alt="Mr. Bennet Rajesh"
-            className="w-full h-full object-contain"
-          />
+          <img alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" />
         </div>
         <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
@@ -318,17 +307,14 @@ const Index = () => {
           <p className="text-gray-600 text-sm mb-4">
             27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
           </p>
-          <a
-            href="/founders/bennet-rajesh"
-            className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
-          >
+          <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
         </div>
       </div>
     </div>
   </div>
-</section>
+    </section>
 
 
       {/* About Us Section with Enhanced Layout */}
