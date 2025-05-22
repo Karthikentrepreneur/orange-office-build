@@ -270,25 +270,25 @@ const Index = () => {
   <div className="container mx-auto px-4 relative z-10">
     <div className="text-center mb-12">
       <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
-       Meet Our Team
+        Meet Our Team
       </h2>
       <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
         The force behind OOT's innovation and global success
       </p>
     </div>
 
-    {/* Cards Stack Vertically: 1x2 Layout */}
-    <div className="space-y-8">
+    {/* 2x1 Grid Layout */}
+    <div className="grid md:grid-cols-2 gap-8">
       {/* Card 1 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 w-full h-[300px] md:h-[320px]">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
+        <div className="lg:w-1/2 w-full h-auto">
           <img
             src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
             alt="Mr. Sudhir KU"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
-        <div className="md:w-1/2 w-full p-6 flex flex-col justify-center text-left">
+        <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Sudhir KU</h3>
           <p className="text-orange-600 text-sm font-medium mb-2">Director</p>
           <p className="text-gray-600 text-sm mb-4">
@@ -304,15 +304,15 @@ const Index = () => {
       </div>
 
       {/* Card 2 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center">
-        <div className="md:w-1/2 w-full h-[300px] md:h-[320px]">
+      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
+        <div className="lg:w-1/2 w-full h-auto">
           <img
             src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
             alt="Mr. Bennet Rajesh"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
         </div>
-        <div className="md:w-1/2 w-full p-6 flex flex-col justify-center text-left">
+        <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
           <h3 className="text-xl font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
           <p className="text-orange-600 text-sm font-medium mb-2">Chief Technology Officer</p>
           <p className="text-gray-600 text-sm mb-4">
