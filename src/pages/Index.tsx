@@ -260,7 +260,7 @@ const Index = () => {
         </div>
       </section>
 
-<section className="py-12 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+    <section className="py-12 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
   {/* Decorative Background */}
   <div className="absolute inset-0 z-0 overflow-hidden">
     <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
@@ -285,42 +285,28 @@ const Index = () => {
 
       {/* Founder 1 */}
       <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
-        <img
-          src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png"
-          alt="Mr. Sudhir KU"
-          className="w-full object-contain mb-3"
-          style={{ maxHeight: '600px' }}
-        />
-        <h3 className="text-lg font-semibold text-gray-800">Mr. Sudhir KU</h3>
-        <p className="text-orange-600 text-sm font-medium mb-1">Director</p>
-        <p className="text-gray-600 text-sm mb-3">
+        <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full object-contain mb-3" style={{
+              maxHeight: '600px'
+            }} />
+        <h3 className="font-semibold text-gray-800 text-2xl">Mr. Sudhir KU</h3>
+        <p className="text-orange-600 font-medium mb-1 text-lg">Director</p>
+        <p className="text-gray-600 mb-3 text-base">
           35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
         </p>
-        <a
-          href="/founders/sudhir-ku"
-          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
-        >
-          Know More
-        </a>
+        <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">Know More</a>
       </div>
 
       {/* Founder 2 */}
       <div className="bg-white rounded-xl shadow-md p-5 flex flex-col text-center hover:shadow-xl transition">
-        <img
-          src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png"
-          alt="Mr. Bennet Rajesh"
-          className="w-full object-contain mb-3"
-          style={{ maxHeight: '600px' }}
-        />
-        <h3 className="text-lg font-semibold text-gray-800">Mr. Bennet Rajesh</h3>
-        <p className="text-orange-600 text-sm font-medium mb-1">Chief Technology Officer</p>
-        <p className="text-gray-600 text-sm mb-3">
+        <img src="/lovable-uploads/3d8d46ea-10eb-4cb4-b738-171db54e7ab0.png" alt="Mr. Bennet Rajesh" className="w-full object-contain mb-3" style={{
+              maxHeight: '600px'
+            }} />
+        <h3 className="font-semibold text-gray-800 text-2xl">Mr. Bennet Rajesh</h3>
+        <p className="text-orange-600 font-medium mb-1 text-lg">Chief Technology Officer</p>
+        <p className="text-gray-600 mb-3 text-base">
           27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
         </p>
-        <a
-          href="/founders/bennet-rajesh"
-          className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition"
-        >
+        <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
           Know More
         </a>
       </div>
@@ -329,7 +315,7 @@ const Index = () => {
       <div className="hidden md:block"></div>
     </div>
   </div>
-</section>
+    </section>
 
 
 
