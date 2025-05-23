@@ -45,7 +45,7 @@ const management = () => {
                       <img alt="Mr. Sudhir KU" className="w-full h-full object-cover" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                       <div className="p-8 text-center absolute bottom-0 w-full">
-                        <h3 className="text-3xl font-bold mb-1">Mr. Sudhir KU</h3>
+                        <h3 className="text-3xl font-bold mb-1 text-slate-50">Mr. Sudhir KU</h3>
                         <p className="text-white/90 text-xl">Director</p>
                       </div>
                     </div>
