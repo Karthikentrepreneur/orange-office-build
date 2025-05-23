@@ -270,7 +270,7 @@ const Index = () => {
   <div className="container mx-auto px-4 relative z-10">
     {/* Heading */}
     <div className="text-center mb-16">
-      <h2 className="font-heading font-bold text-3xl md:text-4xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text">
+      <h2 className="font-heading font-bold text-3xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text md:text-5xl">
         Meet Our Team
       </h2>
       <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
