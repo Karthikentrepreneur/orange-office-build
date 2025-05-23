@@ -263,14 +263,6 @@ const Contact = () => {
       {/* Map Section - Full Width with Proper Styling */}
       {/* Map Section - Full Width with Proper Styling */}
     <section className="py-12 bg-white relative">
-  
-  <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl mt-10">
-    <iframe src="https://www.google.com/maps/d/embed?mid=1P9GHdOjApQAyc4RCcuOEXbXNjpzfy_Y&ehbc=2E312F" width="100%" height="100%" style={{
-          border: 0
-        }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kochi Location" className="absolute inset-0" />
-  </div>
-
-
       {/* Other content */}
       <LocationsSection />
       
