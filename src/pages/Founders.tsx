@@ -41,7 +41,6 @@ const management = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
-
         {/* Hero Section */}
         <section className="py-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-pattern opacity-5"></div>
@@ -94,100 +93,99 @@ const management = () => {
               </Card>
             </div>
 
-           
-
-        {/* Journey and Impact Section */}
-        <section className="py-12 md:py-16 bg-white relative">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-                Professional Journey & Impact
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Decades of expertise and innovation transforming the logistics industry
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-              {/* Achievements */}
-              <Card className="border-none shadow-xl hover:shadow-2xl bg-slate-100 rounded-2xl">
-                <CardContent className="p-6 md:p-8">
-                  <div className="space-y-6">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg">
-                      <Award className="h-6 w-6 text-white" />
-                    </div>
-                    <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
-                    <ul className="space-y-3">
-                      {achievements.map((a, i) => (
-                        <li key={i} className="flex items-center gap-3">
-                          <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
-                            <Star className="h-4 w-4 text-amber-500" />
-                          </div>
-                          <span className="text-gray-700">{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Milestones */}
-              <Card className="border-none shadow-xl hover:shadow-2xl bg-white/80 rounded-2xl">
-                <CardContent className="p-6 md:p-8">
-                  <div className="space-y-6">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
-                      <Calendar className="h-6 w-6 text-white" />
-                    </div>
-                    <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
-                    <div className="border-l-2 border-gray-200 pl-6 space-y-6">
-                      {milestones.map((m, i) => (
-                        <div key={i} className="relative">
-                          <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
-                            <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                          </div>
-                          <div>
-                            <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-500 font-medium inline-block mb-2">
-                              {m.year}
-                            </div>
-                            <p className="text-gray-700">{m.event}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Legacy and Vision */}
-            <Card className="border-none shadow-xl hover:shadow-2xl bg-gradient-to-br from-amber-50 to-white mt-8 max-w-5xl mx-auto rounded-2xl">
-              <CardContent className="p-6 md:p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900">Legacy</h3>
-                    <p className="text-gray-700 mb-4">
-                      His strategic foresight has expanded Orange Office Technologies into a global service provider.
-                    </p>
-                    <p className="text-gray-700">
-                      Today, Orange Office Technologies empowers businesses worldwide with reliable and innovative solutions.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
-                    <p className="text-gray-700 mb-4">
-                      Mr. Sudhir envisions logistics companies outsourcing operational complexity to specialized partners like Orange.
-                    </p>
-                    <p className="text-gray-700">
-                      His leadership drives innovation, customer satisfaction, and expansion into new markets and services.
-                    </p>
-                  </div>
+            {/* Journey and Impact Section */}
+            <section className="py-12 md:py-16 bg-white relative">
+              <div className="container mx-auto px-4">
+                <div className="text-center mb-10">
+                  <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                    Professional Journey & Impact
+                  </h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Decades of expertise and innovation transforming the logistics industry
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-          {/* CTO Section */}
-            <div className="max-w-5xl mx-auto">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                  {/* Achievements */}
+                  <Card className="border-none shadow-xl hover:shadow-2xl bg-slate-100 rounded-2xl">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="space-y-6">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg">
+                          <Award className="h-6 w-6 text-white" />
+                        </div>
+                        <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
+                        <ul className="space-y-3">
+                          {achievements.map((a, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                              <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
+                                <Star className="h-4 w-4 text-amber-500" />
+                              </div>
+                              <span className="text-gray-700">{a}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Milestones */}
+                  <Card className="border-none shadow-xl hover:shadow-2xl bg-white/80 rounded-2xl">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="space-y-6">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+                          <Calendar className="h-6 w-6 text-white" />
+                        </div>
+                        <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
+                        <div className="border-l-2 border-gray-200 pl-6 space-y-6">
+                          {milestones.map((m, i) => (
+                            <div key={i} className="relative">
+                              <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              </div>
+                              <div>
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-500 font-medium inline-block mb-2">
+                                  {m.year}
+                                </div>
+                                <p className="text-gray-700">{m.event}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Legacy and Vision */}
+                <Card className="border-none shadow-xl hover:shadow-2xl bg-gradient-to-br from-amber-50 to-white mt-8 max-w-5xl mx-auto rounded-2xl">
+                  <CardContent className="p-6 md:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <h3 className="text-2xl font-bold mb-3 text-gray-900">Legacy</h3>
+                        <p className="text-gray-700 mb-4">
+                          His strategic foresight has expanded Orange Office Technologies into a global service provider.
+                        </p>
+                        <p className="text-gray-700">
+                          Today, Orange Office Technologies empowers businesses worldwide with reliable and innovative solutions.
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
+                        <p className="text-gray-700 mb-4">
+                          Mr. Sudhir envisions logistics companies outsourcing operational complexity to specialized partners like Orange.
+                        </p>
+                        <p className="text-gray-700">
+                          His leadership drives innovation, customer satisfaction, and expansion into new markets and services.
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
+
+            {/* CTO Section */}
+            <div className="max-w-5xl mx-auto mt-12">
               <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 md:grid-cols-2">
@@ -227,7 +225,6 @@ const management = () => {
             </div>
           </div>
         </section>
-
       </main>
       <Footer />
     </div>
