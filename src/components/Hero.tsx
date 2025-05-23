@@ -44,7 +44,7 @@ export const Hero = ({
 
         {/* Buttons for services */}
         <div className="flex flex-col gap-2 mb-6">
-          {backgroundCaptions.map((caption, idx) => <div key={idx} className={`w-fit px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${idx === activeSlide ? "bg-white text-black border-white shadow-md scale-105" : "bg-white/10 text-white/80 border-white/20"}`}>
+          {backgroundCaptions.map((caption, idx) => <div key={idx} className={`w-fit px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${idx === activeSlide ? "bg-white/10 text-black border-white shadow-md scale-105" : "bg-orange-500 text-white/80 border-white/20"}`}>
               {caption}
             </div>)}
         </div>
