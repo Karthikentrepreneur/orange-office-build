@@ -160,37 +160,50 @@ const management = () => {
               </div>
             </section>
 
-            {/* CTO Section */}
-            <div className="max-w-5xl mx-auto mt-12">
-              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="relative bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
-                      <div className="p-8 text-center absolute bottom-0 w-ful">
-                        <h3 className="text-3xl font-bold mb-1 text-blue-800">Mr. Bennet Rajesh</h3>
-                        <p className="text-blue-600 text-xl text-left">Chief Technology Officer</p>
-                      </div>
-                    </div>
-                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
-                      <div className="prose max-w-none">
-                        <p className="text-gray-700 mb-4">
-                          "Architecting cutting-edge solutions to redefine industry standards."
-                        </p>
-                        <p className="text-gray-700 mb-4">
-                          With 27 years of experience in software development, Mr. Bennet is a seasoned Java Enterprise Architect, Developer, and Mentor.
-                        </p>
-                        <p className="text-gray-700 mb-4">
-                          His expertise spans Java, Spring, JPA, MERN stack, Microservices, DevOps, and Cloud Computing. He is a champion of Agile, automation, and product thinking.
-                        </p>
-                        <p className="text-gray-700 mb-6">
-                          As CTO, he steers the technological vision of the company, ensuring seamless integration of advanced enterprise solutions.
-                        </p>
-                        <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
-                              {item}
-                            </span>)}
-                        </div>
+          {/* CTO Section */}
+<div className="max-w-5xl mx-auto mt-12">
+  <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
+    <CardContent className="p-0">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Image Section */}
+        <div className="relative">
+          <img
+            src="/images/bennet-rajesh.jpg" // Replace with your actual image path
+            alt="Mr. Bennet Rajesh"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Text Content Section */}
+        <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
+          <div className="prose max-w-none">
+            <h3 className="text-3xl font-bold mb-1 text-blue-800">Mr. Bennet Rajesh</h3>
+            <p className="text-blue-600 text-xl mb-4">Chief Technology Officer</p>
+
+            <p className="text-gray-700 mb-4">
+              "Architecting cutting-edge solutions to redefine industry standards."
+            </p>
+            <p className="text-gray-700 mb-4">
+              With 27 years of experience in software development, Mr. Bennet is a seasoned Java Enterprise Architect, Developer, and Mentor.
+            </p>
+            <p className="text-gray-700 mb-4">
+              His expertise spans Java, Spring, JPA, MERN stack, Microservices, DevOps, and Cloud Computing. He is a champion of Agile, automation, and product thinking.
+            </p>
+            <p className="text-gray-700 mb-6">
+              As CTO, he steers the technological vision of the company, ensuring seamless integration of advanced enterprise solutions.
+            </p>
+
+            <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {ctoExpertises.map((item, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
                       </div>
                     </div>
                   </div>
