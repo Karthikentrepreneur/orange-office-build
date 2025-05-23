@@ -260,34 +260,37 @@ const Index = () => {
         </div>
       </section>
 
-    <section className="py-12 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
   {/* Decorative Background */}
-  <div className="absolute inset-0 z-0 overflow-hidden">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/5 to-amber-200/10 blur-[100px]"></div>
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/5 to-orange-300/10 blur-[80px]"></div>
+  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
   </div>
 
   <div className="container mx-auto px-4 relative z-10">
-    <div className="text-center mb-12">
-      <h2 className="font-heading font-bold text-3xl md:text-4xl text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="font-heading font-bold text-3xl md:text-4xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text">
         Meet Our Team
       </h2>
-      <p className="text-gray-600 max-w-xl mx-auto mt-2 text-base md:text-lg">
+      <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
         The force behind OOT's innovation and global success
       </p>
     </div>
 
-    {/* 2x1 Grid Layout */}
-    <div className="grid md:grid-cols-2 gap-8">
+    {/* Cards */}
+    <div className="grid md:grid-cols-2 gap-10">
       {/* Card 1 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center my-0">
-        <div className="lg:w-1/2 w-full h-auto">
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row items-center gap-6">
+        <div className="lg:w-1/2 w-full">
           <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
         </div>
-        <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-gray-800 font-bold text-2xl">Mr. Sudhir KU</h3>
-          <p className="text-orange-600 mb-2 font-bold text-xl">Director</p>
-          <p className="text-gray-600 mb-4 text-base">35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.His career reflects a rare blend of perseverance, adaptability, and forward-thinking leadership.Starting his professional journey in 1991 in the courier industry, Mr. Sudhir gradually advanced into the logistics and freight forwarding sector.</p>
+        <div className="lg:w-1/2 w-full p-6 space-y-4 text-left">
+          <h3 className="text-gray-900 font-bold text-2xl">Mr. Sudhir KU</h3>
+          <p className="text-orange-600 font-semibold text-lg">Director</p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence. His career reflects a rare blend of perseverance, adaptability, and forward-thinking leadership. Starting his professional journey in 1991 in the courier industry, Mr. Sudhir gradually advanced into the logistics and freight forwarding sector.
+          </p>
           <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
@@ -295,14 +298,16 @@ const Index = () => {
       </div>
 
       {/* Card 2 */}
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col lg:flex-row items-center">
-        <div className="lg:w-1/2 w-full h-auto">
-          <img alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" />
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row items-center gap-6">
+        <div className="lg:w-1/2 w-full">
+          <img src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" />
         </div>
-        <div className="lg:w-1/2 w-full p-6 flex flex-col justify-center text-left">
-          <h3 className="text-gray-800 font-bold text-2xl">Mr. Bennet Rajesh</h3>
-          <p className="text-orange-600 mb-2 font-bold text-xl">Chief Technology Officer</p>
-          <p className="text-gray-600 mb-4 text-base">27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets.His technical interests and proficiency include Product Thinking, Microservices, DevOps, Containerization, Enterprise Integration, Cloud Computing, and Security.</p>
+        <div className="lg:w-1/2 w-full p-6 space-y-4 text-left">
+          <h3 className="text-gray-900 font-bold text-2xl">Mr. Bennet Rajesh</h3>
+          <p className="text-orange-600 font-semibold text-lg">Chief Technology Officer</p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture. He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets. His technical interests include Product Thinking, Microservices, DevOps, Containerization, Cloud Computing, and Security.
+          </p>
           <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
@@ -310,8 +315,7 @@ const Index = () => {
       </div>
     </div>
   </div>
-    </section>
-
+</section>
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
