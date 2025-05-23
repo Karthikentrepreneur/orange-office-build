@@ -74,7 +74,7 @@ const management = () => {
             </div>
 
             {/* Journey and Impact Section */}
-            <section className="py-12 md:py-16 bg-white relative">
+            <section className="py-12 bg-white relative md:py-[75px]">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
                   <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
@@ -173,8 +173,8 @@ const management = () => {
                     {/* Text Content Section */}
                     <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
                       <div className="prose max-w-none">
-                        <h3 className="text-3xl font-bold mb-1 text-blue-800">Mr. Bennet Rajesh</h3>
-                        <p className="text-blue-600 text-xl mb-4">Chief Technology Officer</p>
+                        <h3 className="text-3xl font-bold mb-1 text-orange-500">Mr. Bennet Rajesh</h3>
+                        <p className="text-xl mb-4 text-orange-400">Chief Technology Officer</p>
 
                         <p className="text-gray-700 mb-4">
                           "Architecting cutting-edge solutions to redefine industry standards."
@@ -191,7 +191,7 @@ const management = () => {
 
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
+                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
                               {item}
                             </span>)}
                         </div>
@@ -317,8 +317,8 @@ Led solution architecture for Java-based insurance RFPs and delivery.</p>
                             </div>
                             
                             <div className="relative flex items-start gap-6">
-                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-100">(2009–2020)</div>
@@ -328,8 +328,8 @@ Led solution architecture for Java-based insurance RFPs and delivery.</p>
                             </div>
                             
                             <div className="relative flex items-start gap-6">
-                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-200">(2020–2023)</div>
