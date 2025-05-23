@@ -258,7 +258,7 @@ const management = () => {
                               <Star className="h-4 w-4 text-amber-500" />
                             </div>
                             <div>
-                              <p className="text-gray-800 font-medium">Pioneered specialized <strong>back-office services</strong></p>
+                              <p className="text-gray-800 font-medium">Cloud & DevOps – Certified in AWS and Azure, with hands-on experience in containerization (Docker/Kubernetes), CI/CD, and IaC (Terraform)</p>
                               <p className="text-gray-600 text-sm mt-1">for the <strong>freight forwarding</strong> industry</p>
                             </div>
                           </div>
@@ -278,7 +278,7 @@ const management = () => {
                               <Star className="h-4 w-4 text-amber-500" />
                             </div>
                             <div>
-                              <p className="text-gray-800 font-medium">Led <strong>digital transformation</strong></p>
+                              <p className="text-gray-800 font-medium">Mentorship & Governance – Leads engineering excellence, tech audits, and mentoring programs for aspiring architects.</p>
                               <p className="text-gray-600 text-sm mt-1">and automation initiatives within the global logistics domain</p>
                             </div>
                           </div>
@@ -298,7 +298,7 @@ const management = () => {
                       {/* Career Milestones */}
                       <div className="space-y-6">
                         <div className="flex items-center gap-4 mb-6">
-                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-orange-400 shadow-lg">
                             <Calendar className="h-8 w-8 text-white" />
                           </div>
                           <h3 className="text-2xl font-bold text-gray-900">Career Milestones</h3>
@@ -314,7 +314,7 @@ const management = () => {
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">(1996–2007)</div>
-                                <p className="text-gray-800 font-medium mb-1">Kumaran Systems Pvt. Ltd (1996–2007) – Sr. Technical Architect
+                                <p className="text-gray-800 font-medium mb-1">Kumaran Systems Pvt. Ltd – Sr. Technical Architect
                               </p>
                                 <p className="text-gray-600 text-sm">Developed Java migration tools and managed architecture for U.S. and Canadian clients.</p>
                               </div>
@@ -326,9 +326,8 @@ const management = () => {
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">(2007–2009)</div>
-                                <p className="text-gray-800 font-medium mb-1">Founded <strong>Orange Office Technologies Pvt Ltd</strong></p>
-                                <p className="text-gray-600 text-sm">
-Led solution architecture for Java-based insurance RFPs and delivery.</p>
+                                <p className="text-gray-800 font-medium mb-1">Wipro Technologies Ltd, Chennai-Senior Consultant – J2EE projects and Presales</p>
+                                <p className="text-gray-600 text-sm">Led solution architecture for Java-based insurance RFPs and delivery.</p>
                               </div>
                             </div>
                             
@@ -338,8 +337,15 @@ Led solution architecture for Java-based insurance RFPs and delivery.</p>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-100">(2009–2020)</div>
-                                <p className="text-gray-800 font-medium mb-1">Progressed into the <strong>logistics and freight forwarding sector</strong></p>
+                                <p className="text-gray-800 font-medium mb-1">Cognizant Technology Solutions  – Sr. Technical Architect – BFS</p>
                                 <p className="text-gray-600 text-sm">Delivered greenfield microservices, payment platforms, and real-time fraud systems for U.S. Bank, Canadian and APAC banks.</p>
+                              </div>
+                            </div>
+
+                            <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-100">(2020–2023)</div>
+                                <p className="text-gray-800 font-medium mb-1">Kumaran Systems Pvt. Ltd – Lead Technical Architect – Banking</p>
+                                <p className="text-gray-600 text-sm">Architected Azure cloud migration, pricing engines, and data mesh dashboards for top banking clients.</p>
                               </div>
                             </div>
                             
@@ -348,10 +354,9 @@ Led solution architecture for Java-based insurance RFPs and delivery.</p>
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-200">(2020–2023)</div>
-                                <p className="text-gray-800 font-medium mb-1">Started professional career in the <strong>courier industry</strong></p>
-                                <p className="text-gray-600 text-sm">
-Architected Azure cloud migration, pricing engines, and data mesh dashboards for top banking clients.</p>
+                                <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-200">(2023–2024)</div>
+                                <p className="text-gray-800 font-medium mb-1">Onward Technologies Ltd – Enterprise Architect</p>
+                                <p className="text-gray-600 text-sm">Led Azure migration architecture and proof-of-concept designs for major Canadian bank applications.</p>
                               </div>
                             </div>
                           </div>
