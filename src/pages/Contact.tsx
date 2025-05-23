@@ -263,19 +263,7 @@ const Contact = () => {
       {/* Map Section - Full Width with Proper Styling */}
       {/* Map Section - Full Width with Proper Styling */}
     <section className="py-12 bg-white relative">
-  <div className="container mx-auto px-4 mb-8">
-    <div className="text-center max-w-3xl mx-auto mb-8">
-      <h2 className="font-heading font-bold text-3xl md:text-4xl mb-3 text-gray-800">Visit Our Locations</h2>
-      <p className="text-lg text-gray-600">Find us at our convenient office locations in Chennai and Kochi</p>
-    </div>
-  </div>
-
-  <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1544442225477!2d80.22267627572437!3d13.089396612283391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642e68adc059%3A0x44809bfe043deede!2sOrange%20Office%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1746282320085!5m2!1sen!2sin" width="100%" height="100%" style={{
-          border: 0
-        }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Chennai Location" className="absolute inset-0" />
-  </div>
-
+  
   <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl mt-10">
     <iframe src="https://www.google.com/maps/d/embed?mid=1P9GHdOjApQAyc4RCcuOEXbXNjpzfy_Y&ehbc=2E312F" width="100%" height="100%" style={{
           border: 0
