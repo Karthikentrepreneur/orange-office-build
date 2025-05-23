@@ -3,10 +3,8 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const management = () => {
   const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
-  
   const milestones = [{
     year: "1991",
     event: "Started professional journey in the courier industry"
@@ -20,13 +18,9 @@ const management = () => {
     year: "Present",
     event: "Leading global expansion and digital transformation initiatives"
   }];
-  
   const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
-  
   const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
         {/* Hero Section */}
@@ -68,11 +62,9 @@ const management = () => {
                         </p>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {expertises.map((expertise, index) => (
-                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -103,14 +95,12 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
                         <ul className="space-y-3">
-                          {achievements.map((a, i) => (
-                            <li key={i} className="flex items-center gap-3">
+                          {achievements.map((a, i) => <li key={i} className="flex items-center gap-3">
                               <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
                                 <Star className="h-4 w-4 text-amber-500" />
                               </div>
                               <span className="text-gray-700">{a}</span>
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
                     </CardContent>
@@ -125,8 +115,7 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
                         <div className="border-l-2 border-gray-200 pl-6 space-y-6">
-                          {milestones.map((m, i) => (
-                            <div key={i} className="relative">
+                          {milestones.map((m, i) => <div key={i} className="relative">
                               <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
@@ -136,8 +125,7 @@ const management = () => {
                                 </div>
                                 <p className="text-gray-700">{m.event}</p>
                               </div>
-                            </div>
-                          ))}
+                            </div>)}
                         </div>
                       </div>
                     </CardContent>
@@ -179,11 +167,7 @@ const management = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* Image Section */}
                     <div className="relative">
-                      <img
-                        alt="Mr. Bennet Rajesh" 
-                        className="w-full h-full object-cover" 
-                        src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" 
-                      />
+                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" />
                     </div>
 
                     {/* Text Content Section */}
@@ -207,11 +191,9 @@ const management = () => {
 
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {ctoExpertises.map((item, index) => (
-                            <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
+                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
                               {item}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -250,7 +232,7 @@ const management = () => {
                               <Star className="h-4 w-4 text-amber-500" />
                             </div>
                             <div>
-                              <p className="text-gray-800 font-medium">35+ years of diverse industry experience</p>
+                              <p className="text-gray-800 font-medium">Enterprise Architecture &amp; Modernization – Specialist in baseline executable architectures, microservices, and modernization strategies.</p>
                               <p className="text-gray-600 text-sm mt-1">across courier, logistics, and technology sectors</p>
                             </div>
                           </div>
@@ -270,7 +252,7 @@ const management = () => {
                               <Star className="h-4 w-4 text-amber-500" />
                             </div>
                             <div>
-                              <p className="text-gray-800 font-medium">Successfully expanded operations</p>
+                              <p className="text-gray-800 font-medium">Full Stack Delivery – Expertise in Java (Spring Boot), React, MongoDB, and RESTful APIs.</p>
                               <p className="text-gray-600 text-sm mt-1">to <strong>multiple international locations</strong></p>
                             </div>
                           </div>
@@ -290,7 +272,7 @@ const management = () => {
                               <Star className="h-4 w-4 text-amber-500" />
                             </div>
                             <div>
-                              <p className="text-gray-800 font-medium">Founded and scaled a recognized brand</p>
+                              <p className="text-gray-800 font-medium">Client Engagement – Strong experience in technical pre-sales, architecture presentations, and effort estimation.</p>
                               <p className="text-gray-600 text-sm mt-1"><strong>Orange Office Technologies Pvt Ltd</strong></p>
                             </div>
                           </div>
@@ -315,11 +297,10 @@ const management = () => {
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">
-                                  Present
-                                </div>
-                                <p className="text-gray-800 font-medium mb-1">Leading global expansion and spearheading digital transformation</p>
-                                <p className="text-gray-600 text-sm">in logistics and back-office operations through Orange Office Technologies</p>
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">(1996–2007)</div>
+                                <p className="text-gray-800 font-medium mb-1">Kumaran Systems Pvt. Ltd (1996–2007) – Sr. Technical Architect
+                              </p>
+                                <p className="text-gray-600 text-sm">Developed Java migration tools and managed architecture for U.S. and Canadian clients.</p>
                               </div>
                             </div>
                             
@@ -328,11 +309,10 @@ const management = () => {
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">
-                                  2012
-                                </div>
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">(2007–2009)</div>
                                 <p className="text-gray-800 font-medium mb-1">Founded <strong>Orange Office Technologies Pvt Ltd</strong></p>
-                                <p className="text-gray-600 text-sm">providing tech-enabled services to the freight forwarding industry</p>
+                                <p className="text-gray-600 text-sm">
+Led solution architecture for Java-based insurance RFPs and delivery.</p>
                               </div>
                             </div>
                             
@@ -341,11 +321,9 @@ const management = () => {
                                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                <div className="bg-blue-100 rounded-full px-3 py-1 text-sm text-blue-600 font-semibold inline-block mb-2">
-                                  1990s–2000s
-                                </div>
+                                <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-100">(2009–2020)</div>
                                 <p className="text-gray-800 font-medium mb-1">Progressed into the <strong>logistics and freight forwarding sector</strong></p>
-                                <p className="text-gray-600 text-sm">building deep domain expertise and operational insight</p>
+                                <p className="text-gray-600 text-sm">Delivered greenfield microservices, payment platforms, and real-time fraud systems for U.S. Bank, Canadian and APAC banks.</p>
                               </div>
                             </div>
                             
@@ -354,11 +332,10 @@ const management = () => {
                                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                               </div>
                               <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                <div className="bg-blue-100 rounded-full px-3 py-1 text-sm text-blue-600 font-semibold inline-block mb-2">
-                                  1991
-                                </div>
+                                <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-200">(2020–2023)</div>
                                 <p className="text-gray-800 font-medium mb-1">Started professional career in the <strong>courier industry</strong></p>
-                                <p className="text-gray-600 text-sm">laying the foundation for a lifelong journey in global logistics and technology enablement</p>
+                                <p className="text-gray-600 text-sm">
+Architected Azure cloud migration, pricing engines, and data mesh dashboards for top banking clients.</p>
                               </div>
                             </div>
                           </div>
@@ -373,8 +350,6 @@ const management = () => {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default management;
