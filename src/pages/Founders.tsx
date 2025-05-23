@@ -342,6 +342,10 @@ const management = () => {
                               </div>
                             </div>
 
+                            <div className="relative flex items-start gap-6">
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                              </div>
                             <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <div className="rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2 bg-orange-100">(2020–2023)</div>
                                 <p className="text-gray-800 font-medium mb-1">Kumaran Systems Pvt. Ltd – Lead Technical Architect – Banking</p>
