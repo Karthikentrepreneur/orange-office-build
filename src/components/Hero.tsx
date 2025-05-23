@@ -37,14 +37,20 @@ export const Hero = ({
         </Slider>
       </div>
 
-      {/* Auto-scrolling Captions */}
-      <div className="absolute bottom-6 w-full overflow-hidden z-20">
-        <div className="whitespace-nowrap animate-marquee flex gap-12 px-4 py-[57px]">
-          {backgroundCaptions.concat(backgroundCaptions).map((caption, index) => <span key={index} className="text-white text-lg md:text-2xl font-semibold bg-black/40 px-6 py-2 rounded-md">
-              {caption}
-            </span>)}
-        </div>
-      </div>
+     <div className="absolute bottom-6 w-full overflow-hidden z-20">
+  <div className="whitespace-nowrap animate-marquee flex gap-12 px-4 py-[57px]">
+    {backgroundCaptions.concat(backgroundCaptions).map((caption, index) => (
+      <span
+        key={index}
+        className="text-black text-lg md:text-2xl font-semibold bg-white px-6 py-2 rounded-md relative overflow-hidden"
+      >
+        <span className="absolute left-0 top-0 h-full w-1 rounded-l-md bg-orange-500" />
+        <span className="absolute right-0 top-0 h-full w-1 rounded-r-md bg-orange-500" />
+        {caption}
+      </span>
+    ))}
+  </div>
+</div>
 
       {/* Foreground Content */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col justify-between h-full">
