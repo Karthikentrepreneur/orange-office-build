@@ -3,8 +3,10 @@ import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const management = () => {
   const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
+  
   const milestones = [{
     year: "1991",
     event: "Started professional journey in the courier industry"
@@ -18,9 +20,13 @@ const management = () => {
     year: "Present",
     event: "Leading global expansion and digital transformation initiatives"
   }];
+  
   const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
+  
   const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
         {/* Hero Section */}
@@ -62,9 +68,11 @@ const management = () => {
                         </p>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6">
-                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                          {expertises.map((expertise, index) => (
+                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>)}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -95,12 +103,14 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
                         <ul className="space-y-3">
-                          {achievements.map((a, i) => <li key={i} className="flex items-center gap-3">
+                          {achievements.map((a, i) => (
+                            <li key={i} className="flex items-center gap-3">
                               <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
                                 <Star className="h-4 w-4 text-amber-500" />
                               </div>
                               <span className="text-gray-700">{a}</span>
-                            </li>)}
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </CardContent>
@@ -115,7 +125,8 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
                         <div className="border-l-2 border-gray-200 pl-6 space-y-6">
-                          {milestones.map((m, i) => <div key={i} className="relative">
+                          {milestones.map((m, i) => (
+                            <div key={i} className="relative">
                               <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
@@ -125,7 +136,8 @@ const management = () => {
                                 </div>
                                 <p className="text-gray-700">{m.event}</p>
                               </div>
-                            </div>)}
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </CardContent>
@@ -160,43 +172,197 @@ const management = () => {
               </div>
             </section>
 
-          {/* CTO Section */}
-          <div className="max-w-5xl mx-auto mt-12">
-  <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
-    <CardContent className="p-0">
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Image Section */}
-        <div className="relative">
-          <img
-                    // Replace with your actual image path
-                    alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" />
-        </div>
+            {/* CTO Section */}
+            <div className="max-w-5xl mx-auto mt-12">
+              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    {/* Image Section */}
+                    <div className="relative">
+                      <img
+                        alt="Mr. Bennet Rajesh" 
+                        className="w-full h-full object-cover" 
+                        src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" 
+                      />
+                    </div>
 
-        {/* Text Content Section */}
-        <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
-          <div className="prose max-w-none">
-            <h3 className="text-3xl font-bold mb-1 text-blue-800">Mr. Bennet Rajesh</h3>
-            <p className="text-blue-600 text-xl mb-4">Chief Technology Officer</p>
+                    {/* Text Content Section */}
+                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
+                      <div className="prose max-w-none">
+                        <h3 className="text-3xl font-bold mb-1 text-blue-800">Mr. Bennet Rajesh</h3>
+                        <p className="text-blue-600 text-xl mb-4">Chief Technology Officer</p>
 
-            <p className="text-gray-700 mb-4">
-              "Architecting cutting-edge solutions to redefine industry standards."
-            </p>
-            <p className="text-gray-700 mb-4">
-              With 27 years of experience in software development, Mr. Bennet is a seasoned Java Enterprise Architect, Developer, and Mentor.
-            </p>
-            <p className="text-gray-700 mb-4">
-              His expertise spans Java, Spring, JPA, MERN stack, Microservices, DevOps, and Cloud Computing. He is a champion of Agile, automation, and product thinking.
-            </p>
-            <p className="text-gray-700 mb-6">
-              As CTO, he steers the technological vision of the company, ensuring seamless integration of advanced enterprise solutions.
-            </p>
+                        <p className="text-gray-700 mb-4">
+                          "Architecting cutting-edge solutions to redefine industry standards."
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          With 27 years of experience in software development, Mr. Bennet is a seasoned Java Enterprise Architect, Developer, and Mentor.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          His expertise spans Java, Spring, JPA, MERN stack, Microservices, DevOps, and Cloud Computing. He is a champion of Agile, automation, and product thinking.
+                        </p>
+                        <p className="text-gray-700 mb-6">
+                          As CTO, he steers the technological vision of the company, ensuring seamless integration of advanced enterprise solutions.
+                        </p>
 
-            <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
-                  {item}
-                </span>)}
+                        <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {ctoExpertises.map((item, index) => (
+                            <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
+
+            {/* Enhanced Achievements & Career Timeline Section */}
+            <div className="max-w-5xl mx-auto mt-12">
+              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-300">
+                <CardContent className="p-0">
+                  <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-8 md:p-12">
+                    <div className="text-center mb-10">
+                      <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                        Leadership Excellence & Milestones
+                      </h2>
+                      <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Three decades of transformative leadership in logistics and technology
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                      {/* Key Achievements */}
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg">
+                            <Award className="h-8 w-8 text-white" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">Key Achievements</h3>
+                        </div>
+                        
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center mt-1">
+                              <Star className="h-4 w-4 text-amber-500" />
+                            </div>
+                            <div>
+                              <p className="text-gray-800 font-medium">35+ years of diverse industry experience</p>
+                              <p className="text-gray-600 text-sm mt-1">across courier, logistics, and technology sectors</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center mt-1">
+                              <Star className="h-4 w-4 text-amber-500" />
+                            </div>
+                            <div>
+                              <p className="text-gray-800 font-medium">Pioneered specialized <strong>back-office services</strong></p>
+                              <p className="text-gray-600 text-sm mt-1">for the <strong>freight forwarding</strong> industry</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center mt-1">
+                              <Star className="h-4 w-4 text-amber-500" />
+                            </div>
+                            <div>
+                              <p className="text-gray-800 font-medium">Successfully expanded operations</p>
+                              <p className="text-gray-600 text-sm mt-1">to <strong>multiple international locations</strong></p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center mt-1">
+                              <Star className="h-4 w-4 text-amber-500" />
+                            </div>
+                            <div>
+                              <p className="text-gray-800 font-medium">Led <strong>digital transformation</strong></p>
+                              <p className="text-gray-600 text-sm mt-1">and automation initiatives within the global logistics domain</p>
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center mt-1">
+                              <Star className="h-4 w-4 text-amber-500" />
+                            </div>
+                            <div>
+                              <p className="text-gray-800 font-medium">Founded and scaled a recognized brand</p>
+                              <p className="text-gray-600 text-sm mt-1"><strong>Orange Office Technologies Pvt Ltd</strong></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Career Milestones */}
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+                            <Calendar className="h-8 w-8 text-white" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900">Career Milestones</h3>
+                        </div>
+                        
+                        <div className="relative">
+                          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-400 to-blue-400"></div>
+                          
+                          <div className="space-y-8">
+                            <div className="relative flex items-start gap-6">
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              </div>
+                              <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">
+                                  Present
+                                </div>
+                                <p className="text-gray-800 font-medium mb-1">Leading global expansion and spearheading digital transformation</p>
+                                <p className="text-gray-600 text-sm">in logistics and back-office operations through Orange Office Technologies</p>
+                              </div>
+                            </div>
+                            
+                            <div className="relative flex items-start gap-6">
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              </div>
+                              <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-600 font-semibold inline-block mb-2">
+                                  2012
+                                </div>
+                                <p className="text-gray-800 font-medium mb-1">Founded <strong>Orange Office Technologies Pvt Ltd</strong></p>
+                                <p className="text-gray-600 text-sm">providing tech-enabled services to the freight forwarding industry</p>
+                              </div>
+                            </div>
+                            
+                            <div className="relative flex items-start gap-6">
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              </div>
+                              <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                <div className="bg-blue-100 rounded-full px-3 py-1 text-sm text-blue-600 font-semibold inline-block mb-2">
+                                  1990s–2000s
+                                </div>
+                                <p className="text-gray-800 font-medium mb-1">Progressed into the <strong>logistics and freight forwarding sector</strong></p>
+                                <p className="text-gray-600 text-sm">building deep domain expertise and operational insight</p>
+                              </div>
+                            </div>
+                            
+                            <div className="relative flex items-start gap-6">
+                              <div className="absolute left-6 w-4 h-4 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              </div>
+                              <div className="ml-16 bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                                <div className="bg-blue-100 rounded-full px-3 py-1 text-sm text-blue-600 font-semibold inline-block mb-2">
+                                  1991
+                                </div>
+                                <p className="text-gray-800 font-medium mb-1">Started professional career in the <strong>courier industry</strong></p>
+                                <p className="text-gray-600 text-sm">laying the foundation for a lifelong journey in global logistics and technology enablement</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -207,6 +373,8 @@ const management = () => {
         </section>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default management;
