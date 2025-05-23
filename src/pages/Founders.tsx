@@ -161,17 +161,15 @@ const management = () => {
             </section>
 
           {/* CTO Section */}
-<div className="max-w-5xl mx-auto mt-12">
+          <div className="max-w-5xl mx-auto mt-12">
   <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
     <CardContent className="p-0">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Image Section */}
         <div className="relative">
           <img
-            src="/images/bennet-rajesh.jpg" // Replace with your actual image path
-            alt="Mr. Bennet Rajesh"
-            className="w-full h-full object-cover"
-          />
+                    // Replace with your actual image path
+                    alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" />
         </div>
 
         {/* Text Content Section */}
@@ -195,14 +193,9 @@ const management = () => {
 
             <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
             <div className="flex flex-wrap gap-2 mb-6">
-              {ctoExpertises.map((item, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium"
-                >
+              {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
                   {item}
-                </span>
-              ))}
+                </span>)}
             </div>
                       </div>
                     </div>
