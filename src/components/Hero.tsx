@@ -85,7 +85,23 @@ export const Hero = ({
         </Link>
       </div>
 
-      {/* Dark Overlay for readability */}
+      {/* Service Buttons */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-wrap justify-center gap-2 px-4">
+        {backgroundCaptions.map((caption, idx) => (
+          <div
+            key={idx}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+              idx === activeSlide
+                ? "bg-orange-500 text-white border-orange-600 shadow-lg scale-105"
+                : "bg-white/10 text-white/80 border-white/20 hover:bg-white/20"
+            }`}
+          >
+            {caption}
+          </div>
+        ))}
+      </div>
+
+      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
     </section>
   );
