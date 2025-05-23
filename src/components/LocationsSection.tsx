@@ -40,8 +40,10 @@ const LocationsSection: React.FC = () => {
             <button
               key={key}
               onClick={() => setLocation(key as LocationKey)}
-              className={`block w-full py-3 px-4 rounded transition font-medium text-white ${
-                location === key ? "bg-orange-600" : "bg-orange-500 hover:bg-orange-600"
+              className={`block w-full py-3 px-4 rounded transition font-medium ${
+                location === key
+                  ? "bg-orange-600 text-white"
+                  : "bg-white text-orange-600 border border-orange-600 hover:bg-orange-600 hover:text-white"
               }`}
             >
               {label}
