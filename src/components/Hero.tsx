@@ -37,7 +37,7 @@ export const Hero = ({
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] md:min-h-[100vh] flex items-center justify-start bg-black text-white">
+    <section className="relative overflow-hidden min-h-[90vh] md:min-h-[100vh] flex items-center justify-start">
       {/* Background Image Slider */}
       <div className="absolute inset-0 z-0">
         <Slider {...settings}>
@@ -54,8 +54,9 @@ export const Hero = ({
       </div>
 
       {/* Left Aligned Content */}
-      <div className="z-20 px-6 md:px-16 max-w-xl">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+      <div className="z-20 px-6 md:px-16 max-w-xl text-white backdrop-blur-sm bg-black/40 rounded-xl p-6">
+        {/* Gradient Title */}
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-300 text-transparent bg-clip-text">
           Orange Office Technologies Pvt Ltd
         </h1>
 
@@ -66,7 +67,7 @@ export const Hero = ({
               key={idx}
               className={`w-fit px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
                 idx === activeSlide
-                  ? "bg-orange-500 text-white border-orange-600 shadow-lg scale-105"
+                  ? "bg-white text-black border-white shadow-md scale-105"
                   : "bg-white/10 text-white/80 border-white/20"
               }`}
             >
