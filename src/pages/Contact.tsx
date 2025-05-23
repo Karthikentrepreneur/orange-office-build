@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import LocationsSection from '/components/LocationsSection';
+import LocationsSection from "@/components/LocationsSection";
 import { Phone, Mail, MapPin, Send, User, Clock, Facebook, Linkedin, ContactIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { GradientBackground } from "@/components/GradientBackground";
