@@ -5,15 +5,25 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
+
 interface HeroProps {
   backgroundImages?: string[];
   backgroundCaptions?: string[];
 }
+
 export const Hero = ({
   backgroundImages = ["/1h.png", "/15h.png", "/14h.png", "/16h.png", "/18h.png", "/17h.png"],
-  backgroundCaptions = ["Documentation Services", "Sales Support Desk", "Digital Marketing for Logistics", "Account Management", "Software Solutions", "Customer Service & Nomination"]
+  backgroundCaptions = [
+    "Documentation Services",
+    "Sales Support Desk",
+    "Digital Marketing for Logistics",
+    "Account Management",
+    "Software Solutions",
+    "Customer Service & Nomination"
+  ]
 }: HeroProps) => {
   const [activeSlide, setActiveSlide] = useState(0);
+
   const settings = {
     autoplay: true,
     autoplaySpeed: 5000,
@@ -25,18 +35,26 @@ export const Hero = ({
     pauseOnHover: false,
     beforeChange: (_current: number, next: number) => setActiveSlide(next)
   };
-  return <section className="relative overflow-hidden min-h-[90vh] md:min-h-[100vh] flex items-center justify-start">
+
+  return (
+    <section className="relative overflow-hidden min-h-[90vh] md:min-h-[100vh] flex items-center justify-start">
       {/* Background Image Slider */}
       <div className="absolute inset-0 z-0">
         <Slider {...settings}>
-          {backgroundImages.map((img, idx) => <div key={idx} className="relative w-full h-screen">
-              <img src={img} alt={`Slide ${idx + 1}`} className="w-full h-full object-cover object-center" />
-            </div>)}
+          {backgroundImages.map((img, idx) => (
+            <div key={idx} className="relative w-full h-screen">
+              <img
+                src={img}
+                alt={`Slide ${idx + 1}`}
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          ))}
         </Slider>
       </div>
 
       {/* Left Aligned Content */}
-      <div className="z-20 px-6 max-w-xl text-white backdrop-blur-sm rounded-xl p-6 bg-gray-200 md:px-[68px] my-[10px] mx-[5px]">
+      <div className="z-20 px-6 md:px-16 max-w-xl text-white backdrop-blur-sm bg-black/40 rounded-xl p-6">
         {/* Gradient Title */}
         <h1 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-300 text-transparent bg-clip-text">
           Orange Office Technologies Pvt Ltd
@@ -44,9 +62,18 @@ export const Hero = ({
 
         {/* Buttons for services */}
         <div className="flex flex-col gap-2 mb-6">
-          {backgroundCaptions.map((caption, idx) => <div key={idx} className={`w-fit px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${idx === activeSlide ? "bg-white/10 text-black border-white shadow-md scale-105" : "bg-orange-500 text-white/80 border-white/20"}`}>
+          {backgroundCaptions.map((caption, idx) => (
+            <div
+              key={idx}
+              className={`w-fit px-5 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
+                idx === activeSlide
+                  ? "bg-white text-black border-white shadow-md scale-105"
+                  : "bg-white/10 text-white/80 border-white/20"
+              }`}
+            >
               {caption}
-            </div>)}
+            </div>
+          ))}
         </div>
 
         {/* CTA Button */}
@@ -56,5 +83,6 @@ export const Hero = ({
           </Button>
         </Link>
       </div>
-    </section>;
+    </section>
+  );
 };
