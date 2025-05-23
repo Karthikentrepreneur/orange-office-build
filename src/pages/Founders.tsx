@@ -174,7 +174,7 @@ const management = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     {/* Image Section */}
                     <div className="relative">
-                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/bennetSir.png" />
+                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/lovable-uploads/df3269f2-c31f-4bea-aa62-53fd3aaf8a1b.png" />
                     </div>
 
                     {/* Text Content Section */}
