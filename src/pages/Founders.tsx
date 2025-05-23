@@ -72,9 +72,7 @@ const management = () => {
                         <p className="text-gray-700 mb-4">
                           Starting in the courier industry in 1991, he progressed into freight forwarding, extending operations to Dubai and Singapore.
                         </p>
-                        <p className="text-gray-700 mb-6">
-                          In 2012, he founded Orange Office Technologies to address back-office support in logistics, setting benchmarks in the industry.
-                        </p>
+                        <p className="text-gray-700 mb-6">In 2012, he founded Orange Office Technologies Pvt Ltd to address back-office support in logistics, setting benchmarks in the industry.</p>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6">
                           {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
@@ -153,12 +151,8 @@ const management = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
                         <h3 className="text-2xl font-bold mb-3 text-gray-900">Legacy</h3>
-                        <p className="text-gray-700 mb-4">
-                          His strategic foresight has expanded Orange Office Technologies into a global service provider.
-                        </p>
-                        <p className="text-gray-700">
-                          Today, Orange Office Technologies empowers businesses worldwide with reliable and innovative solutions.
-                        </p>
+                        <p className="text-gray-700 mb-4">His strategic foresight has expanded Orange Office Technologies Pvt Ltd into a global service provider.</p>
+                        <p className="text-gray-700">Today, Orange Office Technologies Pvt Ltd empowers businesses worldwide with reliable and innovative solutions.</p>
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
