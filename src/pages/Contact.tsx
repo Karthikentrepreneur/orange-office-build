@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import LocationsSection from './components/MapComponent';
 import { Phone, Mail, MapPin, Send, User, Clock, Facebook, Linkedin, ContactIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { GradientBackground } from "@/components/GradientBackground";
@@ -280,6 +281,12 @@ const Contact = () => {
           border: 0
         }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kochi Location" className="absolute inset-0" />
   </div>
+
+ <div>
+      {/* Other content */}
+      <LocationsSection />
+      {/* Other content */}
+    </div>
     </section>
 
       <Footer />
