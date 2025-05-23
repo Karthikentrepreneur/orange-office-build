@@ -306,7 +306,12 @@ const Contact = () => {
   </div>
 </section>
 
-    
+ <div className="flex flex-1 relative overflow-hidden mx-0 my-[80px]">
+        {/* Main content with map - 60% on desktop, full on mobile when active */}
+        {(!isMobile || isMobile && showMap) && <main className={`transition-all duration-300 ease-in-out ${isMobile ? 'w-full' : 'w-[60%]'}`}>
+            <MapContainer />
+          </main>}
+
       <Footer />
     </div>;
 };
