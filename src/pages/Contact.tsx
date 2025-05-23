@@ -281,15 +281,15 @@ const Contact = () => {
           border: 0
         }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Orange Office Technologies Location" className="absolute inset-0" />
         </div>
-      </section>
-      
-      <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl">
+
+          <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4660.41543282527!2d76.31281007569768!3d10.027722372555747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d5bc4f162f3%3A0x8f0b00fda4f74a01!2sCVM%20Arcade!5e1!3m2!1sen!2sin!4v1747977384240!5m2!1sen!2sin" width="100%" height="100%" style={{
           border: 0
         }} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Orange Office Technologies Location" className="absolute inset-0" />
         </div>
-      </section>
 
+      </section>
+    
       <Footer />
     </div>;
 };
