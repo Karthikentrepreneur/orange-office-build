@@ -156,9 +156,7 @@ const management = () => {
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
-                        <p className="text-gray-700 mb-4">
-                          Mr. Sudhir envisions logistics companies outsourcing operational complexity to specialized partners like Orange.
-                        </p>
+                        <p className="text-gray-700 mb-4">Mr. Sudhir envisions logistics companies outsourcing operational complexity to specialized partners like Orange Office Technologies Pvt Ltd.</p>
                         <p className="text-gray-700">
                           His leadership drives innovation, customer satisfaction, and expansion into new markets and services.
                         </p>
