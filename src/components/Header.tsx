@@ -43,7 +43,7 @@ export const Header = () => {
             </div>
             
             <div className="mt-1 ml-0">
-              <p className="text-gray-600 text-xs sm:text-sm">Back office, IT Solutions, Digital Marketing, Inside Sales</p>
+              
             </div>
           </div>
 
