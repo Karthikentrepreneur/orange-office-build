@@ -5,7 +5,6 @@ import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 const management = () => {
   const location = useLocation();
 
@@ -17,12 +16,13 @@ const management = () => {
       setTimeout(() => {
         const element = document.querySelector(location.hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          element.scrollIntoView({
+            behavior: "smooth"
+          });
         }
       }, 100);
     }
   }, [location]);
-
   const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
   const milestones = [{
     year: "1991",
@@ -39,7 +39,6 @@ const management = () => {
   }];
   const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
   const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-  
   return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
@@ -249,7 +248,7 @@ const management = () => {
                             </div>
                             <div>
                               <p className="text-gray-800 font-medium">Enterprise Architecture &amp; Modernization – Specialist in baseline executable architectures, microservices, and modernization strategies.</p>
-                              <p className="text-gray-600 text-sm mt-1">across courier, logistics, and technology sectors</p>
+                              
                             </div>
                           </div>
                           
@@ -259,7 +258,7 @@ const management = () => {
                             </div>
                             <div>
                               <p className="text-gray-800 font-medium">Cloud & DevOps – Certified in AWS and Azure, with hands-on experience in containerization (Docker/Kubernetes), CI/CD, and IaC (Terraform)</p>
-                              <p className="text-gray-600 text-sm mt-1">for the <strong>freight forwarding</strong> industry</p>
+                              
                             </div>
                           </div>
                           
@@ -269,7 +268,7 @@ const management = () => {
                             </div>
                             <div>
                               <p className="text-gray-800 font-medium">Full Stack Delivery – Expertise in Java (Spring Boot), React, MongoDB, and RESTful APIs.</p>
-                              <p className="text-gray-600 text-sm mt-1">to <strong>multiple international locations</strong></p>
+                              
                             </div>
                           </div>
                           
@@ -279,7 +278,7 @@ const management = () => {
                             </div>
                             <div>
                               <p className="text-gray-800 font-medium">Mentorship & Governance – Leads engineering excellence, tech audits, and mentoring programs for aspiring architects.</p>
-                              <p className="text-gray-600 text-sm mt-1">and automation initiatives within the global logistics domain</p>
+                              
                             </div>
                           </div>
                           
@@ -289,7 +288,7 @@ const management = () => {
                             </div>
                             <div>
                               <p className="text-gray-800 font-medium">Client Engagement – Strong experience in technical pre-sales, architecture presentations, and effort estimation.</p>
-                              <p className="text-gray-600 text-sm mt-1"><strong>Orange Office Technologies Pvt Ltd</strong></p>
+                              
                             </div>
                           </div>
                         </div>
