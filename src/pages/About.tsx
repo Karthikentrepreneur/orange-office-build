@@ -107,9 +107,7 @@ const About = () => {
       <section className="py-16 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Logistics Operations?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Partner with Orange Office Technologies for innovative solutions that drive efficiency and growth.
-          </p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Partner with Orange Office Technologies Pvt Ltd for innovative solutions that drive efficiency and growth.</p>
           <Button size="lg" variant="outline" className="border-white hover:bg-white text-orange-500">
             <Link to="/contact" className="flex items-center gap-2">
               Contact Us Today
