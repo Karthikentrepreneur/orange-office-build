@@ -291,7 +291,7 @@ const Index = () => {
           <p className="text-gray-600 leading-relaxed text-base">
             35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence. His career reflects a rare blend of perseverance, adaptability, and forward-thinking leadership. Starting his professional journey in 1991 in the courier industry, Mr. Sudhir gradually advanced into the logistics and freight forwarding sector.
           </p>
-          <a href="/founders/sudhir-ku" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+          <a href="/founders" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
         </div>
@@ -308,7 +308,7 @@ const Index = () => {
           <p className="text-gray-600 leading-relaxed text-base">
             27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture. He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets. His technical interests include Product Thinking, Microservices, DevOps, Containerization, Cloud Computing, and Security.
           </p>
-          <a href="/founders/bennet-rajesh" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
+          <a href="/founders" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
             Know More
           </a>
         </div>
