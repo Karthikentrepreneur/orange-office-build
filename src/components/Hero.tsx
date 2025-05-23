@@ -11,7 +11,7 @@ interface HeroProps {
 }
 export const Hero = ({
   backgroundImages = ["/1h.png", "/15h.png", "/14h.png", "/16h.png", "/18h.png", "/17h.png"],
-  backgroundCaptions = ["Documentation Services", "Sales Support Desk", "Digital Marketing for Logistics", "Account Management", "Software Solutions", "Customer Service & Nomination"]
+  backgroundCaptions = ["Documentation Services", "Sales Support Desk", "Digital Marketing for Logistics", "Finance Management", "Software Solutions", "Customer Service & Nomination"]
 }: HeroProps) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const settings = {
