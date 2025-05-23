@@ -9,7 +9,6 @@ import { GradientBackground } from "@/components/GradientBackground";
 import { useState, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
-
 interface FormData {
   firstName: string;
   lastName: string;
@@ -18,7 +17,6 @@ interface FormData {
   subject: string;
   message: string;
 }
-
 const Contact = () => {
   const {
     toast
@@ -39,7 +37,6 @@ const Contact = () => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -50,7 +47,6 @@ const Contact = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form data submitted:", formData);
@@ -88,7 +84,7 @@ const Contact = () => {
     timing: "Mon - Fri: 9:00 AM - 6:00 PM",
     phone: "+91 44 4796 5437",
     email: "info@orangeot.com"
-  },{
+  }, {
     title: "Kochi Office",
     description: "C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road, Edappally - 682024",
     coordinates: [76.3219, 9.9816],
@@ -100,9 +96,8 @@ const Contact = () => {
   // Social media icons with updated links
   const socialIcons = {
     facebook: <a href="https://www.facebook.com/people/Orange-Office-Technologies-Pvt-Ltd/61566454888473/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"><Facebook size={20} /></a>,
-    linkedin: <a href="https://www.linkedin.com/company/orange-office-technologies-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"><Linkedin size={20} /></a>,
+    linkedin: <a href="https://www.linkedin.com/company/orange-office-technologies-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"><Linkedin size={20} /></a>
   };
-
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-orange-50">
       <Header />
       
@@ -110,10 +105,7 @@ const Contact = () => {
       <GradientBackground variant="primary" intensity="medium" animated={true} className="pt-28 pb-16">
         <section className="container mx-auto px-4 mt-20">
           <div className="max-w-4xl mx-auto text-center">
-            <div className={cn("inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4 transform transition-all duration-700", isPageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}>
-              <ContactIcon size={16} />
-              <span className="font-medium">Get in Touch</span>
-            </div>
+            
             
             <h1 className={cn("font-heading font-bold text-4xl md:text-5xl lg:text-6xl mb-4 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 bg-clip-text text-transparent transform transition-all duration-700", isPageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")}>
               Let's Start a Conversation
@@ -269,7 +261,7 @@ const Contact = () => {
 
       {/* Map Section - Full Width with Proper Styling */}
       {/* Map Section - Full Width with Proper Styling */}
-<section className="py-12 bg-white relative">
+    <section className="py-12 bg-white relative">
   <div className="container mx-auto px-4 mb-8">
     <div className="text-center max-w-3xl mx-auto mb-8">
       <h2 className="font-heading font-bold text-3xl md:text-4xl mb-3 text-gray-800">Visit Our Locations</h2>
@@ -278,36 +270,19 @@ const Contact = () => {
   </div>
 
   <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1544442225477!2d80.22267627572437!3d13.089396612283391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642e68adc059%3A0x44809bfe043deede!2sOrange%20Office%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1746282320085!5m2!1sen!2sin"
-      width="100%" 
-      height="100%" 
-      style={{ border: 0 }} 
-      allowFullScreen 
-      loading="lazy" 
-      referrerPolicy="no-referrer-when-downgrade" 
-      title="Chennai Location"
-      className="absolute inset-0" 
-    />
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.1544442225477!2d80.22267627572437!3d13.089396612283391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52642e68adc059%3A0x44809bfe043deede!2sOrange%20Office%20Technologies%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1746282320085!5m2!1sen!2sin" width="100%" height="100%" style={{
+          border: 0
+        }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Chennai Location" className="absolute inset-0" />
   </div>
 
   <div className="relative w-full h-[450px] overflow-hidden shadow-2xl rounded-none md:rounded-lg mx-auto max-w-7xl mt-10">
-    <iframe 
-      src="https://www.google.com/maps/d/embed?mid=1P9GHdOjApQAyc4RCcuOEXbXNjpzfy_Y&ehbc=2E312F"
-      width="100%" 
-      height="100%" 
-      style={{ border: 0 }} 
-      allowFullScreen 
-      loading="lazy" 
-      referrerPolicy="no-referrer-when-downgrade" 
-      title="Kochi Location"
-      className="absolute inset-0" 
-    />
+    <iframe src="https://www.google.com/maps/d/embed?mid=1P9GHdOjApQAyc4RCcuOEXbXNjpzfy_Y&ehbc=2E312F" width="100%" height="100%" style={{
+          border: 0
+        }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kochi Location" className="absolute inset-0" />
   </div>
-</section>
+    </section>
 
       <Footer />
     </div>;
 };
-
 export default Contact;
