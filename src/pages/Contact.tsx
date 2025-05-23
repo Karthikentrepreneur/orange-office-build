@@ -282,11 +282,10 @@ const Contact = () => {
         }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kochi Location" className="absolute inset-0" />
   </div>
 
- <div>
+
       {/* Other content */}
       <LocationsSection />
-      {/* Other content */}
-    </div>
+      
     </section>
 
       <Footer />
