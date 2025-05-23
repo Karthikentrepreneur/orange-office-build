@@ -161,7 +161,7 @@ const management = () => {
             </section>
 
             {/* CTO Section */}
-            <div className="max-w-5xl mx-auto mt-12">
+            <div id="cto" className="max-w-5xl mx-auto mt-12">
               <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 md:grid-cols-2">
