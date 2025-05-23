@@ -36,7 +36,7 @@ export const Hero = ({
       </div>
 
       {/* Left Aligned Content */}
-      <div className="z-20 px-6 md:px-16 max-w-xl text-white backdrop-blur-sm rounded-xl p-6 bg-gray-200">
+      <div className="z-20 px-6 max-w-xl text-white backdrop-blur-sm rounded-xl p-6 bg-gray-200 md:px-[68px] my-[10px] mx-[5px]">
         {/* Gradient Title */}
         <h1 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-300 text-transparent bg-clip-text">
           Orange Office Technologies Pvt Ltd
