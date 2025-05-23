@@ -196,12 +196,84 @@ const management = () => {
               {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">
                   {item}
                 </span>)}
-            </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+{/* Journey and Impact Section */}
+<section className="py-12 md:py-16 bg-white relative">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-10">
+      <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+        Professional Journey & Impact
+      </h2>
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        Decades of expertise and innovation transforming the logistics industry
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+      {/* Achievements */}
+      <Card className="border-none shadow-xl hover:shadow-2xl bg-slate-100 rounded-2xl">
+        <CardContent className="p-6 md:p-8">
+          <div className="space-y-6">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg">
+              <Award className="h-6 w-6 text-white" />
+            </div>
+            <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
+            <ul className="space-y-3">
+              {[
+                "35+ years of diverse industry experience across courier, logistics, and technology sectors",
+                "Pioneered specialized back-office services for the freight forwarding industry",
+                "Successfully expanded operations to multiple international locations",
+                "Led digital transformation and automation initiatives within the global logistics domain",
+                "Founded and scaled a recognized brand – Orange Office Technologies Pvt Ltd"
+              ].map((a, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
+                    <Star className="h-4 w-4 text-amber-500" />
+                  </div>
+                  <span className="text-gray-700">{a}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Milestones */}
+      <Card className="border-none shadow-xl hover:shadow-2xl bg-white/80 rounded-2xl">
+        <CardContent className="p-6 md:p-8">
+          <div className="space-y-6">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+              <Calendar className="h-6 w-6 text-white" />
+            </div>
+            <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
+            <div className="border-l-2 border-gray-200 pl-6 space-y-6">
+              {[
+                { year: "Present", event: "Leading global expansion and spearheading digital transformation in logistics and back-office operations through Orange Office Technologies" },
+                { year: "2012", event: "Founded Orange Office Technologies Pvt Ltd, providing tech-enabled services to the freight forwarding industry" },
+                { year: "1990s–2000s", event: "Progressed into the logistics and freight forwarding sector, building deep domain expertise and operational insight" },
+                { year: "1991", event: "Started professional career in the courier industry, laying the foundation for a lifelong journey in global logistics and technology enablement" }
+              ].map((m, i) => (
+                <div key={i} className="relative">
+                  <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                  </div>
+                  <div>
+                    <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-500 font-medium inline-block mb-2">
+                      {m.year}
+                    </div>
+                    <p className="text-gray-700">{m.event}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>           
             </div>
           </div>
         </section>
