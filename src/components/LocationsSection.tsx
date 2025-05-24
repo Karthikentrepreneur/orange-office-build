@@ -33,20 +33,19 @@ const LocationsSection: React.FC = () => {
           <h3 className="text-xl font-semibold mb-4 text-gray-700">Select Location</h3>
 
           {[
-            { key: "Chennai", label: "Chennai" },
-            { key: "KeralaNeelima", label: "Kochi Office-1" },
-            { key: "KeralaCVM", label: "Kochi Office-2" },
-          ].map(({ key, label }) => (
+            { key: "Chennai", label: "Chennai", caption: "Headquarters" },
+            { key: "KeralaNeelima", label: "Kochi Office-1", caption: "Middle East Service Centre 1" },
+            { key: "KeralaCVM", label: "Kochi Office-2", caption: "Middle East Service Centre 2" },
+          ].map(({ key, label, caption }) => (
             <button
               key={key}
               onClick={() => setLocation(key as LocationKey)}
-              className={`block w-full py-3 px-4 rounded transition font-medium ${
-                location === key
-                  ? "bg-orange-600 text-white"
-                  : "bg-white text-orange-600 border border-orange-600 hover:bg-orange-600 hover:text-white"
+              className={`p-4 m-2 border rounded text-center flex flex-col items-center ${
+                location === key ? "bg-blue-100 border-blue-500" : ""
               }`}
             >
-              {label}
+              <span className="text-base font-semibold">{label}</span>
+              <span className="text-sm text-gray-500">{caption}</span>
             </button>
           ))}
         </div>
