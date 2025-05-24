@@ -34,8 +34,8 @@ const LocationsSection: React.FC = () => {
 
           {[
             { key: "Chennai", label: "Chennai" },
-            { key: "KeralaNeelima", label: "Kochi Neelima" },
-            { key: "KeralaCVM", label: "Kochi CVM Arcade" },
+            { key: "KeralaNeelima", label: "Kochi Office-1" },
+            { key: "KeralaCVM", label: "Kochi Office-2" },
           ].map(({ key, label }) => (
             <button
               key={key}
