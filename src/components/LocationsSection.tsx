@@ -28,8 +28,8 @@ const LocationsSection: React.FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 max-w-7xl mx-auto px-4">
-        {/* Tab Section - 20% */}
-        <div className="w-full md:w-[20%] bg-gray-50 p-6 shadow rounded-lg flex flex-col gap-4">
+        {/* Tab Section - 30% */}
+        <div className="w-full md:w-[30%] bg-gray-50 p-6 shadow rounded-lg flex flex-col gap-4">
           <h3 className="text-xl font-semibold mb-4 text-gray-700">Select Location</h3>
 
           {[
@@ -40,18 +40,20 @@ const LocationsSection: React.FC = () => {
             <button
               key={key}
               onClick={() => setLocation(key as LocationKey)}
-              className={`p-4 m-2 border rounded text-center flex flex-col items-center ${
-                location === key ? "bg-blue-100 border-blue-500" : ""
+              className={`p-4 m-2 border rounded text-center flex flex-col items-center transition-all duration-200 ${
+                location === key
+                  ? "bg-orange-500 border-orange-600 text-white"
+                  : "bg-white border-gray-300 text-gray-800"
               }`}
             >
               <span className="text-base font-semibold">{label}</span>
-              <span className="text-sm text-gray-500">{caption}</span>
+              <span className="text-sm">{caption}</span>
             </button>
           ))}
         </div>
 
-        {/* Map Section - 80% */}
-        <div className="w-full md:w-[80%] h-[450px] relative shadow-2xl rounded-lg overflow-hidden">
+        {/* Map Section - 70% */}
+        <div className="w-full md:w-[70%] h-[450px] relative shadow-2xl rounded-lg overflow-hidden">
           <iframe
             src={mapIframes[location]}
             width="100%"
