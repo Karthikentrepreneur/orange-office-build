@@ -71,6 +71,14 @@ export const Footer = () => {
                   <div className="text-xs text-gray-500">(Landmark: OPP Metro Pillar 394)</div>
                 </span>
               </li>
+              {/* Added Kochi Office 2 address */}
+              <li className="flex items-start space-x-3 text-sm text-gray-400">
+                <MapPin size={20} className="text-primary flex-shrink-0 mt-1" />
+                <span>
+                 C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road,
+                  <div className="text-xs text-gray-500">Edappally - 682024</div>
+                </span>
+              </li>
               <li className="flex items-center space-x-3 text-sm text-gray-400">
                 <Phone size={20} className="text-primary flex-shrink-0" />
                 <span>+91 44 4796 5437</span>
