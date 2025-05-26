@@ -38,7 +38,7 @@ const clientLogos = [{
 }, {
   name: "Primeshiping",
   industry: "Export/Import",
-  logo: "/primeshipping2.png"
+  logo: "/PRIMESHIPPING2.png"
 }];
 const testimonials = [{
   quote: "The digital marketing services provided by OOT have significantly boosted our online presence. Their team crafted a comprehensive strategy that effectively reached new customers and enhanced our brand visibility. We couldn’t be happier with the results.",
