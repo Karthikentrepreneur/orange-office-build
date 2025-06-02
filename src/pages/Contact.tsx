@@ -51,7 +51,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@orangeot.com", {
+      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
