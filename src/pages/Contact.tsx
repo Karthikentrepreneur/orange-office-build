@@ -49,61 +49,57 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    // Add the additional recipient email to the form data
-    const formDataWithRecipient = {
-      ...formData,
-      _cc: "karthiktrendsandtactics@gmail.com", // Replace with your desired email
-      _subject: `New Contact Form Submission: ${formData.subject}`,
-      _template: "table", // Optional: formats the email nicely
-      _captcha: "false" // Disable captcha for better UX
-    };
+    try {
+      const payload = {
+        ...formData,
+        _cc: "karthiktrendsandtactics.com" // Send copy to another email
+      };
 
-    const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formDataWithRecipient),
-    });
-
-    const result = await response.json();
-
-    if (result.success === "true") {
-      toast({
-        title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
-        duration: 5000,
+      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-      });
-    } else {
+      const result = await response.json();
+
+      if (result.success === "true") {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you as soon as possible.",
+          duration: 5000,
+        });
+
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        toast({
+          title: "Submission Failed",
+          description: "Please try again or contact us directly.",
+          duration: 5000,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
-        title: "Submission Failed",
-        description: "Please try again or contact us directly.",
+        title: "Something went wrong",
+        description: "Unable to submit form. Try again later.",
         duration: 5000,
         variant: "destructive",
       });
     }
-  } catch (error) {
-    toast({
-      title: "Something went wrong",
-      description: "Unable to submit form. Try again later.",
-      duration: 5000,
-      variant: "destructive",
-    });
-  }
-};
+  };
 
   // ... your officeLocations and socialIcons remain unchanged ...
 
