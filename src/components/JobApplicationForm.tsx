@@ -91,11 +91,11 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
       // Submit to both emails
       const submissions = [
-        fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+        fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
           method: "POST",
           body: formDataToSend,
         }),
-        fetch("https://formsubmit.co/karthiktrendsandtactics@gmail.com", {
+        fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
           method: "POST", 
           body: formDataToSend,
         })
