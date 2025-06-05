@@ -1,22 +1,40 @@
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BadgeCheck, Briefcase, Users, Clock, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import JobApplicationForm from "@/components/JobApplicationForm";
+import { useState } from "react";
+
 const Careers = () => {
-  const jobs = [{
-    title: "Full Stack Developer",
-    location: "Chennai (Anna Nagar)",
-    type: "Full Time",
-    experience: "3+ years"
-  }, {
-    title: "Ocean Freight- Export Customer Service",
-    location: "Chennai",
-    type: "Full Time",
-    experience: "5+ years"
-  }];
-  return <div className="min-h-screen flex flex-col">
+  const [selectedJob, setSelectedJob] = useState<string | null>(null);
+
+  const jobs = [
+    {
+      title: "Full Stack Developer",
+      location: "Chennai (Anna Nagar)",
+      type: "Full Time",
+      experience: "3+ years"
+    }, 
+    {
+      title: "Ocean Freight- Export Customer Service",
+      location: "Chennai",
+      type: "Full Time",
+      experience: "5+ years"
+    }
+  ];
+
+  const handleApplyClick = (jobTitle: string) => {
+    setSelectedJob(jobTitle);
+  };
+
+  const handleCloseForm = () => {
+    setSelectedJob(null);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
@@ -39,9 +57,10 @@ const Careers = () => {
           <h2 className="font-heading font-bold text-3xl mb-12 text-center">Current Openings</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {jobs.map((job, index) => <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
-            animationDelay: `${index * 100}ms`
-          }}>
+            {jobs.map((job, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
+                animationDelay: `${index * 100}ms`
+              }}>
                 <CardContent className="p-8 rounded-lg bg-slate-200">
                   <div className="space-y-4">
                     <h3 className="font-heading font-bold text-xl group-hover:text-primary transition-colors">
@@ -63,12 +82,16 @@ const Careers = () => {
                       </div>
                     </div>
 
-                    <Button className="w-full mt-4" asChild>
-                      <Link to="/contact">Apply Now</Link>
+                    <Button 
+                      className="w-full mt-4" 
+                      onClick={() => handleApplyClick(job.title)}
+                    >
+                      Apply Now
                     </Button>
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -88,9 +111,7 @@ const Careers = () => {
                 <p className="text-gray-600">Work with talented professionals who are passionate about technology</p>
               </div>
               
-              <div className="flex flex-col items-center space
-
--y-4">
+              <div className="flex flex-col items-center space-y-4">
                 <div className="p-4 bg-primary/10 rounded-full">
                   <Briefcase className="h-6 w-6 text-primary" />
                 </div>
@@ -110,7 +131,17 @@ const Careers = () => {
         </div>
       </section>
 
+      {/* Job Application Form Modal */}
+      {selectedJob && (
+        <JobApplicationForm 
+          jobTitle={selectedJob} 
+          onClose={handleCloseForm}
+        />
+      )}
+
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Careers;

@@ -51,7 +51,8 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
+      // Send to first email
+      const response1 = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,9 +61,20 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      // Send to second email
+      const response2 = await fetch("https://formsubmit.co/ajax/hr@orangeot.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (result.success === "true") {
+      const result1 = await response1.json();
+      const result2 = await response2.json();
+
+      if (result1.success === "true" || result2.success === "true") {
         toast({
           title: "Message Sent!",
           description: "We'll get back to you as soon as possible.",
