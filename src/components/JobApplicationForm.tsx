@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -51,11 +50,23 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         });
         return;
       }
+      
+      // Validate file type
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if (!allowedTypes.includes(file.type)) {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload a PDF, DOC, or DOCX file",
+          variant: "destructive",
+        });
+        return;
+      }
+      
       setResume(file);
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!resume) {
@@ -68,51 +79,87 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
 
     setIsSubmitting(true);
-    console.log("Starting form submission...");
+    console.log("Starting form submission with file:", resume.name, "Type:", resume.type, "Size:", resume.size);
 
     try {
-      // Create FormData for file upload
-      const formDataToSend = new FormData();
-      
-      // Add all form fields
-      formDataToSend.append('firstName', formData.firstName);
-      formDataToSend.append('lastName', formData.lastName);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('experience', formData.experience);
-      formDataToSend.append('jobTitle', jobTitle);
-      formDataToSend.append('appliedAt', new Date().toISOString());
-      formDataToSend.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
-      
-      // Add resume file
-      formDataToSend.append('_attachment', resume);
+      // Create separate FormData for each submission
+      const createFormData = () => {
+        const formDataToSend = new FormData();
+        
+        // Add all form fields
+        formDataToSend.append('firstName', formData.firstName);
+        formDataToSend.append('lastName', formData.lastName);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('phone', formData.phone);
+        formDataToSend.append('experience', formData.experience);
+        formDataToSend.append('jobTitle', jobTitle);
+        formDataToSend.append('appliedAt', new Date().toISOString());
+        
+        // Set email subject
+        formDataToSend.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
+        
+        // Add resume file with proper name - this is the key fix
+        formDataToSend.append('_attachment', resume, resume.name);
+        
+        // Add FormSubmit configuration
+        formDataToSend.append('_captcha', 'false');
+        
+        return formDataToSend;
+      };
 
       console.log("Submitting application with resume:", resume.name);
 
-      // Submit to both emails
+      // Submit to both emails with separate FormData instances
       const submissions = [
         fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
           method: "POST",
-          body: formDataToSend,
+          body: createFormData(),
         }),
         fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
           method: "POST", 
-          body: formDataToSend,
+          body: createFormData(),
         })
       ];
 
       const results = await Promise.allSettled(submissions);
       console.log("Submission results:", results);
 
-      // Check if at least one submission was successful
-      const hasSuccess = results.some(result => 
-        result.status === 'fulfilled'
-      );
+      // Check responses
+      let successCount = 0;
+      let errorMessages = [];
 
-      if (hasSuccess) {
+      for (let i = 0; i < results.length; i++) {
+        const result = results[i];
+        if (result.status === 'fulfilled') {
+          try {
+            const response = result.value;
+            console.log(`Response ${i + 1} status:`, response.status);
+            
+            if (response.ok) {
+              const data = await response.json();
+              console.log(`Response ${i + 1} data:`, data);
+              if (data.success) {
+                successCount++;
+              } else {
+                errorMessages.push(data.message || 'Unknown error');
+              }
+            } else {
+              errorMessages.push(`HTTP ${response.status}: ${response.statusText}`);
+            }
+          } catch (parseError) {
+            console.error(`Error parsing response ${i + 1}:`, parseError);
+            errorMessages.push('Response parsing error');
+          }
+        } else {
+          console.error(`Request ${i + 1} failed:`, result.reason);
+          errorMessages.push(result.reason.message || 'Network error');
+        }
+      }
+
+      if (successCount > 0) {
         toast({
           title: "Application Submitted!",
-          description: "We've received your application with resume and will review it shortly.",
+          description: `Your application with resume has been sent successfully${successCount === 1 ? ' (1 email sent)' : ' (both emails sent)'}.`,
           duration: 5000,
         });
 
@@ -127,15 +174,15 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         setResume(null);
         onClose();
       } else {
-        console.error("Both submissions failed");
-        throw new Error("Email submission failed");
+        console.error("All submissions failed. Errors:", errorMessages);
+        throw new Error(`All submissions failed: ${errorMessages.join(', ')}`);
       }
     } catch (error) {
       console.error("Submission error:", error);
       toast({
         title: "Submission Failed",
-        description: "Unable to submit application. Please try again or contact us directly.",
-        duration: 5000,
+        description: "Unable to submit application with resume. Please try again or contact us directly.",
+        duration: 7000,
         variant: "destructive",
       });
     } finally {
@@ -153,7 +200,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
           </Button>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label htmlFor="firstName" className="text-sm font-medium text-gray-700">First Name</label>
@@ -246,10 +293,10 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                 <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               </div>
               {resume && (
-                <p className="text-sm text-green-600 flex items-center gap-1">
+                <div className="text-sm text-green-600 flex items-center gap-1">
                   <FileText className="h-4 w-4" />
-                  {resume.name}
-                </p>
+                  <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
+                </div>
               )}
               <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
             </div>
@@ -259,14 +306,14 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                 Cancel
               </Button>
               <Button 
-                type="submit" 
+                onClick={handleSubmit}
                 disabled={isSubmitting}
                 className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </div>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>
