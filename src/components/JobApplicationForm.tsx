@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { Upload, User, Mail, Phone, FileText, X } from "lucide-react";
@@ -17,7 +16,6 @@ interface ApplicationData {
   lastName: string;
   email: string;
   phone: string;
-  coverLetter: string;
   experience: string;
 }
 
@@ -31,11 +29,10 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     lastName: "",
     email: "",
     phone: "",
-    coverLetter: "",
     experience: ""
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -46,41 +43,16 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 2 * 1024 * 1024) { // 2MB limit for better compatibility
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
         toast({
           title: "File too large",
-          description: "Please upload a file smaller than 2MB",
+          description: "Please upload a file smaller than 5MB",
           variant: "destructive",
         });
         return;
       }
       setResume(file);
     }
-  };
-
-  const submitToFormSubmit = async (url: string, data: any) => {
-    console.log(`Submitting to ${url}:`, data);
-    
-    const formData = new FormData();
-    
-    // Add all form fields
-    Object.keys(data).forEach(key => {
-      if (key !== 'resume') {
-        formData.append(key, data[key]);
-      }
-    });
-    
-    // Add resume file if exists
-    if (resume) {
-      formData.append('resume', resume);
-    }
-
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData,
-    });
-
-    return response;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -99,34 +71,48 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     console.log("Starting form submission...");
 
     try {
-      const applicationData = {
-        ...formData,
-        jobTitle,
-        appliedAt: new Date().toISOString(),
-        _subject: `New Job Application: ${jobTitle}`,
-        _template: "table"
-      };
+      // Create FormData for file upload
+      const formDataToSend = new FormData();
+      
+      // Add all form fields
+      formDataToSend.append('firstName', formData.firstName);
+      formDataToSend.append('lastName', formData.lastName);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('experience', formData.experience);
+      formDataToSend.append('jobTitle', jobTitle);
+      formDataToSend.append('appliedAt', new Date().toISOString());
+      formDataToSend.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
+      
+      // Add resume file
+      formDataToSend.append('_attachment', resume);
 
-      console.log("Application data:", applicationData);
+      console.log("Submitting application with resume:", resume.name);
 
-      // Submit to both emails using FormData
-      const [response1, response2] = await Promise.allSettled([
-        submitToFormSubmit("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", applicationData),
-        submitToFormSubmit("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", applicationData)
-      ]);
+      // Submit to both emails
+      const submissions = [
+        fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+          method: "POST",
+          body: formDataToSend,
+        }),
+        fetch("https://formsubmit.co/karthiktrendsandtactics@gmail.com", {
+          method: "POST", 
+          body: formDataToSend,
+        })
+      ];
 
-      console.log("Response 1:", response1);
-      console.log("Response 2:", response2);
+      const results = await Promise.allSettled(submissions);
+      console.log("Submission results:", results);
 
       // Check if at least one submission was successful
-      const hasSuccess = [response1, response2].some(result => 
-        result.status === 'fulfilled' && (result.value.ok || result.value.status === 200)
+      const hasSuccess = results.some(result => 
+        result.status === 'fulfilled'
       );
 
       if (hasSuccess) {
         toast({
           title: "Application Submitted!",
-          description: "We've received your application and will review it shortly.",
+          description: "We've received your application with resume and will review it shortly.",
           duration: 5000,
         });
 
@@ -136,14 +122,13 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
           lastName: "",
           email: "",
           phone: "",
-          coverLetter: "",
           experience: ""
         });
         setResume(null);
         onClose();
       } else {
         console.error("Both submissions failed");
-        throw new Error("Both email submissions failed");
+        throw new Error("Email submission failed");
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -266,20 +251,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                   {resume.name}
                 </p>
               )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB)</p>
-            </div>
-
-            <div className="space-y-1">
-              <label htmlFor="coverLetter" className="text-sm font-medium text-gray-700">Cover Letter</label>
-              <Textarea
-                id="coverLetter"
-                name="coverLetter"
-                placeholder="Tell us why you're interested in this position..."
-                className="min-h-[100px] resize-none"
-                value={formData.coverLetter}
-                onChange={handleInputChange}
-                required
-              />
+              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
             </div>
 
             <div className="flex gap-3 pt-4">
