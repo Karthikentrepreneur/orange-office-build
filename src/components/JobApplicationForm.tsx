@@ -46,16 +46,41 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 2 * 1024 * 1024) { // 2MB limit for better compatibility
         toast({
           title: "File too large",
-          description: "Please upload a file smaller than 5MB",
+          description: "Please upload a file smaller than 2MB",
           variant: "destructive",
         });
         return;
       }
       setResume(file);
     }
+  };
+
+  const submitToFormSubmit = async (url: string, data: any) => {
+    console.log(`Submitting to ${url}:`, data);
+    
+    const formData = new FormData();
+    
+    // Add all form fields
+    Object.keys(data).forEach(key => {
+      if (key !== 'resume') {
+        formData.append(key, data[key]);
+      }
+    });
+    
+    // Add resume file if exists
+    if (resume) {
+      formData.append('resume', resume);
+    }
+
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+
+    return response;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,52 +96,34 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
 
     setIsSubmitting(true);
+    console.log("Starting form submission...");
 
     try {
-      // Convert file to base64 for FormSubmit
-      const fileToBase64 = (file: File): Promise<string> => {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result as string);
-          reader.onerror = error => reject(error);
-        });
-      };
-
-      const resumeBase64 = await fileToBase64(resume);
-      
       const applicationData = {
         ...formData,
         jobTitle,
-        resume: resumeBase64,
-        resumeFileName: resume.name,
         appliedAt: new Date().toISOString(),
+        _subject: `New Job Application: ${jobTitle}`,
+        _template: "table"
       };
 
-      // Send to first HR email
-      const response1 = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(applicationData),
-      });
+      console.log("Application data:", applicationData);
 
-      // Send to second HR email
-      const response2 = await fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(applicationData),
-      });
+      // Submit to both emails using FormData
+      const [response1, response2] = await Promise.allSettled([
+        submitToFormSubmit("https://formsubmit.co/karthikjungleemara@gmail.com", applicationData),
+        submitToFormSubmit("https://formsubmit.co/karthiktrendsandtactics@gmail.com", applicationData)
+      ]);
 
-      const result1 = await response1.json();
-      const result2 = await response2.json();
+      console.log("Response 1:", response1);
+      console.log("Response 2:", response2);
 
-      if (result1.success === "true" || result2.success === "true") {
+      // Check if at least one submission was successful
+      const hasSuccess = [response1, response2].some(result => 
+        result.status === 'fulfilled' && (result.value.ok || result.value.status === 200)
+      );
+
+      if (hasSuccess) {
         toast({
           title: "Application Submitted!",
           description: "We've received your application and will review it shortly.",
@@ -135,17 +142,14 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         setResume(null);
         onClose();
       } else {
-        toast({
-          title: "Submission Failed",
-          description: "Please try again or contact us directly.",
-          duration: 5000,
-          variant: "destructive",
-        });
+        console.error("Both submissions failed");
+        throw new Error("Both email submissions failed");
       }
     } catch (error) {
+      console.error("Submission error:", error);
       toast({
-        title: "Something went wrong",
-        description: "Unable to submit application. Please try again.",
+        title: "Submission Failed",
+        description: "Unable to submit application. Please try again or contact us directly.",
         duration: 5000,
         variant: "destructive",
       });
@@ -262,7 +266,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                   {resume.name}
                 </p>
               )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB)</p>
             </div>
 
             <div className="space-y-1">
