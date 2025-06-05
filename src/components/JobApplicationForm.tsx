@@ -111,8 +111,8 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
       // Submit to both emails using FormData
       const [response1, response2] = await Promise.allSettled([
-        submitToFormSubmit("https://formsubmit.co/karthikjungleemara@gmail.com", applicationData),
-        submitToFormSubmit("https://formsubmit.co/karthiktrendsandtactics@gmail.com", applicationData)
+        submitToFormSubmit("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", applicationData),
+        submitToFormSubmit("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", applicationData)
       ]);
 
       console.log("Response 1:", response1);
