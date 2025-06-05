@@ -104,7 +104,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       });
 
       // Send to second HR email
-      const response2 = await fetch("https://formsubmit.co/ajax/hr@orangeot.com", {
+      const response2 = await fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
