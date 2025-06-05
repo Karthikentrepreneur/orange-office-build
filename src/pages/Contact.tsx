@@ -62,7 +62,7 @@ const Contact = () => {
       });
 
       // Send to second email
-      const response2 = await fetch("https://formsubmit.co/ajax/hr@orangeot.com", {
+      const response2 = await fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
