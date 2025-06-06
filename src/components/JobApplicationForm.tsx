@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Upload, User, Mail, Phone, FileText, X } from "lucide-react";
 import emailjs from '@emailjs/browser';
 
@@ -44,16 +44,15 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 2 * 1024 * 1024) { // 2MB limit for better compatibility
         toast({
           title: "File too large",
-          description: "Please upload a file smaller than 5MB",
+          description: "Please upload a file smaller than 2MB",
           variant: "destructive",
         });
         return;
       }
       
-      // Validate file type
       const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
       if (!allowedTypes.includes(file.type)) {
         toast({
@@ -66,15 +65,6 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       
       setResume(file);
     }
-  };
-
-  const convertFileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
-    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -90,44 +80,50 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
 
     setIsSubmitting(true);
-    console.log("Starting form submission with EmailJS");
+    console.log("Starting form submission");
 
     try {
-      // Initialize EmailJS (you'll need to set these in your EmailJS dashboard)
-      emailjs.init("DY0qKB11gony4dziQ"); // Replace with your EmailJS public key
+      // Use FormData to properly handle file attachment
+      const form = new FormData();
       
-      // Convert file to base64 for attachment
-      const resumeBase64 = await convertFileToBase64(resume);
-      
-      const templateParams = {
-        to_email_1: "karthikjungleemara@gmail.com",
-        to_email_2: "karthiktrendsandtactics@gmail.com",
-        from_name: `${formData.firstName} ${formData.lastName}`,
-        from_email: formData.email,
-        phone: formData.phone,
-        experience: formData.experience,
-        job_title: jobTitle,
-        applied_date: new Date().toLocaleDateString(),
-        resume_name: resume.name,
-        resume_attachment: resumeBase64,
-        subject: `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`
-      };
+      // Add all form fields
+      form.append('firstName', formData.firstName);
+      form.append('lastName', formData.lastName);
+      form.append('email', formData.email);
+      form.append('phone', formData.phone);
+      form.append('experience', formData.experience);
+      form.append('jobTitle', jobTitle);
+      form.append('appliedDate', new Date().toLocaleDateString());
+      form.append('resume', resume); // This is the key - direct file attachment
+      form.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
+      form.append('_captcha', 'false');
+      form.append('_template', 'table');
 
-      console.log("Sending email with EmailJS...");
-      
-      // Send email using EmailJS
-      const response = await emailjs.send(
-        "service_zsmxh5d", // Replace with your EmailJS service ID
-        "template_4db3jpe", // Replace with your EmailJS template ID
-        templateParams
-      );
+      console.log("Sending applications to both emails...");
 
-      console.log("EmailJS response:", response);
+      // Send to both email addresses
+      const submissions = [
+        fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+          method: "POST",
+          body: form, // Use FormData directly without JSON
+        }),
+        fetch("https://formsubmit.co/karthiktrendsandtactics@gmail.com", {
+          method: "POST", 
+          body: form, // Use FormData directly without JSON
+        })
+      ];
 
-      if (response.status === 200) {
+      const results = await Promise.allSettled(submissions);
+      console.log("Submission results:", results);
+
+      const successCount = results.filter(result => 
+        result.status === 'fulfilled' && result.value.ok
+      ).length;
+
+      if (successCount > 0) {
         toast({
           title: "Application Submitted!",
-          description: "Your application with resume has been sent successfully to both email addresses.",
+          description: `Your application with resume has been sent successfully${successCount === 2 ? ' to both email addresses' : ' (1 email sent)'}.`,
           duration: 5000,
         });
 
@@ -142,76 +138,16 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         setResume(null);
         onClose();
       } else {
-        throw new Error('Failed to send email');
+        throw new Error('All submissions failed');
       }
     } catch (error) {
-      console.error("EmailJS submission error:", error);
-      
-      // Fallback to simple notification without attachment
-      try {
-        console.log("Trying fallback method without attachment...");
-        
-        const fallbackData = {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          experience: formData.experience,
-          jobTitle: jobTitle,
-          appliedAt: new Date().toISOString(),
-          resumeName: resume.name,
-          message: `Resume file: ${resume.name} (${(resume.size / 1024 / 1024).toFixed(2)} MB) - Please contact applicant for resume file.`,
-          _subject: `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`,
-          _captcha: 'false',
-          _template: 'table'
-        };
-
-        const submissions = [
-          fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(fallbackData),
-          }),
-          fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(fallbackData),
-          })
-        ];
-
-        const results = await Promise.allSettled(submissions);
-        const successCount = results.filter(result => 
-          result.status === 'fulfilled' && result.value.ok
-        ).length;
-
-        if (successCount > 0) {
-          toast({
-            title: "Application Submitted!",
-            description: `Your application details have been sent${successCount === 1 ? ' (1 email sent)' : ' (both emails sent)'}. Please note: Resume file attachment failed, so you may need to send it separately.`,
-            duration: 8000,
-          });
-          
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            experience: ""
-          });
-          setResume(null);
-          onClose();
-        } else {
-          throw new Error('All fallback submissions failed');
-        }
-      } catch (fallbackError) {
-        console.error("Fallback submission error:", fallbackError);
-        toast({
-          title: "Submission Failed",
-          description: "Unable to submit application. Please try again or contact us directly with your resume.",
-          duration: 7000,
-          variant: "destructive",
-        });
-      }
+      console.error("Submission error:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Unable to submit application with resume. Please try again or contact us directly.",
+        duration: 7000,
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -227,16 +163,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
           </Button>
         </CardHeader>
         <CardContent>
-          <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-blue-700">
-              <strong>Setup Required:</strong> To enable email functionality with resume attachments, please:
-              <br />1. Create an EmailJS account at emailjs.com
-              <br />2. Replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID in the code
-              <br />3. Configure your email template to include resume attachments
-            </p>
-          </div>
-          
-          <div className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label htmlFor="firstName" className="text-sm font-medium text-gray-700">First Name</label>
@@ -334,7 +261,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                   <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
                 </div>
               )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB)</p>
             </div>
 
             <div className="flex gap-3 pt-4">
@@ -342,14 +269,14 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                 Cancel
               </Button>
               <Button 
-                onClick={handleSubmit}
+                type="submit"
                 disabled={isSubmitting}
                 className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </div>
-          </div>
+          </form>
         </CardContent>
       </Card>
     </div>
