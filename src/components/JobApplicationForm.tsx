@@ -20,8 +20,8 @@ interface ApplicationData {
 const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resume, setResume] = useState<File | null>(null);
-  const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
-  const [uploadedLink, setUploadedLink] = useState<string>('');
+  const [resumeDataUrl, setResumeDataUrl] = useState<string>('');
+  const [isProcessingFile, setIsProcessingFile] = useState(false);
   
   const [formData, setFormData] = useState<ApplicationData>({
     firstName: "",
@@ -32,7 +32,6 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   });
 
   const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
-    // Simple toast replacement using alert for demo
     alert(`${title}: ${description}`);
   };
 
@@ -44,7 +43,22 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const convertFileToDataUrl = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          resolve(reader.result);
+        } else {
+          reject(new Error('Failed to convert file'));
+        }
+      };
+      reader.onerror = () => reject(new Error('Failed to read file'));
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) { // 5MB limit
@@ -62,144 +76,102 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         return;
       }
       
-      setResume(file);
-      setUploadStatus('idle');
-      setUploadedLink('');
-    }
-  };
-
-  // Multiple file hosting services as fallbacks
-  const uploadFileToTempStorage = async (file: File): Promise<string> => {
-    const uploadServices = [
-      {
-        name: 'file.io',
-        upload: async (file: File) => {
-          const formData = new FormData();
-          formData.append('file', file);
-          
-          const response = await fetch('https://file.io', {
-            method: 'POST',
-            body: formData
-          });
-          
-          if (!response.ok) throw new Error('file.io upload failed');
-          
-          const result = await response.json();
-          if (!result.success) throw new Error('file.io returned error');
-          
-          return result.link;
-        }
-      },
-      {
-        name: '0x0.st',
-        upload: async (file: File) => {
-          const formData = new FormData();
-          formData.append('file', file);
-          
-          const response = await fetch('https://0x0.st', {
-            method: 'POST',
-            body: formData
-          });
-          
-          if (!response.ok) throw new Error('0x0.st upload failed');
-          
-          return await response.text();
-        }
-      }
-    ];
-
-    // Try each service until one works
-    for (const service of uploadServices) {
+      setIsProcessingFile(true);
       try {
-        console.log(`Trying ${service.name}...`);
-        const link = await service.upload(file);
-        console.log(`${service.name} upload successful:`, link);
-        return link.trim();
+        const dataUrl = await convertFileToDataUrl(file);
+        setResume(file);
+        setResumeDataUrl(dataUrl);
+        showToast("Resume processed", "Your resume is ready for submission!");
       } catch (error) {
-        console.log(`${service.name} failed:`, error);
-        continue;
+        console.error("Error processing file:", error);
+        showToast("Processing failed", "Failed to process resume. Please try again.", "destructive");
+      } finally {
+        setIsProcessingFile(false);
       }
-    }
-    
-    throw new Error('All file upload services failed');
-  };
-
-  const uploadResume = async () => {
-    if (!resume) return;
-    
-    setUploadStatus('uploading');
-    try {
-      const link = await uploadFileToTempStorage(resume);
-      setUploadedLink(link);
-      setUploadStatus('success');
-      showToast("Resume uploaded", "Your resume has been uploaded successfully!");
-    } catch (error) {
-      console.error("Upload error:", error);
-      setUploadStatus('error');
-      showToast("Upload failed", "Failed to upload resume. Please try again.", "destructive");
     }
   };
 
   const handleSubmit = async () => {
-    if (!resume) {
+    if (!resume || !resumeDataUrl) {
       showToast("Resume required", "Please upload your resume to continue", "destructive");
       return;
     }
 
-    // Upload resume if not already uploaded
-    if (uploadStatus !== 'success' || !uploadedLink) {
-      showToast("Please upload resume", "Click 'Upload Resume' button first", "destructive");
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.experience) {
+      showToast("Missing information", "Please fill in all required fields", "destructive");
       return;
     }
 
     setIsSubmitting(true);
-    console.log("Starting submission with resume link:", uploadedLink);
+    console.log("Starting submission with resume data URL");
 
     try {
-      // Prepare form data with resume link
-      const form = new FormData();
-      form.append('firstName', formData.firstName);
-      form.append('lastName', formData.lastName);
-      form.append('email', formData.email);
-      form.append('phone', formData.phone);
-      form.append('experience', formData.experience);
-      form.append('jobTitle', jobTitle);
-      form.append('appliedDate', new Date().toLocaleDateString());
-      form.append('resumeLink', uploadedLink);
-      form.append('resumeFileName', resume.name);
-      form.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
-      form.append('_captcha', 'false');
-      form.append('_template', 'table');
+      // Create HTML email with clickable resume link
+      const resumeLink = `<a href="${resumeDataUrl}" download="${resume.name}" style="background-color: #3b82f6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; display: inline-block; margin: 10px 0;">📎 Download ${resume.name}</a>`;
+      
+      const emailHtml = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #333; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">🎯 New Job Application</h2>
+          
+          <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #1e40af; margin-top: 0;">Position Applied For</h3>
+            <p style="font-size: 18px; font-weight: bold; color: #333; margin: 5px 0;">${jobTitle}</p>
+          </div>
 
-      // Create detailed email message
-      const emailMessage = `
-🎯 NEW JOB APPLICATION RECEIVED
+          <div style="background-color: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 20px 0;">
+            <h3 style="color: #1e40af; margin-top: 0;">📋 Applicant Information</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #475569; width: 30%;">Name:</td>
+                <td style="padding: 8px 0; color: #333;">${formData.firstName} ${formData.lastName}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #475569;">Email:</td>
+                <td style="padding: 8px 0; color: #333;">${formData.email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #475569;">Phone:</td>
+                <td style="padding: 8px 0; color: #333;">${formData.phone}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #475569;">Experience:</td>
+                <td style="padding: 8px 0; color: #333;">${formData.experience}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #475569;">Applied Date:</td>
+                <td style="padding: 8px 0; color: #333;">${new Date().toLocaleDateString()}</td>
+              </tr>
+            </table>
+          </div>
 
-📋 POSITION: ${jobTitle}
-👤 APPLICANT: ${formData.firstName} ${formData.lastName}
-📧 EMAIL: ${formData.email}
-📱 PHONE: ${formData.phone}
-💼 EXPERIENCE: ${formData.experience}
-📅 APPLIED DATE: ${new Date().toLocaleDateString()}
+          <div style="background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 20px; margin: 20px 0;">
+            <h3 style="color: #92400e; margin-top: 0;">📎 Resume/CV</h3>
+            <p style="margin: 10px 0; color: #92400e;">File: ${resume.name} (${(resume.size / 1024 / 1024).toFixed(2)} MB)</p>
+            <p style="margin: 10px 0; color: #92400e;">Click the button below to download the resume:</p>
+            ${resumeLink}
+            <p style="font-size: 12px; color: #92400e; margin-top: 15px; font-style: italic;">
+              💡 Right-click the download button and select "Save link as..." if the file opens in browser instead of downloading.
+            </p>
+          </div>
 
-📎 RESUME DETAILS:
-   • File Name: ${resume.name}
-   • File Size: ${(resume.size / 1024 / 1024).toFixed(2)} MB
-   • Download Link: ${uploadedLink}
-
-🔗 RESUME DOWNLOAD:
-Click the link above to download the applicant's resume.
-Note: Some temporary links may expire after a certain period.
-
----
-This application was submitted through the career portal.
+          <div style="background-color: #f1f5f9; padding: 15px; border-radius: 8px; margin-top: 30px; text-align: center;">
+            <p style="color: #64748b; font-size: 14px; margin: 0;">
+              This application was submitted through the career portal at ${new Date().toLocaleString()}
+            </p>
+          </div>
+        </div>
       `;
 
-      form.append('message', emailMessage);
+      // Prepare form data for FormSubmit
+      const form = new FormData();
+      form.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
+      form.append('_captcha', 'false');
+      form.append('_template', 'box');
+      form.append('message', emailHtml);
 
-      console.log("Sending application to email addresses...");
+      console.log("Sending application to email...");
 
-      // Send to email addresses
       const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
         method: "POST",
         body: form,
@@ -208,7 +180,7 @@ This application was submitted through the career portal.
       if (response.ok) {
         showToast("Application Submitted!", "Your application with resume download link has been sent successfully!");
 
-        // Reset everything
+        // Reset form
         setFormData({
           firstName: "",
           lastName: "",
@@ -217,8 +189,7 @@ This application was submitted through the career portal.
           experience: ""
         });
         setResume(null);
-        setUploadStatus('idle');
-        setUploadedLink('');
+        setResumeDataUrl('');
         onClose();
       } else {
         throw new Error('Form submission failed');
@@ -330,50 +301,36 @@ This application was submitted through the career portal.
                   onChange={handleFileChange}
                   className="pl-10"
                   required
+                  disabled={isProcessingFile}
                 />
                 <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               </div>
               
-              {resume && (
+              {isProcessingFile && (
+                <div className="text-sm text-blue-600 flex items-center gap-2">
+                  <AlertCircle className="h-4 w-4 animate-spin" />
+                  <span>Processing file...</span>
+                </div>
+              )}
+              
+              {resume && resumeDataUrl && (
                 <div className="space-y-2">
-                  <div className="text-sm text-gray-600 flex items-center gap-2">
+                  <div className="text-sm text-green-600 flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4" />
                     <FileText className="h-4 w-4" />
-                    <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
+                    <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB) - Ready for submission</span>
                   </div>
                   
-                  <div className="flex items-center gap-2">
-                    <Button
-                      type="button"
-                      onClick={uploadResume}
-                      disabled={uploadStatus === 'uploading' || uploadStatus === 'success'}
-                      className="text-xs px-3 py-1 h-8"
-                      variant={uploadStatus === 'success' ? 'default' : 'outline'}
-                    >
-                      {uploadStatus === 'uploading' && 'Uploading...'}
-                      {uploadStatus === 'success' && (
-                        <>
-                          <CheckCircle className="h-3 w-3 mr-1" />
-                          Uploaded
-                        </>
-                      )}
-                      {uploadStatus === 'error' && (
-                        <>
-                          <AlertCircle className="h-3 w-3 mr-1" />
-                          Retry Upload
-                        </>
-                      )}
-                      {uploadStatus === 'idle' && 'Upload Resume'}
-                    </Button>
-                    
-                    {uploadStatus === 'success' && uploadedLink && (
-                      <span className="text-xs text-green-600">✓ Resume ready for submission</span>
-                    )}
+                  <div className="p-3 bg-green-50 border border-green-200 rounded-md">
+                    <p className="text-xs text-green-700">
+                      ✓ Resume processed successfully. It will be sent as a downloadable link in the email notification.
+                    </p>
                   </div>
                 </div>
               )}
               
               <p className="text-xs text-gray-500">
-                Accepted formats: PDF, DOC, DOCX (Max 5MB). Click "Upload Resume" to convert to download link.
+                Accepted formats: PDF, DOC, DOCX (Max 5MB). File will be converted to a downloadable link.
               </p>
             </div>
 
@@ -383,7 +340,7 @@ This application was submitted through the career portal.
               </Button>
               <Button 
                 onClick={handleSubmit}
-                disabled={isSubmitting || uploadStatus !== 'success'}
+                disabled={isSubmitting || !resume || !resumeDataUrl || isProcessingFile}
                 className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
