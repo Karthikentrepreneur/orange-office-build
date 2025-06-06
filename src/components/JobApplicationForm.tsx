@@ -94,7 +94,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
     try {
       // Initialize EmailJS (you'll need to set these in your EmailJS dashboard)
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+      emailjs.init("DY0qKB11gony4dziQ"); // Replace with your EmailJS public key
       
       // Convert file to base64 for attachment
       const resumeBase64 = await convertFileToBase64(resume);
@@ -117,8 +117,8 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       
       // Send email using EmailJS
       const response = await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        "service_zsmxh5d", // Replace with your EmailJS service ID
+        "template_4db3jpe", // Replace with your EmailJS template ID
         templateParams
       );
 
