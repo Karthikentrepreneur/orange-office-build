@@ -150,7 +150,7 @@ const Careers = () => {
               </button>
             </div>
             <div className="flex-1 overflow-y-auto">
-              <iframe data-tally-src="https://tally.so/embed/mOeXGa?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="800" frameBorder="0" marginHeight={0} marginWidth={0} title="Application Form" className="w-full min-h-[800px]" />
+              <iframe data-tally-src="https://tally.so/embed/mOeXGa?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="800" frameBorder="0" marginHeight={0} marginWidth={0} title="Application Form" className="w-full min-h-[800px] my-0 mx-[16px]" />
             </div>
           </div>
         </div>}
