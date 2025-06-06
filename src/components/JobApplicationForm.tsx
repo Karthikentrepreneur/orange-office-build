@@ -173,7 +173,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
       console.log("Sending application to email...");
 
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwOAk_0qnhQmSiNCUmac8lmx050lvCyANruwoa6Z3pv5cZerLT9r7SnDOwslVGs53kirQ/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxJC2cmdLSdNc8RodhDKsUZzGVka02994lVSvIUsjD4XLrNi7DhrSJ4pTdJq0KFiR7OyA/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
