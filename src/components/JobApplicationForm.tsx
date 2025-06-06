@@ -173,7 +173,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
       console.log("Sending application to email...");
 
-      const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
         method: "POST",
         body: form,
       });
