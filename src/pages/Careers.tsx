@@ -1,14 +1,24 @@
-
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BadgeCheck, Briefcase, Users, Clock, MapPin } from "lucide-react";
-import JobApplicationForm from "@/components/JobApplicationForm";
-import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BadgeCheck, Briefcase, Users, Clock, MapPin, FileText } from "lucide-react";
+import ApplicantsTable from "@/components/ApplicantsTable";
+import { useState, useEffect } from "react";
+import { ApplicationData } from "@/components/JobApplicationForm";
+
+declare global {
+  interface Window {
+    Tally: {
+      loadEmbeds: () => void;
+    };
+  }
+}
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
+  const [applications, setApplications] = useState<ApplicationData[]>([]);
 
   const jobs = [
     {
@@ -33,6 +43,33 @@ const Careers = () => {
     setSelectedJob(null);
   };
 
+  // Load Tally script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://tally.so/widgets/embed.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      if (window.Tally) {
+        window.Tally.loadEmbeds();
+      }
+    };
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  // Load embeds when selectedJob changes
+  useEffect(() => {
+    if (selectedJob && window.Tally) {
+      setTimeout(() => {
+        window.Tally.loadEmbeds();
+      }, 100);
+    }
+  }, [selectedJob]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -51,48 +88,67 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Current Openings */}
+      {/* Main Content with Tabs */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl mb-12 text-center">Current Openings</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {jobs.map((job, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
-                animationDelay: `${index * 100}ms`
-              }}>
-                <CardContent className="p-8 rounded-lg bg-slate-200">
-                  <div className="space-y-4">
-                    <h3 className="font-heading font-bold text-xl group-hover:text-primary transition-colors">
-                      {job.title}
-                    </h3>
-                    
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2 text-gray-600">
-                        <MapPin className="h-4 w-4" />
-                        <span>{job.location}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-gray-600">
-                        <Clock className="h-4 w-4" />
-                        <span>{job.type}</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-gray-600">
-                        <Users className="h-4 w-4" />
-                        <span>{job.experience} experience</span>
-                      </div>
-                    </div>
+          <Tabs defaultValue="openings" className="max-w-6xl mx-auto">
+            <TabsList className="grid w-full grid-cols-2 mb-8">
+              <TabsTrigger value="openings" className="flex items-center gap-2">
+                <Briefcase className="h-4 w-4" />
+                Current Openings
+              </TabsTrigger>
+              <TabsTrigger value="applications" className="flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Applications ({applications.length})
+              </TabsTrigger>
+            </TabsList>
 
-                    <Button 
-                      className="w-full mt-4" 
-                      onClick={() => handleApplyClick(job.title)}
-                    >
-                      Apply Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+            <TabsContent value="openings">
+              <h2 className="font-heading font-bold text-3xl mb-12 text-center">Current Openings</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {jobs.map((job, index) => (
+                  <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
+                    animationDelay: `${index * 100}ms`
+                  }}>
+                    <CardContent className="p-8 rounded-lg bg-slate-200">
+                      <div className="space-y-4">
+                        <h3 className="font-heading font-bold text-xl group-hover:text-primary transition-colors">
+                          {job.title}
+                        </h3>
+                        
+                        <div className="space-y-2">
+                          <div className="flex items-center space-x-2 text-gray-600">
+                            <MapPin className="h-4 w-4" />
+                            <span>{job.location}</span>
+                          </div>
+                          <div className="flex items-center space-x-2 text-gray-600">
+                            <Clock className="h-4 w-4" />
+                            <span>{job.type}</span>
+                          </div>
+                          <div className="flex items-center space-x-2 text-gray-600">
+                            <Users className="h-4 w-4" />
+                            <span>{job.experience} experience</span>
+                          </div>
+                        </div>
+
+                        <Button 
+                          className="w-full mt-4" 
+                          onClick={() => handleApplyClick(job.title)}
+                        >
+                          Apply Now
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="applications">
+              <ApplicantsTable applications={applications} />
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
@@ -131,12 +187,34 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Job Application Form Modal */}
+      {/* Tally Form Modal */}
       {selectedJob && (
-        <JobApplicationForm 
-          jobTitle={selectedJob} 
-          onClose={handleCloseForm}
-        />
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+            <div className="flex justify-between items-center p-6 border-b flex-shrink-0">
+              <h2 className="text-xl font-bold">Apply for {selectedJob}</h2>
+              <button
+                onClick={handleCloseForm}
+                className="text-gray-500 hover:text-gray-700 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              <iframe 
+                data-tally-src="https://tally.so/embed/mOeXGa?alignLeft=1&hideTitle=1&transparentBackground=1" 
+                loading="lazy" 
+                width="100%" 
+                height="800" 
+                frameBorder="0" 
+                marginHeight={0} 
+                marginWidth={0} 
+                title="Application Form"
+                className="w-full min-h-[800px]"
+              />
+            </div>
+          </div>
+        </div>
       )}
 
       <Footer />
