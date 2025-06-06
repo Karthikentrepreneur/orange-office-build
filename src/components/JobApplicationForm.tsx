@@ -1,245 +1,31 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Upload, User, Mail, Phone, FileText, X, CheckCircle, AlertCircle } from "lucide-react";
-
-export interface JobApplicationFormProps {
-  jobTitle: string;
-  onClose: () => void;
-}
-
-interface ApplicationData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  experience: string;
-}
-
-const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [resume, setResume] = useState<File | null>(null);
-  const [resumeDataUrl, setResumeDataUrl] = useState<string>('');
-  const [isProcessingFile, setIsProcessingFile] = useState(false);
-  
-  const [formData, setFormData] = useState<ApplicationData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    experience: ""
-  });
-
-  const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
-    alert(`${title}: ${description}`);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const convertFileToDataUrl = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          resolve(reader.result);
-        } else {
-          reject(new Error('Failed to convert file'));
-        }
-      };
-      reader.onerror = () => reject(new Error('Failed to read file'));
-      reader.readAsDataURL(file);
-    });
-  };
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast("File too large", "Please upload a file smaller than 5MB", "destructive");
-        return;
-      }
-
-      const allowedTypes = [
-        'application/pdf', 
-        'application/msword', 
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-      ];
-      if (!allowedTypes.includes(file.type)) {
-        showToast("Invalid file type", "Please upload a PDF, DOC, or DOCX file", "destructive");
-        return;
-      }
-
-      setIsProcessingFile(true);
-      try {
-        const dataUrl = await convertFileToDataUrl(file);
-        setResume(file);
-        setResumeDataUrl(dataUrl);
-        showToast("Resume processed", "Your resume is ready for submission!");
-      } catch (error) {
-        console.error("Error processing file:", error);
-        showToast("Processing failed", "Failed to process resume. Please try again.", "destructive");
-      } finally {
-        setIsProcessingFile(false);
-      }
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (!resume || !resumeDataUrl) {
-      showToast("Resume required", "Please upload your resume to continue", "destructive");
-      return;
-    }
-
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.experience) {
-      showToast("Missing information", "Please fill in all required fields", "destructive");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxi0S-f0bTkxz0XW6AKkM5BqinCChSGxt11aTfYxuRv-UQhqc3AcoBVIRYg7ING87qpFw/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          experience: formData.experience,
-          resumeName: resume.name,
-          resumeSize: (resume.size / 1024 / 1024).toFixed(2) + " MB",
-          resumeUrl: resumeDataUrl,
-          description: `Applied for ${jobTitle} on ${new Date().toLocaleString()}`,
-        }),
-      });
-
-      if (response.ok) {
-        showToast("Application Submitted!", "Your application has been saved to Google Sheets!");
-
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          experience: ""
-        });
-        setResume(null);
-        setResumeDataUrl('');
-        onClose();
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      showToast("Submission Failed", "Please try again or contact us directly.", "destructive");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-          <CardTitle className="text-xl font-bold">Apply for {jobTitle}</CardTitle>
-          <Button variant="ghost" size="icon" onClick={onClose}>
-            <X className="h-4 w-4" />
-          </Button>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <InputField id="firstName" name="firstName" placeholder="John" icon={User} value={formData.firstName} onChange={handleInputChange} />
-              <InputField id="lastName" name="lastName" placeholder="Doe" icon={User} value={formData.lastName} onChange={handleInputChange} />
-            </div>
-
-            <InputField id="email" name="email" placeholder="you@example.com" icon={Mail} value={formData.email} onChange={handleInputChange} type="email" />
-            <InputField id="phone" name="phone" placeholder="+91 98765 43210" icon={Phone} value={formData.phone} onChange={handleInputChange} />
-            
-            <div className="space-y-1">
-              <label htmlFor="experience" className="text-sm font-medium text-gray-700">Years of Experience</label>
-              <Input id="experience" name="experience" placeholder="e.g., 3 years" value={formData.experience} onChange={handleInputChange} required />
-            </div>
-
-            <div className="space-y-3">
-              <label htmlFor="resume" className="text-sm font-medium text-gray-700">Resume/CV</label>
-              <div className="relative">
-                <Input id="resume" type="file" accept=".pdf,.doc,.docx" onChange={handleFileChange} className="pl-10" required disabled={isProcessingFile} />
-                <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-              </div>
-
-              {isProcessingFile && (
-                <div className="text-sm text-blue-600 flex items-center gap-2">
-                  <AlertCircle className="h-4 w-4 animate-spin" />
-                  <span>Processing file...</span>
-                </div>
-              )}
-
-              {resume && resumeDataUrl && (
-                <div className="space-y-2">
-                  <div className="text-sm text-green-600 flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4" />
-                    <FileText className="h-4 w-4" />
-                    <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
-                  </div>
-                  <p className="text-xs text-green-700">
-                    ✓ Resume processed successfully. It will be sent to Google Sheet.
-                  </p>
-                </div>
-              )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 5MB).</p>
-            </div>
-
-            <div className="flex gap-3 pt-4">
-              <Button type="button" variant="outline" onClick={onClose} className="flex-1">
-                Cancel
-              </Button>
-              <Button onClick={handleSubmit} disabled={isSubmitting || !resume || !resumeDataUrl || isProcessingFile} className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
-                {isSubmitting ? "Submitting..." : "Submit Application"}
-              </Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
-};
-
-const InputField = ({ id, name, placeholder, icon: Icon, value, onChange, type = "text" }) => (
-  <div className="space-y-1">
-    <label htmlFor={id} className="text-sm font-medium text-gray-700">{id.replace(/([A-Z])/g, ' $1')}</label>
-    <div className="relative">
-      <Input id={id} name={name} type={type} placeholder={placeholder} className="pl-10" value={value} onChange={onChange} required />
-      <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-    </div>
-  </div>
-);
+import { useEffect } from "react";
 
 const App = () => {
-  const [showForm, setShowForm] = useState(true);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://tally.so/widgets/embed.js";
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">Job Application Demo</h1>
-        {!showForm && (
-          <Button onClick={() => setShowForm(true)} className="bg-orange-500 hover:bg-orange-600">
-            Open Application Form
-          </Button>
-        )}
-        {showForm && (
-          <JobApplicationForm jobTitle="Senior React Developer" onClose={() => setShowForm(false)} />
-        )}
+        <h1 className="text-3xl font-bold mb-8">Apply for Senior React Developer</h1>
+        <iframe
+          data-tally-src="https://tally.so/embed/mOeXGa?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="691"
+          frameBorder="0"
+          marginHeight={0}
+          marginWidth={0}
+          title="Application Form"
+        ></iframe>
       </div>
     </div>
   );
