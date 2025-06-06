@@ -3,10 +3,8 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BadgeCheck, Briefcase, Users, Clock, MapPin, FileText } from "lucide-react";
-import ApplicantsTable from "@/components/ApplicantsTable";
+import { BadgeCheck, Briefcase, Users, Clock, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
-import { ApplicationData } from "@/components/JobApplicationForm";
 
 declare global {
   interface Window {
@@ -18,7 +16,6 @@ declare global {
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
-  const [applications, setApplications] = useState<ApplicationData[]>([]);
 
   const jobs = [
     {
@@ -43,7 +40,6 @@ const Careers = () => {
     setSelectedJob(null);
   };
 
-  // Load Tally script
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://tally.so/widgets/embed.js';
@@ -61,7 +57,6 @@ const Careers = () => {
     };
   }, []);
 
-  // Load embeds when selectedJob changes
   useEffect(() => {
     if (selectedJob && window.Tally) {
       setTimeout(() => {
@@ -73,8 +68,7 @@ const Careers = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
-      {/* Hero Section */}
+
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -88,24 +82,18 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Main Content with Tabs */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="openings" className="max-w-6xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsList className="w-full mb-8">
               <TabsTrigger value="openings" className="flex items-center gap-2">
                 <Briefcase className="h-4 w-4" />
                 Current Openings
-              </TabsTrigger>
-              <TabsTrigger value="applications" className="flex items-center gap-2">
-                <FileText className="h-4 w-4" />
-                Applications ({applications.length})
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="openings">
               <h2 className="font-heading font-bold text-3xl mb-12 text-center">Current Openings</h2>
-              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {jobs.map((job, index) => (
                   <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
@@ -116,26 +104,21 @@ const Careers = () => {
                         <h3 className="font-heading font-bold text-xl group-hover:text-primary transition-colors">
                           {job.title}
                         </h3>
-                        
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2 text-gray-600">
+                        <div className="space-y-2 text-gray-600">
+                          <div className="flex items-center space-x-2">
                             <MapPin className="h-4 w-4" />
                             <span>{job.location}</span>
                           </div>
-                          <div className="flex items-center space-x-2 text-gray-600">
+                          <div className="flex items-center space-x-2">
                             <Clock className="h-4 w-4" />
                             <span>{job.type}</span>
                           </div>
-                          <div className="flex items-center space-x-2 text-gray-600">
+                          <div className="flex items-center space-x-2">
                             <Users className="h-4 w-4" />
                             <span>{job.experience} experience</span>
                           </div>
                         </div>
-
-                        <Button 
-                          className="w-full mt-4" 
-                          onClick={() => handleApplyClick(job.title)}
-                        >
+                        <Button className="w-full mt-4" onClick={() => handleApplyClick(job.title)}>
                           Apply Now
                         </Button>
                       </div>
@@ -144,20 +127,14 @@ const Careers = () => {
                 ))}
               </div>
             </TabsContent>
-
-            <TabsContent value="applications">
-              <ApplicantsTable applications={applications} />
-            </TabsContent>
           </Tabs>
         </div>
       </section>
 
-      {/* Why Join Us */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-heading font-bold text-3xl mb-12">Why Join Us?</h2>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex flex-col items-center space-y-4">
                 <div className="p-4 bg-primary/10 rounded-full">
@@ -166,7 +143,6 @@ const Careers = () => {
                 <h3 className="font-bold text-lg">Great Team</h3>
                 <p className="text-gray-600">Work with talented professionals who are passionate about technology</p>
               </div>
-              
               <div className="flex flex-col items-center space-y-4">
                 <div className="p-4 bg-primary/10 rounded-full">
                   <Briefcase className="h-6 w-6 text-primary" />
@@ -174,7 +150,6 @@ const Careers = () => {
                 <h3 className="font-bold text-lg my-[18px]">Growth Opportunities</h3>
                 <p className="text-gray-600">Continuous learning and career advancement opportunities</p>
               </div>
-              
               <div className="flex flex-col items-center space-y-4">
                 <div className="p-4 bg-primary/10 rounded-full">
                   <BadgeCheck className="h-6 w-6 text-primary" />
@@ -187,7 +162,6 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Tally Form Modal */}
       {selectedJob && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
