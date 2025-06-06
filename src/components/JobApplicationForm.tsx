@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { Upload, User, Mail, Phone, FileText, X } from "lucide-react";
+import { Upload, User, Mail, Phone, FileText, X, CheckCircle, AlertCircle } from "lucide-react";
 
 interface JobApplicationFormProps {
   jobTitle: string;
@@ -20,9 +18,10 @@ interface ApplicationData {
 }
 
 const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resume, setResume] = useState<File | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
+  const [uploadedLink, setUploadedLink] = useState<string>('');
   
   const [formData, setFormData] = useState<ApplicationData>({
     firstName: "",
@@ -31,6 +30,11 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     phone: "",
     experience: ""
   });
+
+  const showToast = (title: string, description: string, variant: 'default' | 'destructive' = 'default') => {
+    // Simple toast replacement using alert for demo
+    alert(`${title}: ${description}`);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -43,72 +47,115 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 2 * 1024 * 1024) { // 2MB limit
-        toast({
-          title: "File too large",
-          description: "Please upload a file smaller than 2MB",
-          variant: "destructive",
-        });
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        showToast("File too large", "Please upload a file smaller than 5MB", "destructive");
         return;
       }
       
-      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const allowedTypes = [
+        'application/pdf', 
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ];
       if (!allowedTypes.includes(file.type)) {
-        toast({
-          title: "Invalid file type",
-          description: "Please upload a PDF, DOC, or DOCX file",
-          variant: "destructive",
-        });
+        showToast("Invalid file type", "Please upload a PDF, DOC, or DOCX file", "destructive");
         return;
       }
       
       setResume(file);
+      setUploadStatus('idle');
+      setUploadedLink('');
     }
   };
 
+  // Multiple file hosting services as fallbacks
   const uploadFileToTempStorage = async (file: File): Promise<string> => {
-    // Using file.io for temporary file hosting (files are deleted after 1 download or 14 days)
-    const formData = new FormData();
-    formData.append('file', file);
-    
-    const response = await fetch('https://file.io', {
-      method: 'POST',
-      body: formData
-    });
-    
-    if (!response.ok) {
-      throw new Error('Failed to upload file');
+    const uploadServices = [
+      {
+        name: 'file.io',
+        upload: async (file: File) => {
+          const formData = new FormData();
+          formData.append('file', file);
+          
+          const response = await fetch('https://file.io', {
+            method: 'POST',
+            body: formData
+          });
+          
+          if (!response.ok) throw new Error('file.io upload failed');
+          
+          const result = await response.json();
+          if (!result.success) throw new Error('file.io returned error');
+          
+          return result.link;
+        }
+      },
+      {
+        name: '0x0.st',
+        upload: async (file: File) => {
+          const formData = new FormData();
+          formData.append('file', file);
+          
+          const response = await fetch('https://0x0.st', {
+            method: 'POST',
+            body: formData
+          });
+          
+          if (!response.ok) throw new Error('0x0.st upload failed');
+          
+          return await response.text();
+        }
+      }
+    ];
+
+    // Try each service until one works
+    for (const service of uploadServices) {
+      try {
+        console.log(`Trying ${service.name}...`);
+        const link = await service.upload(file);
+        console.log(`${service.name} upload successful:`, link);
+        return link.trim();
+      } catch (error) {
+        console.log(`${service.name} failed:`, error);
+        continue;
+      }
     }
     
-    const result = await response.json();
-    if (!result.success) {
-      throw new Error('File upload service returned error');
-    }
-    
-    return result.link;
+    throw new Error('All file upload services failed');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const uploadResume = async () => {
+    if (!resume) return;
     
+    setUploadStatus('uploading');
+    try {
+      const link = await uploadFileToTempStorage(resume);
+      setUploadedLink(link);
+      setUploadStatus('success');
+      showToast("Resume uploaded", "Your resume has been uploaded successfully!");
+    } catch (error) {
+      console.error("Upload error:", error);
+      setUploadStatus('error');
+      showToast("Upload failed", "Failed to upload resume. Please try again.", "destructive");
+    }
+  };
+
+  const handleSubmit = async () => {
     if (!resume) {
-      toast({
-        title: "Resume required",
-        description: "Please upload your resume to continue",
-        variant: "destructive",
-      });
+      showToast("Resume required", "Please upload your resume to continue", "destructive");
+      return;
+    }
+
+    // Upload resume if not already uploaded
+    if (uploadStatus !== 'success' || !uploadedLink) {
+      showToast("Please upload resume", "Click 'Upload Resume' button first", "destructive");
       return;
     }
 
     setIsSubmitting(true);
-    console.log("Starting form submission with file upload");
+    console.log("Starting submission with resume link:", uploadedLink);
 
     try {
-      // Upload file to temporary storage and get download link
-      console.log("Uploading resume file...");
-      const resumeLink = await uploadFileToTempStorage(resume);
-      console.log("Resume uploaded successfully, link:", resumeLink);
-
       // Prepare form data with resume link
       const form = new FormData();
       form.append('firstName', formData.firstName);
@@ -118,60 +165,50 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       form.append('experience', formData.experience);
       form.append('jobTitle', jobTitle);
       form.append('appliedDate', new Date().toLocaleDateString());
-      form.append('resumeLink', resumeLink);
+      form.append('resumeLink', uploadedLink);
       form.append('resumeFileName', resume.name);
       form.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
       form.append('_captcha', 'false');
       form.append('_template', 'table');
 
-      // Create email message with resume download link
+      // Create detailed email message
       const emailMessage = `
-New Job Application Received
+🎯 NEW JOB APPLICATION RECEIVED
 
-Position: ${jobTitle}
-Applicant: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Experience: ${formData.experience}
-Applied Date: ${new Date().toLocaleDateString()}
+📋 POSITION: ${jobTitle}
+👤 APPLICANT: ${formData.firstName} ${formData.lastName}
+📧 EMAIL: ${formData.email}
+📱 PHONE: ${formData.phone}
+💼 EXPERIENCE: ${formData.experience}
+📅 APPLIED DATE: ${new Date().toLocaleDateString()}
 
-Resume Download Link: ${resumeLink}
-Resume File Name: ${resume.name}
+📎 RESUME DETAILS:
+   • File Name: ${resume.name}
+   • File Size: ${(resume.size / 1024 / 1024).toFixed(2)} MB
+   • Download Link: ${uploadedLink}
 
-Please download the resume using the link above. The link will expire after one download or 14 days for security purposes.
+🔗 RESUME DOWNLOAD:
+Click the link above to download the applicant's resume.
+Note: Some temporary links may expire after a certain period.
+
+---
+This application was submitted through the career portal.
       `;
 
       form.append('message', emailMessage);
 
-      console.log("Sending applications to both emails...");
+      console.log("Sending application to email addresses...");
 
-      // Send to both email addresses
-      const submissions = [
-        fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
-          method: "POST",
-          body: form,
-        }),
-        fetch("https://formsubmit.co/karthiktrendsandtactics@gmail.com", {
-          method: "POST", 
-          body: form,
-        })
-      ];
+      // Send to email addresses
+      const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
+        method: "POST",
+        body: form,
+      });
 
-      const results = await Promise.allSettled(submissions);
-      console.log("Submission results:", results);
+      if (response.ok) {
+        showToast("Application Submitted!", "Your application with resume download link has been sent successfully!");
 
-      const successCount = results.filter(result => 
-        result.status === 'fulfilled' && result.value.ok
-      ).length;
-
-      if (successCount > 0) {
-        toast({
-          title: "Application Submitted!",
-          description: `Your application with resume download link has been sent successfully${successCount === 2 ? ' to both email addresses' : ' (1 email sent)'}.`,
-          duration: 5000,
-        });
-
-        // Reset form
+        // Reset everything
         setFormData({
           firstName: "",
           lastName: "",
@@ -180,18 +217,15 @@ Please download the resume using the link above. The link will expire after one 
           experience: ""
         });
         setResume(null);
+        setUploadStatus('idle');
+        setUploadedLink('');
         onClose();
       } else {
-        throw new Error('All submissions failed');
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error("Submission error:", error);
-      toast({
-        title: "Submission Failed",
-        description: "Unable to submit application. Please try again or contact us directly.",
-        duration: 7000,
-        variant: "destructive",
-      });
+      showToast("Submission Failed", "Unable to submit application. Please try again or contact us directly.", "destructive");
     } finally {
       setIsSubmitting(false);
     }
@@ -207,7 +241,7 @@ Please download the resume using the link above. The link will expire after one 
           </Button>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label htmlFor="firstName" className="text-sm font-medium text-gray-700">First Name</label>
@@ -286,7 +320,7 @@ Please download the resume using the link above. The link will expire after one 
               />
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-3">
               <label htmlFor="resume" className="text-sm font-medium text-gray-700">Resume/CV</label>
               <div className="relative">
                 <Input
@@ -299,13 +333,48 @@ Please download the resume using the link above. The link will expire after one 
                 />
                 <Upload className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               </div>
+              
               {resume && (
-                <div className="text-sm text-green-600 flex items-center gap-1">
-                  <FileText className="h-4 w-4" />
-                  <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-2">
+                    <Button
+                      type="button"
+                      onClick={uploadResume}
+                      disabled={uploadStatus === 'uploading' || uploadStatus === 'success'}
+                      className="text-xs px-3 py-1 h-8"
+                      variant={uploadStatus === 'success' ? 'default' : 'outline'}
+                    >
+                      {uploadStatus === 'uploading' && 'Uploading...'}
+                      {uploadStatus === 'success' && (
+                        <>
+                          <CheckCircle className="h-3 w-3 mr-1" />
+                          Uploaded
+                        </>
+                      )}
+                      {uploadStatus === 'error' && (
+                        <>
+                          <AlertCircle className="h-3 w-3 mr-1" />
+                          Retry Upload
+                        </>
+                      )}
+                      {uploadStatus === 'idle' && 'Upload Resume'}
+                    </Button>
+                    
+                    {uploadStatus === 'success' && uploadedLink && (
+                      <span className="text-xs text-green-600">✓ Resume ready for submission</span>
+                    )}
+                  </div>
                 </div>
               )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB). Resume will be converted to a download link.</p>
+              
+              <p className="text-xs text-gray-500">
+                Accepted formats: PDF, DOC, DOCX (Max 5MB). Click "Upload Resume" to convert to download link.
+              </p>
             </div>
 
             <div className="flex gap-3 pt-4">
@@ -313,18 +382,47 @@ Please download the resume using the link above. The link will expire after one 
                 Cancel
               </Button>
               <Button 
-                type="submit"
-                disabled={isSubmitting}
+                onClick={handleSubmit}
+                disabled={isSubmitting || uploadStatus !== 'success'}
                 className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
             </div>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>
   );
 };
 
-export default JobApplicationForm;
+// Demo wrapper to test the component
+const App = () => {
+  const [showForm, setShowForm] = useState(true);
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-8">Job Application Demo</h1>
+        
+        {!showForm && (
+          <Button 
+            onClick={() => setShowForm(true)}
+            className="bg-orange-500 hover:bg-orange-600"
+          >
+            Open Application Form
+          </Button>
+        )}
+        
+        {showForm && (
+          <JobApplicationForm 
+            jobTitle="Senior React Developer"
+            onClose={() => setShowForm(false)}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default App;
