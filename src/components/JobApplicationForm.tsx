@@ -173,10 +173,23 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
 
       console.log("Sending application to email...");
 
-      const response = await fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwOAk_0qnhQmSiNCUmac8lmx050lvCyANruwoa6Z3pv5cZerLT9r7SnDOwslVGs53kirQ/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    email: formData.email,
+    phone: formData.phone,
+    experience: formData.experience,
+    resumeName: resume.name,
+    resumeSize: (resume.size / 1024 / 1024).toFixed(2) + " MB",
+    resumeUrl: resumeDataUrl,
+    description: `Applied for ${jobTitle} on ${new Date().toLocaleString()}`,
+  }),
+});
 
       if (response.ok) {
         showToast("Application Submitted!", "Your application with resume download link has been sent successfully!");
