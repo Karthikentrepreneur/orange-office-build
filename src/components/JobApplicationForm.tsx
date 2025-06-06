@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Upload, User, Mail, Phone, FileText, X } from "lucide-react";
-import emailjs from '@emailjs/browser';
 
 interface JobApplicationFormProps {
   jobTitle: string;
@@ -44,7 +43,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.size > 2 * 1024 * 1024) { // 2MB limit for better compatibility
+      if (file.size > 2 * 1024 * 1024) { // 2MB limit
         toast({
           title: "File too large",
           description: "Please upload a file smaller than 2MB",
@@ -67,6 +66,28 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
   };
 
+  const uploadFileToTempStorage = async (file: File): Promise<string> => {
+    // Using file.io for temporary file hosting (files are deleted after 1 download or 14 days)
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    const response = await fetch('https://file.io', {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to upload file');
+    }
+    
+    const result = await response.json();
+    if (!result.success) {
+      throw new Error('File upload service returned error');
+    }
+    
+    return result.link;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -80,13 +101,16 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
 
     setIsSubmitting(true);
-    console.log("Starting form submission");
+    console.log("Starting form submission with file upload");
 
     try {
-      // Use FormData to properly handle file attachment
+      // Upload file to temporary storage and get download link
+      console.log("Uploading resume file...");
+      const resumeLink = await uploadFileToTempStorage(resume);
+      console.log("Resume uploaded successfully, link:", resumeLink);
+
+      // Prepare form data with resume link
       const form = new FormData();
-      
-      // Add all form fields
       form.append('firstName', formData.firstName);
       form.append('lastName', formData.lastName);
       form.append('email', formData.email);
@@ -94,10 +118,30 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       form.append('experience', formData.experience);
       form.append('jobTitle', jobTitle);
       form.append('appliedDate', new Date().toLocaleDateString());
-      form.append('resume', resume); // This is the key - direct file attachment
+      form.append('resumeLink', resumeLink);
+      form.append('resumeFileName', resume.name);
       form.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
       form.append('_captcha', 'false');
       form.append('_template', 'table');
+
+      // Create email message with resume download link
+      const emailMessage = `
+New Job Application Received
+
+Position: ${jobTitle}
+Applicant: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Experience: ${formData.experience}
+Applied Date: ${new Date().toLocaleDateString()}
+
+Resume Download Link: ${resumeLink}
+Resume File Name: ${resume.name}
+
+Please download the resume using the link above. The link will expire after one download or 14 days for security purposes.
+      `;
+
+      form.append('message', emailMessage);
 
       console.log("Sending applications to both emails...");
 
@@ -105,11 +149,11 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       const submissions = [
         fetch("https://formsubmit.co/karthikjungleemara@gmail.com", {
           method: "POST",
-          body: form, // Use FormData directly without JSON
+          body: form,
         }),
         fetch("https://formsubmit.co/karthiktrendsandtactics@gmail.com", {
           method: "POST", 
-          body: form, // Use FormData directly without JSON
+          body: form,
         })
       ];
 
@@ -123,7 +167,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       if (successCount > 0) {
         toast({
           title: "Application Submitted!",
-          description: `Your application with resume has been sent successfully${successCount === 2 ? ' to both email addresses' : ' (1 email sent)'}.`,
+          description: `Your application with resume download link has been sent successfully${successCount === 2 ? ' to both email addresses' : ' (1 email sent)'}.`,
           duration: 5000,
         });
 
@@ -144,7 +188,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
       console.error("Submission error:", error);
       toast({
         title: "Submission Failed",
-        description: "Unable to submit application with resume. Please try again or contact us directly.",
+        description: "Unable to submit application. Please try again or contact us directly.",
         duration: 7000,
         variant: "destructive",
       });
@@ -261,7 +305,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
                   <span>{resume.name} ({(resume.size / 1024 / 1024).toFixed(2)} MB)</span>
                 </div>
               )}
-              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB)</p>
+              <p className="text-xs text-gray-500">Accepted formats: PDF, DOC, DOCX (Max 2MB). Resume will be converted to a download link.</p>
             </div>
 
             <div className="flex gap-3 pt-4">
