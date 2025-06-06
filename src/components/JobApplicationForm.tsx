@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import { Upload, User, Mail, Phone, FileText, X } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 interface JobApplicationFormProps {
   jobTitle: string;
@@ -66,6 +68,15 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
   };
 
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -79,87 +90,44 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     }
 
     setIsSubmitting(true);
-    console.log("Starting form submission with file:", resume.name, "Type:", resume.type, "Size:", resume.size);
+    console.log("Starting form submission with EmailJS");
 
     try {
-      // Create separate FormData for each submission
-      const createFormData = () => {
-        const formDataToSend = new FormData();
-        
-        // Add all form fields
-        formDataToSend.append('firstName', formData.firstName);
-        formDataToSend.append('lastName', formData.lastName);
-        formDataToSend.append('email', formData.email);
-        formDataToSend.append('phone', formData.phone);
-        formDataToSend.append('experience', formData.experience);
-        formDataToSend.append('jobTitle', jobTitle);
-        formDataToSend.append('appliedAt', new Date().toISOString());
-        
-        // Set email subject
-        formDataToSend.append('_subject', `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`);
-        
-        // Add resume file with proper name - this is the key fix
-        formDataToSend.append('_attachment', resume, resume.name);
-        
-        // Add FormSubmit configuration
-        formDataToSend.append('_captcha', 'false');
-        
-        return formDataToSend;
+      // Initialize EmailJS (you'll need to set these in your EmailJS dashboard)
+      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+      
+      // Convert file to base64 for attachment
+      const resumeBase64 = await convertFileToBase64(resume);
+      
+      const templateParams = {
+        to_email_1: "karthikjungleemara@gmail.com",
+        to_email_2: "karthiktrendsandtactics@gmail.com",
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        experience: formData.experience,
+        job_title: jobTitle,
+        applied_date: new Date().toLocaleDateString(),
+        resume_name: resume.name,
+        resume_attachment: resumeBase64,
+        subject: `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`
       };
 
-      console.log("Submitting application with resume:", resume.name);
+      console.log("Sending email with EmailJS...");
+      
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        templateParams
+      );
 
-      // Submit to both emails with separate FormData instances
-      const submissions = [
-        fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
-          method: "POST",
-          body: createFormData(),
-        }),
-        fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
-          method: "POST", 
-          body: createFormData(),
-        })
-      ];
+      console.log("EmailJS response:", response);
 
-      const results = await Promise.allSettled(submissions);
-      console.log("Submission results:", results);
-
-      // Check responses
-      let successCount = 0;
-      let errorMessages = [];
-
-      for (let i = 0; i < results.length; i++) {
-        const result = results[i];
-        if (result.status === 'fulfilled') {
-          try {
-            const response = result.value;
-            console.log(`Response ${i + 1} status:`, response.status);
-            
-            if (response.ok) {
-              const data = await response.json();
-              console.log(`Response ${i + 1} data:`, data);
-              if (data.success) {
-                successCount++;
-              } else {
-                errorMessages.push(data.message || 'Unknown error');
-              }
-            } else {
-              errorMessages.push(`HTTP ${response.status}: ${response.statusText}`);
-            }
-          } catch (parseError) {
-            console.error(`Error parsing response ${i + 1}:`, parseError);
-            errorMessages.push('Response parsing error');
-          }
-        } else {
-          console.error(`Request ${i + 1} failed:`, result.reason);
-          errorMessages.push(result.reason.message || 'Network error');
-        }
-      }
-
-      if (successCount > 0) {
+      if (response.status === 200) {
         toast({
           title: "Application Submitted!",
-          description: `Your application with resume has been sent successfully${successCount === 1 ? ' (1 email sent)' : ' (both emails sent)'}.`,
+          description: "Your application with resume has been sent successfully to both email addresses.",
           duration: 5000,
         });
 
@@ -174,17 +142,76 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
         setResume(null);
         onClose();
       } else {
-        console.error("All submissions failed. Errors:", errorMessages);
-        throw new Error(`All submissions failed: ${errorMessages.join(', ')}`);
+        throw new Error('Failed to send email');
       }
     } catch (error) {
-      console.error("Submission error:", error);
-      toast({
-        title: "Submission Failed",
-        description: "Unable to submit application with resume. Please try again or contact us directly.",
-        duration: 7000,
-        variant: "destructive",
-      });
+      console.error("EmailJS submission error:", error);
+      
+      // Fallback to simple notification without attachment
+      try {
+        console.log("Trying fallback method without attachment...");
+        
+        const fallbackData = {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          experience: formData.experience,
+          jobTitle: jobTitle,
+          appliedAt: new Date().toISOString(),
+          resumeName: resume.name,
+          message: `Resume file: ${resume.name} (${(resume.size / 1024 / 1024).toFixed(2)} MB) - Please contact applicant for resume file.`,
+          _subject: `Job Application: ${jobTitle} - ${formData.firstName} ${formData.lastName}`,
+          _captcha: 'false',
+          _template: 'table'
+        };
+
+        const submissions = [
+          fetch("https://formsubmit.co/ajax/karthikjungleemara@gmail.com", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(fallbackData),
+          }),
+          fetch("https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(fallbackData),
+          })
+        ];
+
+        const results = await Promise.allSettled(submissions);
+        const successCount = results.filter(result => 
+          result.status === 'fulfilled' && result.value.ok
+        ).length;
+
+        if (successCount > 0) {
+          toast({
+            title: "Application Submitted!",
+            description: `Your application details have been sent${successCount === 1 ? ' (1 email sent)' : ' (both emails sent)'}. Please note: Resume file attachment failed, so you may need to send it separately.`,
+            duration: 8000,
+          });
+          
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            experience: ""
+          });
+          setResume(null);
+          onClose();
+        } else {
+          throw new Error('All fallback submissions failed');
+        }
+      } catch (fallbackError) {
+        console.error("Fallback submission error:", fallbackError);
+        toast({
+          title: "Submission Failed",
+          description: "Unable to submit application. Please try again or contact us directly with your resume.",
+          duration: 7000,
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -200,6 +227,15 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
           </Button>
         </CardHeader>
         <CardContent>
+          <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-700">
+              <strong>Setup Required:</strong> To enable email functionality with resume attachments, please:
+              <br />1. Create an EmailJS account at emailjs.com
+              <br />2. Replace YOUR_PUBLIC_KEY, YOUR_SERVICE_ID, and YOUR_TEMPLATE_ID in the code
+              <br />3. Configure your email template to include resume attachments
+            </p>
+          </div>
+          
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
