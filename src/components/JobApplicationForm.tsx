@@ -105,7 +105,7 @@ const JobApplicationForm = ({ jobTitle, onClose }: JobApplicationFormProps) => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxJC2cmdLSdNc8RodhDKsUZzGVka02994lVSvIUsjD4XLrNi7DhrSJ4pTdJq0KFiR7OyA/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbxi0S-f0bTkxz0XW6AKkM5BqinCChSGxt11aTfYxuRv-UQhqc3AcoBVIRYg7ING87qpFw/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
