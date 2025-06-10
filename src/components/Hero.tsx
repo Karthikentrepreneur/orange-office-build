@@ -39,7 +39,7 @@ export const Hero = ({
 
       {/* Marquee Section - Fixed positioning and overflow */}
       <div className="absolute bottom-6 left-0 right-0 z-20 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap py-4 my-[56px]">
+        <div className="flex animate-marquee whitespace-nowrap py-4 my-[56px] rounded-full">
           {/* Duplicate the captions for seamless loop */}
           {[...backgroundCaptions, ...backgroundCaptions, ...backgroundCaptions].map((caption, index) => <div key={index} className="inline-flex items-center mx-6 flex-shrink-0">
               <span className="text-black text-lg md:text-2xl font-semibold bg-white px-6 py-3 rounded-md relative shadow-lg">
