@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 const management = () => {
   const location = useLocation();
 
@@ -23,6 +25,7 @@ const management = () => {
       }, 100);
     }
   }, [location]);
+
   const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
   const milestones = [{
     year: "1991",
@@ -39,7 +42,9 @@ const management = () => {
   }];
   const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
   const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
         {/* Hero Section */}
@@ -47,24 +52,32 @@ const management = () => {
           <div className="absolute inset-0 bg-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-10">
-              <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent animate-fade-in">Meet Our  Management Team</h1>
+              <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent animate-fade-in">Meet Our Management Team</h1>
               <p className="text-gray-600 max-w-2xl mx-auto text-lg animate-fade-in delay-75">The driving force behind OOT's innovation and success</p>
             </div>
 
             {/* Director Profile */}
-            <div className="max-w-5xl mx-auto mb-16">
+            <div className="max-w-6xl mx-auto mb-16">
               <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-100">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div className="relative">
-                      <img alt="Mr. Sudhir KU" className="w-full h-full object-cover" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                      <div className="p-8 text-center absolute bottom-0 w-full">
-                        <h3 className="text-3xl font-bold mb-1 text-slate-50">Mr. Sudhir KU</h3>
-                        <p className="text-white/90 text-xl">Director</p>
+                <CardContent className="p-8">
+                  <div className="flex flex-col md:flex-row items-center gap-8">
+                    {/* Smaller Image Section */}
+                    <div className="flex-shrink-0">
+                      <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
+                        <img 
+                          alt="Mr. Sudhir KU" 
+                          className="w-full h-full object-cover" 
+                          src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                       </div>
                     </div>
-                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-orange-50/30">
+                    
+                    {/* Content Section */}
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">Mr. Sudhir KU</h3>
+                      <p className="text-orange-600 text-xl md:text-2xl font-semibold mb-4">Director</p>
+                      
                       <div className="prose max-w-none">
                         <p className="text-gray-700 mb-4">
                           Mr. Sudhir KU, the Director of Orange Office Technologies Pvt Ltd, brings a rich professional journey spanning over 35 years.
@@ -72,12 +85,15 @@ const management = () => {
                         <p className="text-gray-700 mb-4">
                           Starting in the courier industry in 1991, he progressed into freight forwarding, extending operations to Dubai and Singapore.
                         </p>
-                        <p className="text-gray-700 mb-6">In 2012, he founded Orange Office Technologies Pvt Ltd to address back-office support in logistics, setting benchmarks in the industry.</p>
+                        <p className="text-gray-700 mb-6">In 2012, he founded Orange Office Technologies Pvt Ltd to address back-office support in logistics, setting benchmarks in the industry.</p>
+                        
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                        <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
+                          {expertises.map((expertise, index) => (
+                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>)}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -151,8 +167,8 @@ const management = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
                         <h3 className="text-2xl font-bold mb-3 text-gray-900">Legacy</h3>
-                        <p className="text-gray-700 mb-4">His strategic foresight has expanded Orange Office Technologies Pvt Ltd into a global service provider.</p>
-                        <p className="text-gray-700">Today, Orange Office Technologies Pvt Ltd empowers businesses worldwide with reliable and innovative solutions.</p>
+                        <p className="text-gray-700 mb-4">His strategic foresight has expanded Orange Office Technologies Pvt Ltd into a global service provider.</p>
+                        <p className="text-gray-700">Today, Orange Office Technologies Pvt Ltd empowers businesses worldwide with reliable and innovative solutions.</p>
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
@@ -168,21 +184,28 @@ const management = () => {
             </section>
 
             {/* CTO Section */}
-            <div id="cto" className="max-w-5xl mx-auto mt-12 scroll-mt-24">
+            <div id="cto" className="max-w-6xl mx-auto mt-12 scroll-mt-24">
               <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                    {/* Image Section */}
-                    <div className="relative">
-                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/bennetSir.png" />
+                <CardContent className="p-8">
+                  <div className="flex flex-col md:flex-row items-center gap-8">
+                    {/* Smaller Image Section */}
+                    <div className="flex-shrink-0">
+                      <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
+                        <img 
+                          alt="Mr. Bennet Rajesh" 
+                          className="w-full h-full object-cover" 
+                          src="/bennetSir.png" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                      </div>
                     </div>
 
-                    {/* Text Content Section */}
-                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
-                      <div className="prose max-w-none">
-                        <h3 className="text-3xl font-bold mb-1 text-orange-500">Mr. Bennet Rajesh</h3>
-                        <p className="text-xl mb-4 text-orange-400">Chief Technology Officer</p>
+                    {/* Content Section */}
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-3xl md:text-4xl font-bold mb-2 text-orange-600">Mr. Bennet Rajesh</h3>
+                      <p className="text-xl md:text-2xl mb-4 text-orange-500 font-semibold">Chief Technology Officer</p>
 
+                      <div className="prose max-w-none">
                         <p className="text-gray-700 mb-4">
                           "Architecting cutting-edge solutions to redefine industry standards."
                         </p>
@@ -197,10 +220,12 @@ const management = () => {
                         </p>
 
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
+                        <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
+                          {ctoExpertises.map((item, index) => (
+                            <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
                               {item}
-                            </span>)}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -208,19 +233,12 @@ const management = () => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Enhanced Achievements & Career Timeline Section */}
-            <div className="max-w-5xl mx-auto mt-12">
-              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-300">
-                <CardContent className="p-0">
-                  
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </section>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default management;

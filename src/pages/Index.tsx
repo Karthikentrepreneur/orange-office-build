@@ -278,39 +278,67 @@ const Index = () => {
       </p>
     </div>
 
-    {/* Cards */}
-    <div className="grid md:grid-cols-2 gap-10">
-      {/* Card 1 */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row items-center gap-6">
-        <div className="lg:w-1/2 w-full">
-          <img src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" alt="Mr. Sudhir KU" className="w-full h-full object-contain" />
-        </div>
-        <div className="lg:w-1/2 w-full p-6 space-y-4 text-left">
-          <h3 className="text-gray-900 font-bold text-2xl">Mr. Sudhir KU</h3>
-          <p className="text-orange-600 font-semibold text-xl">Director</p>
-          <p className="text-gray-600 leading-relaxed text-base">
-            35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence. His career reflects a rare blend of perseverance, adaptability, and forward-thinking leadership. Starting his professional journey in 1991 in the courier industry, Mr. Sudhir gradually advanced into the logistics and freight forwarding sector.
-          </p>
-          <a href="/our-team" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
-            Know More
-          </a>
+    {/* Cards with smaller images */}
+    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* Director Card */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+          {/* Smaller Image */}
+          <div className="flex-shrink-0">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" 
+                alt="Mr. Sudhir KU" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          
+          {/* Content */}
+          <div className="flex-1 text-center sm:text-left">
+            <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Sudhir KU</h3>
+            <p className="text-orange-600 font-semibold text-lg mb-3">Director</p>
+            <p className="text-gray-600 leading-relaxed text-sm mb-4">
+              35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
+            </p>
+            <a 
+              href="/our-team" 
+              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+            >
+              Know More
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Card 2 */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row items-center gap-6">
-        <div className="lg:w-1/2 w-full">
-          <img src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" alt="Mr. Bennet Rajesh" className="w-full h-full object-contain" />
-        </div>
-        <div className="lg:w-1/2 w-full p-6 space-y-4 text-left">
-          <h3 className="text-gray-900 font-bold text-2xl">Mr. Bennet Rajesh</h3>
-          <p className="text-orange-600 font-semibold text-xl">Chief Technology Officer</p>
-          <p className="text-gray-600 leading-relaxed text-base">
-            27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture. He has a proven track record of delivering complex, scalable systems consistently meeting deadlines and budgets. His technical interests include Product Thinking, Microservices, DevOps, Containerization, Cloud Computing, and Security.
-          </p>
-          <a href="/our-team#cto" className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded shadow hover:from-orange-600 hover:to-amber-600 transition">
-            Know More
-          </a>
+      {/* CTO Card */}
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+          {/* Smaller Image */}
+          <div className="flex-shrink-0">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
+              <img 
+                src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" 
+                alt="Mr. Bennet Rajesh" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+          
+          {/* Content */}
+          <div className="flex-1 text-center sm:text-left">
+            <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Bennet Rajesh</h3>
+            <p className="text-orange-600 font-semibold text-lg mb-3">Chief Technology Officer</p>
+            <p className="text-gray-600 leading-relaxed text-sm mb-4">
+              27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
+            </p>
+            <a 
+              href="/our-team#cto" 
+              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+            >
+              Know More
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -398,6 +426,8 @@ const Index = () => {
         {/* Footer */}
         <Footer />
       </section>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
