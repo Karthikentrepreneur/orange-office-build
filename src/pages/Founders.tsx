@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,7 +5,6 @@ import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 const management = () => {
   const location = useLocation();
 
@@ -25,7 +23,6 @@ const management = () => {
       }, 100);
     }
   }, [location]);
-
   const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
   const milestones = [{
     year: "1991",
@@ -42,9 +39,7 @@ const management = () => {
   }];
   const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
   const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
         {/* Hero Section */}
@@ -64,12 +59,8 @@ const management = () => {
                     {/* Smaller Image Section */}
                     <div className="flex-shrink-0">
                       <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
-                        <img 
-                          alt="Mr. Sudhir KU" 
-                          className="w-full h-full object-cover" 
-                          src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" 
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                        <img alt="Mr. Sudhir KU" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" className="w-full h-full object-contain" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-[32px]" />
                       </div>
                     </div>
                     
@@ -89,11 +80,9 @@ const management = () => {
                         
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
-                          {expertises.map((expertise, index) => (
-                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -191,11 +180,7 @@ const management = () => {
                     {/* Smaller Image Section */}
                     <div className="flex-shrink-0">
                       <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
-                        <img 
-                          alt="Mr. Bennet Rajesh" 
-                          className="w-full h-full object-cover" 
-                          src="/bennetSir.png" 
-                        />
+                        <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover" src="/bennetSir.png" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                       </div>
                     </div>
@@ -221,11 +206,9 @@ const management = () => {
 
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
-                          {ctoExpertises.map((item, index) => (
-                            <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
+                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
                               {item}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -237,8 +220,6 @@ const management = () => {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default management;
