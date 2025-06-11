@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,7 @@ const clientLogos = [{
   src: "/63048c170f81a.png",
   alt: "Aerofreight"
 }];
+
 const Index = () => {
   // Intersection Observer for scroll animations
   const observerRef = useRef(null);
@@ -97,7 +99,9 @@ const Index = () => {
       }
     };
   }, []);
-  return <div className="min-h-screen flex flex-col">
+
+  return (
+    <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
@@ -121,7 +125,6 @@ const Index = () => {
               <CardContent className="p-0 relative">
                 <div className="h-56 md:h-64 overflow-hidden">
                   <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="Our Mission" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  
                 </div>
                 <div className="relative">
                   <div className="bg-white p-8 relative z-10">
@@ -141,7 +144,6 @@ const Index = () => {
               <CardContent className="p-0 relative">
                 <div className="h-56 md:h-64 overflow-hidden">
                   <img alt="Our Vision" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/lovable-uploads/80922c9b-79f9-4226-8e07-491c1056064e.jpg" />
-                  
                 </div>
                 <div className="relative">
                   <div className="bg-white p-8 relative z-10">
@@ -178,10 +180,6 @@ const Index = () => {
 
       {/* Services Section with Enhanced Cards */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden bg-slate-50">
-        
-        
-        
-        
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text text-transparent">Our Services</h2>
@@ -192,53 +190,53 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[{
-            icon: FileCheck,
-            title: "Documentation Services",
-            description: "Expert documentation handling including invoices, credit notes, and job profit statements.",
-            image: "/1.png",
-            color: "from-blue-500 to-cyan-400",
-            link: "/services/documentation"
-          }, {
-            icon: Users,
-            title: "Sales Support Desk",
-            description: "Centralized sales support for lead management and customer relationships.",
-            image: "/2.png",
-            color: "from-amber-500 to-orange-400",
-            link: "/services/salessupport"
-          }, {
-            icon: Globe,
-            title: "Digital Marketing",
-            description: "Comprehensive digital marketing solutions to boost your online presence.",
-            image: "/10.png",
-            color: "from-green-500 to-emerald-400",
-            link: "/services/digitalmarketing"
-          }, {
-            icon: Building2,
-            title: "Account Management",
-            description: "Professional accounting services for trade and non-trade transactions.",
-            image: "/4.png",
-            color: "from-purple-500 to-violet-400",
-            link: "/services/AccountsManagement"
-          }, {
-            icon: Headset,
-            title: "Customer Service",
-            description: "Dedicated customer service team for bookings and nominations.",
-            image: "/12.png",
-            color: "from-pink-500 to-rose-400",
-            link: "/services/customerservice"
-          }, {
-            icon: Shield,
-            title: "Software Solutions",
-            description: "Custom software development following industry best practices.",
-            image: "/13.png",
-            color: "from-cyan-500 to-blue-400",
-            link: "/services/SoftwareSolutions"
-          }].map((service, index) => <Card key={index} className="group border-none rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 animate-on-scroll overflow-hidden bg-white" style={{
-            animationDelay: `${index * 100}ms`
-          }}>
+              icon: FileCheck,
+              title: "Documentation Services",
+              description: "Expert documentation handling including invoices, credit notes, and job profit statements.",
+              image: "/1.png",
+              color: "from-blue-500 to-cyan-400",
+              link: "/services/documentation"
+            }, {
+              icon: Users,
+              title: "Sales Support Desk",
+              description: "Centralized sales support for lead management and customer relationships.",
+              image: "/2.png",
+              color: "from-amber-500 to-orange-400",
+              link: "/services/salessupport"
+            }, {
+              icon: Globe,
+              title: "Digital Marketing",
+              description: "Comprehensive digital marketing solutions to boost your online presence.",
+              image: "/10.png",
+              color: "from-green-500 to-emerald-400",
+              link: "/services/digitalmarketing"
+            }, {
+              icon: Building2,
+              title: "Account Management",
+              description: "Professional accounting services for trade and non-trade transactions.",
+              image: "/4.png",
+              color: "from-purple-500 to-violet-400",
+              link: "/services/AccountsManagement"
+            }, {
+              icon: Headset,
+              title: "Customer Service",
+              description: "Dedicated customer service team for bookings and nominations.",
+              image: "/12.png",
+              color: "from-pink-500 to-rose-400",
+              link: "/services/customerservice"
+            }, {
+              icon: Shield,
+              title: "Software Solutions",
+              description: "Custom software development following industry best practices.",
+              image: "/13.png",
+              color: "from-cyan-500 to-blue-400",
+              link: "/services/SoftwareSolutions"
+            }].map((service, index) => (
+              <Card key={index} className="group border-none rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 animate-on-scroll overflow-hidden bg-white" style={{
+                animationDelay: `${index * 100}ms`
+              }}>
                 <div className="h-44 relative overflow-hidden">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  
                   <div className="absolute top-0 right-0 m-4">
                     <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
                       <service.icon className="h-6 w-6 text-white" />
@@ -255,101 +253,103 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-    <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-  {/* Decorative Background */}
-  <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
-  </div>
+      {/* Meet Our Team Section */}
+      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
+        </div>
 
-  <div className="container mx-auto px-4 relative z-10">
-    {/* Heading */}
-    <div className="text-center mb-16">
-      <h2 className="font-heading font-bold text-3xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text md:text-5xl">
-        Meet Our Team
-      </h2>
-      <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
-        The force behind OOT's innovation and global success
-      </p>
-    </div>
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Heading */}
+          <div className="text-center mb-16">
+            <h2 className="font-heading font-bold text-3xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text md:text-5xl">
+              Meet Our Team
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
+              The force behind OOT's innovation and global success
+            </p>
+          </div>
 
-    {/* Cards with smaller images */}
-    <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      {/* Director Card */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-        <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
-          {/* Smaller Image */}
-          <div className="flex-shrink-0">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" 
-                alt="Mr. Sudhir KU" 
-                className="w-full h-full object-cover"
-              />
+          {/* Cards with smaller images */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Director Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+                {/* Smaller Image */}
+                <div className="flex-shrink-0">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
+                    <img 
+                      src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" 
+                      alt="Mr. Sudhir KU" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Sudhir KU</h3>
+                  <p className="text-orange-600 font-semibold text-lg mb-3">Director</p>
+                  <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                    35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
+                  </p>
+                  <a 
+                    href="/our-team" 
+                    className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+                  >
+                    Know More
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* CTO Card */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+              <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+                {/* Smaller Image */}
+                <div className="flex-shrink-0">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
+                    <img 
+                      src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" 
+                      alt="Mr. Bennet Rajesh" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Bennet Rajesh</h3>
+                  <p className="text-orange-600 font-semibold text-lg mb-3">Chief Technology Officer</p>
+                  <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                    27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
+                  </p>
+                  <a 
+                    href="/our-team#cto" 
+                    className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+                  >
+                    Know More
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Content */}
-          <div className="flex-1 text-center sm:text-left">
-            <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Sudhir KU</h3>
-            <p className="text-orange-600 font-semibold text-lg mb-3">Director</p>
-            <p className="text-gray-600 leading-relaxed text-sm mb-4">
-              35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
-            </p>
-            <a 
-              href="/our-team" 
-              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-            >
-              Know More
-            </a>
-          </div>
         </div>
-      </div>
-
-      {/* CTO Card */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-        <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
-          {/* Smaller Image */}
-          <div className="flex-shrink-0">
-            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
-              <img 
-                src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" 
-                alt="Mr. Bennet Rajesh" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-          
-          {/* Content */}
-          <div className="flex-1 text-center sm:text-left">
-            <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Bennet Rajesh</h3>
-            <p className="text-orange-600 font-semibold text-lg mb-3">Chief Technology Officer</p>
-            <p className="text-gray-600 leading-relaxed text-sm mb-4">
-              27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
-            </p>
-            <a 
-              href="/our-team#cto" 
-              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-            >
-              Know More
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-    </section>
+      </section>
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
         <svg className="absolute top-0 left-0 w-full text-orange-50" style={{
-        transform: "translateY(-1px)"
-      }} fill="currentColor" viewBox="0 0 1440 40">
+          transform: "translateY(-1px)"
+        }} fill="currentColor" viewBox="0 0 1440 40">
           <path d="M0,0L40,4C80,8,160,16,240,18.7C320,21,400,19,480,13.3C560,8,640,0,720,0C800,0,880,8,960,12C1040,16,1120,16,1200,12C1280,8,1360,0,1400,-4L1440,-8L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
         </svg>
         
@@ -360,9 +360,7 @@ const Index = () => {
             <div className="order-2 lg:order-1 animate-on-scroll">
               <h2 className="font-heading font-bold md:text-4xl mb-6 text-gradient bg-gradient-to-r from-orange-700 via-orange-600 to-orange-500 bg-clip-text text-transparent text-2xl lg:text-3xl">Orange Office Technologies Pvt Ltd</h2>
               <p className="text-gray-600 mb-6 text-lg">Orange Office Technologies Pvt Ltd is a specialized back-office service provider catering exclusively to the global shipping, freight management, and third-party logistics (3PL) industries.</p>
-              <p className="text-gray-600 mb-8">We support our clients by managing their core non-customer-facing functions  including documentation, sales support, customer service, accounting, and digital services allowing them to focus on their core logistics operations. Our deep industry knowledge combined with a skilled workforce ensures service excellence, operational efficiency, and real-time adaptability in today’s dynamic market
-
-            </p>
+              <p className="text-gray-600 mb-8">We support our clients by managing their core non-customer-facing functions including documentation, sales support, customer service, accounting, and digital services allowing them to focus on their core logistics operations. Our deep industry knowledge combined with a skilled workforce ensures service excellence, operational efficiency, and real-time adaptability in today's dynamic market.</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 <div className="flex items-start">
@@ -396,7 +394,6 @@ const Index = () => {
               <div className="relative">
                 <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                   <img alt="Orange Office Technologies Building" className="w-full h-full object-cover" src="/lovable-uploads/04a753dd-ba7f-4011-8785-b8ca9ae84e26.png" />
-                  
                 </div>
                 
                 {/* Floating card */}
@@ -422,7 +419,6 @@ const Index = () => {
 
       {/* Enhanced Stats Section */}
       <section className="bg-gradient-to-br from-gray-50 to-white relative overflow-hidden py-0">
-        
         {/* Footer */}
         <Footer />
       </section>
