@@ -156,7 +156,7 @@ const management = () => {
                 <CardContent className="p-8">
                   <div className="flex flex-col items-center gap-8">
                     <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl border-4 border-orange-400 hover:scale-105 transition-transform duration-300">
-                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover rounded-full" src="/bennetSir.png" />
+                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover rounded-full" src="/lovable-uploads/2ad0951b-3cab-4312-a19d-8b58d46e0d37.png" />
                     </div>
                     <div className="text-center">
                       <h3 className="text-3xl md:text-4xl font-bold mb-2 text-orange-600">Mr. Bennet Rajesh</h3>
