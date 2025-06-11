@@ -272,39 +272,35 @@ const Index = () => {
     </div>
 
     {/* Team Cards */}
-    <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-      {/* Team Member */}
-      {[{
-            name: "Mr. Sudhir KU",
-            role: "Director",
-            image: "/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png",
-            desc: "35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.",
-            link: "/our-team"
-          }, {
-            name: "Mr. Bennet Rajesh",
-            role: "Chief Technology Officer",
-            image: "/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png",
-            desc: "27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.",
-            link: "/our-team#cto"
-          }].map((member, index) => <div key={index} className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left">
-          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6 sm:mb-0 sm:mr-6">
-            <img src={member.image} alt={member.name} className="w-full h-full object-contain" />
-          </div>
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
-            <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              {member.desc}
-            </p>
-            <a href={member.link} className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg">
-              Know More
-            </a>
-          </div>
-        </div>)}
+<div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+  {[{
+    name: "Mr. Sudhir KU",
+    role: "Director",
+    image: "/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png",
+    desc: "35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.",
+    link: "/our-team"
+  }, {
+    name: "Mr. Bennet Rajesh",
+    role: "Chief Technology Officer",
+    image: "/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png",
+    desc: "27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.",
+    link: "/our-team#cto"
+  }].map((member, index) => (
+    <div key={index} className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center">
+      <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6">
+        <img src={member.image} alt={member.name} className="w-full h-full object-contain" />
+      </div>
+      <div>
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
+        <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
+        <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.desc}</p>
+        <a href={member.link} className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg">
+          Know More
+        </a>
+      </div>
     </div>
-  </div>
-    </section>
-
+  ))}
+</div>
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
