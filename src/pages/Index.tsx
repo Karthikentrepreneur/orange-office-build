@@ -277,44 +277,9 @@ const Index = () => {
       </p>
     </div>
 
-    <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-  {/* Decorative Background */}
-  <div className="absolute inset-0 z-0 pointer-events-none">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
-  </div>
-
-  <div className="relative z-10 container mx-auto px-4">
-    {/* Heading */}
-    <div className="text-center mb-20">
-      <h2 className="font-heading font-extrabold text-4xl md:text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-transparent bg-clip-text">
-        Meet Our Team
-      </h2>
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base md:text-lg">
-        The force behind OOT's innovation and global success
-      </p>
-    </div>
-
-    <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-  {/* Decorative Background */}
-  <div className="absolute inset-0 z-0 pointer-events-none">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
-  </div>
-
-  <div className="relative z-10 container mx-auto px-4">
-    {/* Heading */}
-    <div className="text-center mb-20">
-      <h2 className="font-heading font-extrabold text-4xl md:text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-transparent bg-clip-text">
-        Meet Our Team
-      </h2>
-      <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base md:text-lg">
-        The force behind OOT's innovation and global success
-      </p>
-    </div>
-
     {/* Team Cards */}
     <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+      {/* Team Member */}
       {[{
         name: "Mr. Sudhir KU",
         role: "Director",
@@ -330,34 +295,34 @@ const Index = () => {
       }].map((member, index) => (
         <div
           key={index}
-          className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center p-8"
+          className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left"
         >
-          {/* Centered Circular Image */}
-          <div className="w-32 h-32 md:w-36 md:h-36 mx-auto mb-6 rounded-full overflow-hidden shadow-lg">
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6 sm:mb-0 sm:mr-6">
             <img
               src={member.image}
               alt={member.name}
               className="w-full h-full object-cover"
             />
           </div>
-
-          {/* Content */}
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
-          <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-5 px-2">
-            {member.desc}
-          </p>
-          <a
-            href={member.link}
-            className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-          >
-            Know More
-          </a>
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
+            <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              {member.desc}
+            </p>
+            <a
+              href={member.link}
+              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+            >
+              Know More
+            </a>
+          </div>
         </div>
       ))}
     </div>
   </div>
 </section>
+
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
