@@ -23,173 +23,230 @@ const Management = () => {
     "35+ years of industry experience",
     "Pioneered specialized back-office services for freight forwarding",
     "Expanded operations across multiple global locations",
-    "Led digital transformation initiatives in logistics sector"
+    "Led digital transformation initiatives in logistics sector",
   ];
 
   const milestones = [
     { year: "1991", event: "Started professional journey in the courier industry" },
     { year: "1990s-2000s", event: "Advanced into logistics and freight forwarding sector" },
     { year: "2012", event: "Founded Orange Office Technologies Pvt Ltd" },
-    { year: "Present", event: "Leading global expansion and digital transformation initiatives" }
+    { year: "Present", event: "Leading global expansion and digital transformation initiatives" },
   ];
 
   const expertises = [
-    "Back-office operations", "Supply chain management", "Digital transformation",
-    "Global logistics", "Strategic partnerships", "IT solutions"
+    "Back-office operations",
+    "Supply chain management",
+    "Digital transformation",
+    "Global logistics",
+    "Strategic partnerships",
+    "IT solutions",
   ];
 
   const ctoExpertises = [
-    "Java, Spring, JPA", "MERN Stack", "Microservices & DevOps",
-    "Cloud Computing", "Enterprise Integration", "Security & Automation"
+    "Java, Spring, JPA",
+    "MERN Stack",
+    "Microservices & DevOps",
+    "Cloud Computing",
+    "Enterprise Integration",
+    "Security & Automation",
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white via-orange-50 to-orange-100 text-gray-800">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
-      <main className="flex-grow pt-24">
-        {/* Hero */}
-        <section className="relative w-full">
-          <div className="w-full h-64 md:h-96 overflow-hidden">
-            <img
-              src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png"
-              alt="Management Team"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white text-center px-4">
-              <h1 className="text-4xl md:text-5xl font-bold animate-fade-in mb-3">
+      <main className="flex-grow pt-20">
+        <section className="py-12 relative overflow-hidden">
+          <div className="absolute inset-0 bg-pattern opacity-5" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-10">
+              <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent animate-fade-in">
                 Meet Our Management Team
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl animate-fade-in delay-100">
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg animate-fade-in delay-75">
                 The driving force behind OOT's innovation and success
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Director */}
-        <section className="px-4 py-16 container mx-auto max-w-6xl">
-          <Card className="shadow-2xl rounded-3xl bg-white transition-transform hover:scale-[1.01]">
-            <CardContent className="p-8">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png"
-                    alt="Mr. Sudhir KU"
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-2">Mr. Sudhir KU</h3>
-                  <p className="text-orange-600 text-xl font-semibold mb-4">Director</p>
-                  <p className="mb-3 text-gray-700">
-                    Mr. Sudhir KU brings a rich professional journey spanning over 35 years. From the courier industry in 1991, he moved into global freight forwarding.
-                  </p>
-                  <p className="mb-3 text-gray-700">
-                    In 2012, he founded Orange Office Technologies Pvt Ltd, revolutionizing back-office support in logistics.
-                  </p>
-                  <h4 className="text-lg font-semibold text-gray-800 mt-6 mb-3">Areas of Expertise</h4>
-                  <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                    {expertises.map((item, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Journey */}
-        <section className="bg-white py-16">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
-              Professional Journey & Impact
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Achievements */}
-              <Card className="bg-amber-50 shadow-xl rounded-2xl">
-                <CardContent className="p-6 md:p-8 space-y-4">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Award className="text-orange-600" />
-                    <h3 className="text-xl font-semibold">Key Achievements</h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {achievements.map((a, i) => (
-                      <li key={i} className="flex gap-3 items-center">
-                        <Star className="text-amber-500 w-5 h-5" />
-                        <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              {/* Milestones */}
-              <Card className="bg-blue-50 shadow-xl rounded-2xl">
-                <CardContent className="p-6 md:p-8 space-y-4">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Calendar className="text-blue-600" />
-                    <h3 className="text-xl font-semibold">Career Milestones</h3>
-                  </div>
-                  <div className="border-l-2 pl-6 space-y-6 border-blue-200">
-                    {milestones.map((m, i) => (
-                      <div key={i} className="relative">
-                        <div className="absolute -left-3 top-1.5 w-3 h-3 rounded-full bg-blue-500 border-white border-2"></div>
-                        <p className="text-sm font-medium text-blue-600">{m.year}</p>
-                        <p className="text-gray-700">{m.event}</p>
+            {/* Director Section */}
+            <div className="max-w-5xl mx-auto mb-16">
+              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-100">
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="relative">
+                      <img
+                        alt="Portrait of Mr. Sudhir KU, Director"
+                        className="w-full h-full object-cover"
+                        src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                      <div className="p-8 text-center absolute bottom-0 w-full">
+                        <h3 className="text-3xl font-bold mb-1 text-slate-50">Mr. Sudhir KU</h3>
+                        <p className="text-white/90 text-xl">Director</p>
                       </div>
-                    ))}
+                    </div>
+                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-orange-50/30">
+                      <div className="prose max-w-none">
+                        <p className="text-gray-700 mb-4">
+                          Mr. Sudhir KU, the Director of Orange Office Technologies Pvt Ltd, brings a rich professional journey spanning over 35 years.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          Starting in the courier industry in 1991, he progressed into freight forwarding, extending operations to Dubai and Singapore.
+                        </p>
+                        <p className="text-gray-700 mb-6">
+                          In 2012, he founded Orange Office Technologies Pvt Ltd to address back-office support in logistics, setting benchmarks in the industry.
+                        </p>
+                        <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {expertises.map((exp, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium hover:bg-orange-200 transition"
+                            >
+                              {exp}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Vision */}
-            <Card className="mt-10 bg-gradient-to-br from-amber-100 to-white rounded-2xl shadow-xl">
-              <CardContent className="p-8 grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">Legacy</h3>
-                  <p className="text-gray-700">His strategic foresight expanded Orange Office into a global service provider, empowering logistics worldwide.</p>
+            {/* Journey and Milestones */}
+            <section className="py-12 bg-white relative md:py-[75px]">
+              <div className="container mx-auto px-4">
+                <div className="text-center mb-10">
+                  <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
+                    Professional Journey & Impact
+                  </h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Decades of expertise and innovation transforming the logistics industry
+                  </p>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">Vision</h3>
-                  <p className="text-gray-700">Mr. Sudhir envisions logistics firms outsourcing complexity to specialized experts, driving innovation and satisfaction.</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
 
-        {/* CTO */}
-        <section id="cto" className="py-16 bg-white px-4">
-          <div className="container mx-auto max-w-6xl">
-            <Card className="shadow-2xl rounded-3xl">
-              <CardContent className="p-8 flex flex-col md:flex-row gap-8 items-center">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-lg">
-                  <img
-                    src="/lovable-uploads/9c915285-b3ef-47f9-b225-6e1d0680e58a.png"
-                    alt="Mr. Bennet Rajesh"
-                    className="object-contain w-full h-full"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+                  {/* Achievements */}
+                  <Card className="border-none shadow-xl hover:shadow-2xl bg-slate-100 rounded-2xl">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="space-y-6">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-orange-400 shadow-lg">
+                          <Award className="h-6 w-6 text-white" />
+                        </div>
+                        <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
+                        <ul className="space-y-3">
+                          {achievements.map((a, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                              <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
+                                <Star className="h-4 w-4 text-amber-500" />
+                              </div>
+                              <span className="text-gray-700">{a}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Milestones */}
+                  <Card className="border-none shadow-xl hover:shadow-2xl bg-white/80 rounded-2xl">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="space-y-6">
+                        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg">
+                          <Calendar className="h-6 w-6 text-white" />
+                        </div>
+                        <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
+                        <div className="border-l-2 border-gray-200 pl-6 space-y-6">
+                          {milestones.map((m, i) => (
+                            <div key={i} className="relative">
+                              <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
+                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                              </div>
+                              <div>
+                                <div className="bg-orange-100 rounded-full px-3 py-1 text-sm text-orange-500 font-medium inline-block mb-2">
+                                  {m.year}
+                                </div>
+                                <p className="text-gray-700">{m.event}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-3xl font-bold text-orange-600 mb-1">Mr. Bennet Rajesh</h3>
-                  <p className="text-xl text-orange-500 font-medium mb-4">Chief Technology Officer</p>
-                  <p className="mb-3">"Architecting cutting-edge solutions to redefine industry standards."</p>
-                  <p className="mb-3 text-gray-700">With 27 years in software, Mr. Bennet excels as a Java Enterprise Architect and mentor, proficient in Spring, MERN, Microservices, and Cloud.</p>
-                  <h4 className="mt-6 mb-3 font-semibold text-gray-800">Technological Expertise</h4>
-                  <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                    {ctoExpertises.map((item, i) => (
-                      <span key={i} className="px-3 py-1 bg-orange-100 text-orange-600 text-sm rounded-full">
-                        {item}
-                      </span>
-                    ))}
+
+                {/* Legacy and Vision */}
+                <Card className="border-none shadow-xl hover:shadow-2xl bg-gradient-to-br from-amber-50 to-white mt-8 max-w-5xl mx-auto rounded-2xl">
+                  <CardContent className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">Legacy</h3>
+                      <p className="text-gray-700 mb-4">
+                        His strategic foresight has expanded Orange Office Technologies Pvt Ltd into a global service provider.
+                      </p>
+                      <p className="text-gray-700">
+                        Today, the company empowers businesses worldwide with reliable and innovative solutions.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3 text-gray-900">Vision</h3>
+                      <p className="text-gray-700 mb-4">
+                        Mr. Sudhir envisions logistics companies outsourcing operational complexity to specialized partners.
+                      </p>
+                      <p className="text-gray-700">
+                        His leadership drives innovation, customer satisfaction, and global service expansion.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
+
+            {/* CTO Section */}
+            <div id="cto" className="max-w-5xl mx-auto mt-12 scroll-mt-24">
+              <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-200">
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="relative">
+                      <img
+                        alt="Portrait of Mr. Bennet Rajesh, CTO"
+                        className="w-full h-full object-cover"
+                        src="/bennetSir.png"
+                      />
+                    </div>
+                    <div className="p-6 md:p-8 bg-gradient-to-br from-white to-blue-50/30">
+                      <div className="prose max-w-none">
+                        <h3 className="text-3xl font-bold mb-1 text-orange-500">Mr. Bennet Rajesh</h3>
+                        <p className="text-xl mb-4 text-orange-400">Chief Technology Officer</p>
+                        <p className="text-gray-700 mb-4">
+                          "Architecting cutting-edge solutions to redefine industry standards."
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          With 27 years of experience, Mr. Bennet is a seasoned Java Enterprise Architect, Developer, and Mentor.
+                        </p>
+                        <p className="text-gray-700 mb-4">
+                          His expertise spans Java, MERN stack, Microservices, DevOps, and Cloud. A strong advocate for Agile and product thinking.
+                        </p>
+                        <p className="text-gray-700 mb-6">
+                          As CTO, he drives the company’s technological vision and enterprise innovation.
+                        </p>
+                        <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {ctoExpertises.map((item, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500 hover:bg-orange-200 transition"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
       </main>
