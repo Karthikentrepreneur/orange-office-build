@@ -295,6 +295,24 @@ const Index = () => {
       </p>
     </div>
 
+    <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+  {/* Decorative Background */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
+  </div>
+
+  <div className="relative z-10 container mx-auto px-4">
+    {/* Heading */}
+    <div className="text-center mb-20">
+      <h2 className="font-heading font-extrabold text-4xl md:text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-transparent bg-clip-text">
+        Meet Our Team
+      </h2>
+      <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base md:text-lg">
+        The force behind OOT's innovation and global success
+      </p>
+    </div>
+
     {/* Team Cards */}
     <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
       {[{
@@ -340,8 +358,6 @@ const Index = () => {
     </div>
   </div>
 </section>
-
-
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
