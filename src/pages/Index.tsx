@@ -277,9 +277,28 @@ const Index = () => {
       </p>
     </div>
 
+    {/* Team Section */}
+<section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+  {/* Background Decoration */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
+  </div>
+
+  {/* Content Container */}
+  <div className="container mx-auto px-4 relative z-10">
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <h2 className="font-heading font-bold text-3xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text md:text-5xl">
+        Meet Our Team
+      </h2>
+      <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
+        The force behind OOT's innovation and global success
+      </p>
+    </div>
+
     {/* Team Cards */}
-    <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-      {/* Team Member */}
+    <div className="grid sm:grid-cols-2 gap-10 max-w-6xl mx-auto">
       {[{
         name: "Mr. Sudhir KU",
         role: "Director",
@@ -295,28 +314,30 @@ const Index = () => {
       }].map((member, index) => (
         <div
           key={index}
-          className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left"
+          className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 p-8 text-center"
         >
-          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6 sm:mb-0 sm:mr-6">
+          {/* Image at top */}
+          <div className="w-36 h-36 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-orange-200">
             <img
               src={member.image}
               alt={member.name}
               className="w-full h-full object-cover"
             />
           </div>
-          <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
-            <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
-            <p className="text-gray-600 text-sm leading-relaxed mb-4">
-              {member.desc}
-            </p>
-            <a
-              href={member.link}
-              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-            >
-              Know More
-            </a>
-          </div>
+
+          {/* Text Content */}
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
+          <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-5">
+            {member.desc}
+          </p>
+
+          <a
+            href={member.link}
+            className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-6 py-2 rounded-full shadow-md hover:from-orange-600 hover:to-amber-600 transition-all duration-300"
+          >
+            Know More
+          </a>
         </div>
       ))}
     </div>
