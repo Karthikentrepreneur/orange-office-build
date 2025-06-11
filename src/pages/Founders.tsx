@@ -4,10 +4,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Award, Star, Calendar } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
 const management = () => {
   const location = useLocation();
-
   useEffect(() => {
     if (location.hash) {
       setTimeout(() => {
@@ -20,30 +18,23 @@ const management = () => {
       }, 100);
     }
   }, [location]);
-
-  const achievements = [
-    "35+ years of industry experience",
-    "Pioneered specialized back-office services for freight forwarding",
-    "Expanded operations across multiple global locations",
-    "Led digital transformation initiatives in logistics sector"
-  ];
-  const milestones = [
-    { year: "1991", event: "Started professional journey in the courier industry" },
-    { year: "1990s-2000s", event: "Advanced into logistics and freight forwarding sector" },
-    { year: "2012", event: "Founded Orange Office Technologies Pvt Ltd" },
-    { year: "Present", event: "Leading global expansion and digital transformation initiatives" }
-  ];
-  const expertises = [
-    "Back-office operations", "Supply chain management", "Digital transformation",
-    "Global logistics", "Strategic partnerships", "IT solutions"
-  ];
-  const ctoExpertises = [
-    "Java, Spring, JPA", "MERN Stack", "Microservices & DevOps",
-    "Cloud Computing", "Enterprise Integration", "Security & Automation"
-  ];
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+  const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
+  const milestones = [{
+    year: "1991",
+    event: "Started professional journey in the courier industry"
+  }, {
+    year: "1990s-2000s",
+    event: "Advanced into logistics and freight forwarding sector"
+  }, {
+    year: "2012",
+    event: "Founded Orange Office Technologies Pvt Ltd"
+  }, {
+    year: "Present",
+    event: "Leading global expansion and digital transformation initiatives"
+  }];
+  const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
+  const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
+  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20">
         {/* Hero Section */}
@@ -60,11 +51,7 @@ const management = () => {
                 <CardContent className="p-8">
                   <div className="flex flex-col items-center gap-8">
                     <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl border-4 border-orange-400 hover:scale-105 transition-transform duration-300">
-                      <img
-                        alt="Mr. Sudhir KU"
-                        className="w-full h-full object-cover rounded-full"
-                        src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png"
-                      />
+                      <img alt="Mr. Sudhir KU" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" className="w-full h-full rounded-full object-contain" />
                     </div>
                     <div className="text-center">
                       <h3 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">Mr. Sudhir KU</h3>
@@ -75,11 +62,9 @@ const management = () => {
                         <p className="text-gray-700 mb-6">In 2012, he founded Orange Office Technologies Pvt Ltd to address back-office support in logistics, setting benchmarks in the industry.</p>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6 justify-center">
-                          {expertises.map((expertise, index) => (
-                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -108,14 +93,12 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Key Achievements</h4>
                         <ul className="space-y-3">
-                          {achievements.map((a, i) => (
-                            <li key={i} className="flex items-center gap-3">
+                          {achievements.map((a, i) => <li key={i} className="flex items-center gap-3">
                               <div className="min-w-6 min-h-6 rounded-full bg-amber-100 flex items-center justify-center">
                                 <Star className="h-4 w-4 text-amber-500" />
                               </div>
                               <span className="text-gray-700">{a}</span>
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
                     </CardContent>
@@ -130,8 +113,7 @@ const management = () => {
                         </div>
                         <h4 className="text-xl font-semibold text-gray-900">Career Milestones</h4>
                         <div className="border-l-2 border-gray-200 pl-6 space-y-6">
-                          {milestones.map((m, i) => (
-                            <div key={i} className="relative">
+                          {milestones.map((m, i) => <div key={i} className="relative">
                               <div className="absolute -left-[30px] w-6 h-6 rounded-full bg-white border-2 border-orange-400 flex items-center justify-center">
                                 <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                               </div>
@@ -141,8 +123,7 @@ const management = () => {
                                 </div>
                                 <p className="text-gray-700">{m.event}</p>
                               </div>
-                            </div>
-                          ))}
+                            </div>)}
                         </div>
                       </div>
                     </CardContent>
@@ -175,11 +156,7 @@ const management = () => {
                 <CardContent className="p-8">
                   <div className="flex flex-col items-center gap-8">
                     <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl border-4 border-orange-400 hover:scale-105 transition-transform duration-300">
-                      <img
-                        alt="Mr. Bennet Rajesh"
-                        className="w-full h-full object-cover rounded-full"
-                        src="/bennetSir.png"
-                      />
+                      <img alt="Mr. Bennet Rajesh" className="w-full h-full object-cover rounded-full" src="/bennetSir.png" />
                     </div>
                     <div className="text-center">
                       <h3 className="text-3xl md:text-4xl font-bold mb-2 text-orange-600">Mr. Bennet Rajesh</h3>
@@ -190,11 +167,9 @@ const management = () => {
                         <p className="text-gray-700 mb-4">He specializes in Java, Spring, MERN stack, DevOps, and Cloud Computing, and is passionate about Agile and automation.</p>
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Technological Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6 justify-center">
-                          {ctoExpertises.map((item, index) => (
-                            <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
+                          {ctoExpertises.map((item, index) => <span key={index} className="px-3 py-1 bg-orange-100 rounded-full text-sm font-medium text-orange-500">
                               {item}
-                            </span>
-                          ))}
+                            </span>)}
                         </div>
                       </div>
                     </div>
@@ -206,8 +181,6 @@ const management = () => {
         </section>
       </main>
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default management;
