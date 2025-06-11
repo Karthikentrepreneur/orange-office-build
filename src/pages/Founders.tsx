@@ -60,7 +60,7 @@ const management = () => {
                     <div className="flex-shrink-0">
                       <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
                         <img alt="Mr. Sudhir KU" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" className="w-full h-full object-contain" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-[32px]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-0" />
                       </div>
                     </div>
                     
@@ -181,7 +181,7 @@ const management = () => {
                     <div className="flex-shrink-0">
                       <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
                         <img alt="Mr. Bennet Rajesh" src="/bennetSir.png" className="w-full h-full object-contain" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-[23px]" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-0" />
                       </div>
                     </div>
 
