@@ -259,91 +259,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Meet Our Team Section */}
-      <section className="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
-        </div>
+      <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-white relative overflow-hidden">
+  {/* Decorative Background */}
+  <div className="absolute inset-0 z-0 pointer-events-none">
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-orange-300/10 to-amber-200/20 blur-[120px]" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-amber-200/10 to-orange-300/20 blur-[100px]" />
+  </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl text-transparent bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 bg-clip-text md:text-5xl">
-              Meet Our Team
-            </h2>
-            <p className="text-gray-600 max-w-xl mx-auto mt-3 text-base md:text-lg">
-              The force behind OOT's innovation and global success
+  <div className="relative z-10 container mx-auto px-4">
+    {/* Heading */}
+    <div className="text-center mb-20">
+      <h2 className="font-heading font-extrabold text-4xl md:text-5xl bg-gradient-to-r from-orange-600 via-amber-500 to-orange-500 text-transparent bg-clip-text">
+        Meet Our Team
+      </h2>
+      <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base md:text-lg">
+        The force behind OOT's innovation and global success
+      </p>
+    </div>
+
+    {/* Team Cards */}
+    <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+      {/* Team Member */}
+      {[{
+        name: "Mr. Sudhir KU",
+        role: "Director",
+        image: "/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png",
+        desc: "35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.",
+        link: "/our-team"
+      }, {
+        name: "Mr. Bennet Rajesh",
+        role: "Chief Technology Officer",
+        image: "/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png",
+        desc: "27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.",
+        link: "/our-team#cto"
+      }].map((member, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left"
+        >
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6 sm:mb-0 sm:mr-6">
+            <img
+              src={member.image}
+              alt={member.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
+            <p className="text-orange-600 font-semibold text-lg mb-3">{member.role}</p>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              {member.desc}
             </p>
-          </div>
-
-          {/* Cards with smaller images */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Director Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
-                {/* Smaller Image */}
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
-                    <img 
-                      src="/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png" 
-                      alt="Mr. Sudhir KU" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Sudhir KU</h3>
-                  <p className="text-orange-600 font-semibold text-lg mb-3">Director</p>
-                  <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                    35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.
-                  </p>
-                  <a 
-                    href="/our-team" 
-                    className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-                  >
-                    Know More
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* CTO Card */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
-                {/* Smaller Image */}
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-lg">
-                    <img 
-                      src="/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png" 
-                      alt="Mr. Bennet Rajesh" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                
-                {/* Content */}
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-gray-900 font-bold text-xl sm:text-2xl">Mr. Bennet Rajesh</h3>
-                  <p className="text-orange-600 font-semibold text-lg mb-3">Chief Technology Officer</p>
-                  <p className="text-gray-600 leading-relaxed text-sm mb-4">
-                    27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.
-                  </p>
-                  <a 
-                    href="/our-team#cto" 
-                    className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-                  >
-                    Know More
-                  </a>
-                </div>
-              </div>
-            </div>
+            <a
+              href={member.link}
+              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
+            >
+              Know More
+            </a>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
