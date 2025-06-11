@@ -1,3 +1,4 @@
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import { Award, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 const management = () => {
   const location = useLocation();
 
@@ -23,34 +25,78 @@ const management = () => {
       }, 100);
     }
   }, [location]);
-  const achievements = ["35+ years of industry experience", "Pioneered specialized back-office services for freight forwarding", "Expanded operations across multiple global locations", "Led digital transformation initiatives in logistics sector"];
-  const milestones = [{
-    year: "1991",
-    event: "Started professional journey in the courier industry"
-  }, {
-    year: "1990s-2000s",
-    event: "Advanced into logistics and freight forwarding sector"
-  }, {
-    year: "2012",
-    event: "Founded Orange Office Technologies Pvt Ltd"
-  }, {
-    year: "Present",
-    event: "Leading global expansion and digital transformation initiatives"
-  }];
-  const expertises = ["Back-office operations", "Supply chain management", "Digital transformation", "Global logistics", "Strategic partnerships", "IT solutions"];
-  const ctoExpertises = ["Java, Spring, JPA", "MERN Stack", "Microservices & DevOps", "Cloud Computing", "Enterprise Integration", "Security & Automation"];
-  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+
+  const achievements = [
+    "35+ years of industry experience",
+    "Pioneered specialized back-office services for freight forwarding",
+    "Expanded operations across multiple global locations",
+    "Led digital transformation initiatives in logistics sector"
+  ];
+
+  const milestones = [
+    {
+      year: "1991",
+      event: "Started professional journey in the courier industry"
+    },
+    {
+      year: "1990s-2000s",
+      event: "Advanced into logistics and freight forwarding sector"
+    },
+    {
+      year: "2012",
+      event: "Founded Orange Office Technologies Pvt Ltd"
+    },
+    {
+      year: "Present",
+      event: "Leading global expansion and digital transformation initiatives"
+    }
+  ];
+
+  const expertises = [
+    "Back-office operations",
+    "Supply chain management",
+    "Digital transformation",
+    "Global logistics",
+    "Strategic partnerships",
+    "IT solutions"
+  ];
+
+  const ctoExpertises = [
+    "Java, Spring, JPA",
+    "MERN Stack",
+    "Microservices & DevOps",
+    "Cloud Computing",
+    "Enterprise Integration",
+    "Security & Automation"
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
-        {/* Hero Section */}
-        <section className="py-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-pattern opacity-5"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-10">
-              <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent animate-fade-in">Meet Our Management Team</h1>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg animate-fade-in delay-75">The driving force behind OOT's innovation and success</p>
+        {/* Hero Section with image at top */}
+        <section className="relative overflow-hidden">
+          {/* Top Image Section */}
+          <div className="w-full h-64 md:h-80 overflow-hidden">
+            <img 
+              src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" 
+              alt="Management Team" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div className="text-center text-white">
+                <h1 className="font-heading font-bold text-4xl md:text-5xl mb-4 animate-fade-in">
+                  Meet Our Management Team
+                </h1>
+                <p className="text-white/90 max-w-2xl mx-auto text-lg animate-fade-in delay-75">
+                  The driving force behind OOT's innovation and success
+                </p>
+              </div>
             </div>
+          </div>
 
+          {/* Content Section */}
+          <div className="container mx-auto px-4 py-12">
             {/* Director Profile */}
             <div className="max-w-6xl mx-auto mb-16">
               <Card className="border-none shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden bg-white rounded-3xl animate-fade-in delay-100">
@@ -59,7 +105,11 @@ const management = () => {
                     {/* Smaller Image Section */}
                     <div className="flex-shrink-0">
                       <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden shadow-xl">
-                        <img alt="Mr. Sudhir KU" src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" className="w-full h-full object-contain" />
+                        <img 
+                          alt="Mr. Sudhir KU" 
+                          src="/lovable-uploads/8c197c79-48aa-49bc-87a8-fbf680fa6afd.png" 
+                          className="w-full h-full object-contain" 
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent my-0" />
                       </div>
                     </div>
@@ -80,9 +130,11 @@ const management = () => {
                         
                         <h3 className="text-xl font-semibold mb-3 text-gray-800">Areas of Expertise</h3>
                         <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
-                          {expertises.map((expertise, index) => <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
+                          {expertises.map((expertise, index) => (
+                            <span key={index} className="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-medium">
                               {expertise}
-                            </span>)}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -220,6 +272,8 @@ const management = () => {
         </section>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default management;
