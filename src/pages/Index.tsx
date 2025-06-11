@@ -1,4 +1,3 @@
-
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -49,7 +48,6 @@ const clientLogos = [{
   src: "/63048c170f81a.png",
   alt: "Aerofreight"
 }];
-
 const Index = () => {
   // Intersection Observer for scroll animations
   const observerRef = useRef(null);
@@ -99,9 +97,7 @@ const Index = () => {
       }
     };
   }, []);
-
-  return (
-    <div className="min-h-screen flex flex-col">
+  return <div className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
@@ -190,51 +186,50 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[{
-              icon: FileCheck,
-              title: "Documentation Services",
-              description: "Expert documentation handling including invoices, credit notes, and job profit statements.",
-              image: "/1.png",
-              color: "from-blue-500 to-cyan-400",
-              link: "/services/documentation"
-            }, {
-              icon: Users,
-              title: "Sales Support Desk",
-              description: "Centralized sales support for lead management and customer relationships.",
-              image: "/2.png",
-              color: "from-amber-500 to-orange-400",
-              link: "/services/salessupport"
-            }, {
-              icon: Globe,
-              title: "Digital Marketing",
-              description: "Comprehensive digital marketing solutions to boost your online presence.",
-              image: "/10.png",
-              color: "from-green-500 to-emerald-400",
-              link: "/services/digitalmarketing"
-            }, {
-              icon: Building2,
-              title: "Account Management",
-              description: "Professional accounting services for trade and non-trade transactions.",
-              image: "/4.png",
-              color: "from-purple-500 to-violet-400",
-              link: "/services/AccountsManagement"
-            }, {
-              icon: Headset,
-              title: "Customer Service",
-              description: "Dedicated customer service team for bookings and nominations.",
-              image: "/12.png",
-              color: "from-pink-500 to-rose-400",
-              link: "/services/customerservice"
-            }, {
-              icon: Shield,
-              title: "Software Solutions",
-              description: "Custom software development following industry best practices.",
-              image: "/13.png",
-              color: "from-cyan-500 to-blue-400",
-              link: "/services/SoftwareSolutions"
-            }].map((service, index) => (
-              <Card key={index} className="group border-none rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 animate-on-scroll overflow-hidden bg-white" style={{
-                animationDelay: `${index * 100}ms`
-              }}>
+            icon: FileCheck,
+            title: "Documentation Services",
+            description: "Expert documentation handling including invoices, credit notes, and job profit statements.",
+            image: "/1.png",
+            color: "from-blue-500 to-cyan-400",
+            link: "/services/documentation"
+          }, {
+            icon: Users,
+            title: "Sales Support Desk",
+            description: "Centralized sales support for lead management and customer relationships.",
+            image: "/2.png",
+            color: "from-amber-500 to-orange-400",
+            link: "/services/salessupport"
+          }, {
+            icon: Globe,
+            title: "Digital Marketing",
+            description: "Comprehensive digital marketing solutions to boost your online presence.",
+            image: "/10.png",
+            color: "from-green-500 to-emerald-400",
+            link: "/services/digitalmarketing"
+          }, {
+            icon: Building2,
+            title: "Account Management",
+            description: "Professional accounting services for trade and non-trade transactions.",
+            image: "/4.png",
+            color: "from-purple-500 to-violet-400",
+            link: "/services/AccountsManagement"
+          }, {
+            icon: Headset,
+            title: "Customer Service",
+            description: "Dedicated customer service team for bookings and nominations.",
+            image: "/12.png",
+            color: "from-pink-500 to-rose-400",
+            link: "/services/customerservice"
+          }, {
+            icon: Shield,
+            title: "Software Solutions",
+            description: "Custom software development following industry best practices.",
+            image: "/13.png",
+            color: "from-cyan-500 to-blue-400",
+            link: "/services/SoftwareSolutions"
+          }].map((service, index) => <Card key={index} className="group border-none rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 animate-on-scroll overflow-hidden bg-white" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
                 <div className="h-44 relative overflow-hidden">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-0 right-0 m-4">
@@ -253,8 +248,7 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -281,28 +275,20 @@ const Index = () => {
     <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
       {/* Team Member */}
       {[{
-        name: "Mr. Sudhir KU",
-        role: "Director",
-        image: "/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png",
-        desc: "35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.",
-        link: "/our-team"
-      }, {
-        name: "Mr. Bennet Rajesh",
-        role: "Chief Technology Officer",
-        image: "/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png",
-        desc: "27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.",
-        link: "/our-team#cto"
-      }].map((member, index) => (
-        <div
-          key={index}
-          className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left"
-        >
+            name: "Mr. Sudhir KU",
+            role: "Director",
+            image: "/lovable-uploads/dcab3f93-8fa0-480c-b028-e34b3d358821.png",
+            desc: "35+ years of experience in freight forwarding and back-office solutions, driving global growth and operational excellence.",
+            link: "/our-team"
+          }, {
+            name: "Mr. Bennet Rajesh",
+            role: "Chief Technology Officer",
+            image: "/lovable-uploads/69211290-1cac-49a7-bb5c-7f107d2161b6.png",
+            desc: "27+ years of enterprise software and cloud innovation, driving digital transformation and scalable architecture.",
+            link: "/our-team#cto"
+          }].map((member, index) => <div key={index} className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 p-8 flex flex-col items-center text-center sm:flex-row sm:text-left">
           <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg mb-6 sm:mb-0 sm:mr-6">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
+            <img src={member.image} alt={member.name} className="w-full h-full object-contain" />
           </div>
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{member.name}</h3>
@@ -310,25 +296,21 @@ const Index = () => {
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
               {member.desc}
             </p>
-            <a
-              href={member.link}
-              className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg"
-            >
+            <a href={member.link} className="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-semibold px-5 py-2 rounded-full shadow hover:from-orange-600 hover:to-amber-600 transition-all duration-300 hover:shadow-lg">
               Know More
             </a>
           </div>
-        </div>
-      ))}
+        </div>)}
     </div>
   </div>
-</section>
+    </section>
 
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
         <svg className="absolute top-0 left-0 w-full text-orange-50" style={{
-          transform: "translateY(-1px)"
-        }} fill="currentColor" viewBox="0 0 1440 40">
+        transform: "translateY(-1px)"
+      }} fill="currentColor" viewBox="0 0 1440 40">
           <path d="M0,0L40,4C80,8,160,16,240,18.7C320,21,400,19,480,13.3C560,8,640,0,720,0C800,0,880,8,960,12C1040,16,1120,16,1200,12C1280,8,1360,0,1400,-4L1440,-8L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
         </svg>
         
@@ -401,8 +383,6 @@ const Index = () => {
         {/* Footer */}
         <Footer />
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
