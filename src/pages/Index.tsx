@@ -301,6 +301,7 @@ const Index = () => {
     </div>
   ))}
 </div>
+</section>
 
       {/* About Us Section with Enhanced Layout */}
       <section className="py-20 bg-white relative overflow-hidden">
