@@ -138,16 +138,7 @@ const EmployeesCorner = () => {
 
                     {/* Advertisement Placeholder */}
                     <Card className="border-none shadow-xl bg-white rounded-2xl mt-6">
-                      <CardContent className="p-6 text-center">
-                        <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-xl p-8">
-                          <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">AD</span>
-                          </div>
-                          <p className="text-sm text-gray-600 uppercase tracking-wide">
-                            Advertisement
-                          </p>
-                        </div>
-                      </CardContent>
+                      
                     </Card>
                   </div>
                 </div>
