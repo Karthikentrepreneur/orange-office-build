@@ -39,6 +39,45 @@ export type Database = {
         }
         Relationships: []
       }
+      career_opportunities: {
+        Row: {
+          created_at: string
+          description: string | null
+          experience: string
+          id: string
+          is_active: boolean
+          location: string
+          requirements: string | null
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          experience: string
+          id?: string
+          is_active?: boolean
+          location: string
+          requirements?: string | null
+          title: string
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          experience?: string
+          id?: string
+          is_active?: boolean
+          location?: string
+          requirements?: string | null
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
