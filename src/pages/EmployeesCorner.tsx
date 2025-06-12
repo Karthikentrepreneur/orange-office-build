@@ -1,9 +1,13 @@
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar } from "lucide-react";
+import { Calendar, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface Article {
   id: string;
   title: string;
@@ -13,30 +17,33 @@ interface Article {
   updated_at: string;
   published: boolean;
 }
+
 const EmployeesCorner = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const [featuredArticle, setFeaturedArticle] = useState<Article | null>(null);
-  const [sidebarArticles, setSidebarArticles] = useState<Article[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     fetchArticles();
   }, []);
+
   const fetchArticles = async () => {
     try {
-      const {
-        data,
-        error
-      } = await supabase.from('articles').select('*').eq('published', true).order('created_at', {
-        ascending: false
-      });
+      const { data, error } = await supabase
+        .from('articles')
+        .select('*')
+        .eq('published', true)
+        .order('created_at', { ascending: false });
+
       if (error) throw error;
+
       const articlesData = data || [];
       setArticles(articlesData);
 
       // Set the most recent article as featured
       if (articlesData.length > 0) {
         setFeaturedArticle(articlesData[0]);
-        setSidebarArticles(articlesData.slice(1, 6)); // Show next 5 articles in sidebar
       }
     } catch (error) {
       console.error('Error fetching articles:', error);
@@ -44,6 +51,7 @@ const EmployeesCorner = () => {
       setLoading(false);
     }
   };
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -51,8 +59,18 @@ const EmployeesCorner = () => {
       day: 'numeric'
     });
   };
+
+  // Filter articles for sidebar (exclude featured article and apply search)
+  const sidebarArticles = articles.filter(article => {
+    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         article.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const isNotFeatured = featuredArticle ? article.id !== featuredArticle.id : true;
+    return matchesSearch && isNotFeatured;
+  });
+
   if (loading) {
-    return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+    return (
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
         <Header />
         <main className="flex-grow pt-20 py-12">
           <div className="container mx-auto px-4">
@@ -62,9 +80,12 @@ const EmployeesCorner = () => {
           </div>
         </main>
         <Footer />
-      </div>;
+      </div>
+    );
   }
-  return <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-orange-50">
       <Header />
       <main className="flex-grow pt-20 py-0">
         {/* Hero Section */}
@@ -80,15 +101,25 @@ const EmployeesCorner = () => {
               </p>
             </div>
 
-            {articles.length === 0 ? <div className="text-center py-12">
+            {articles.length === 0 ? (
+              <div className="text-center py-12">
                 <p className="text-gray-600">No articles published yet.</p>
-              </div> : <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+              </div>
+            ) : (
+              <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Main Content - Featured Article */}
                 <div className="lg:col-span-2">
-                  {featuredArticle && <Card className="border-none shadow-xl overflow-hidden bg-white rounded-2xl">
-                      {featuredArticle.image_url && <div className="aspect-video overflow-hidden">
-                          <img src={featuredArticle.image_url} alt={featuredArticle.title} className="w-full h-full object-contain" />
-                        </div>}
+                  {featuredArticle && (
+                    <Card className="border-none shadow-xl overflow-hidden bg-white rounded-2xl">
+                      {featuredArticle.image_url && (
+                        <div className="aspect-video overflow-hidden">
+                          <img 
+                            src={featuredArticle.image_url} 
+                            alt={featuredArticle.title} 
+                            className="w-full h-full object-contain" 
+                          />
+                        </div>
+                      )}
                       <CardContent className="p-8">
                         <h2 className="text-3xl font-bold mb-4 text-gray-900">
                           {featuredArticle.title}
@@ -101,38 +132,70 @@ const EmployeesCorner = () => {
                           {featuredArticle.description}
                         </div>
                       </CardContent>
-                    </Card>}
+                    </Card>
+                  )}
                 </div>
 
-                {/* Sidebar - Recent Articles */}
+                {/* Sidebar - All Articles with Search */}
                 <div className="lg:col-span-1">
                   <div className="sticky top-24">
                     <Card className="border-none shadow-xl bg-white rounded-2xl">
                       <CardContent className="p-6">
-                        <h3 className="text-xl font-bold mb-6 text-gray-900 border-b border-orange-200 pb-3">
-                          Most Popular
+                        <h3 className="text-xl font-bold mb-4 text-gray-900 border-b border-orange-200 pb-3">
+                          All Articles
                         </h3>
-                        <div className="space-y-6">
-                          {sidebarArticles.map((article, index) => <div key={article.id} className="flex gap-4 cursor-pointer hover:bg-gray-50 p-3 rounded-xl transition-colors" onClick={() => setFeaturedArticle(article)}>
-                              {article.image_url && <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-lg">
-                                  <img src={article.image_url} alt={article.title} className="w-full h-full object-cover" />
-                                </div>}
-                              <div className="flex-1 min-w-0">
-                                <h4 className="font-semibold text-sm text-gray-900 line-clamp-2 mb-2">
-                                  {article.title}
-                                </h4>
-                                <p className="text-xs text-gray-600 line-clamp-2">
-                                  {article.description}
-                                </p>
-                                <div className="flex items-center gap-1 text-xs text-gray-500 mt-2">
-                                  <Calendar className="h-3 w-3" />
-                                  <span>{formatDate(article.created_at)}</span>
+                        
+                        {/* Search Input */}
+                        <div className="relative mb-6">
+                          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                          <Input
+                            placeholder="Search articles..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="pl-10"
+                          />
+                        </div>
+
+                        {/* Scrollable Articles List */}
+                        <ScrollArea className="h-96">
+                          <div className="space-y-4 pr-4">
+                            {sidebarArticles.map((article) => (
+                              <div 
+                                key={article.id} 
+                                className="flex gap-4 cursor-pointer hover:bg-gray-50 p-3 rounded-xl transition-colors" 
+                                onClick={() => setFeaturedArticle(article)}
+                              >
+                                {article.image_url && (
+                                  <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg">
+                                    <img 
+                                      src={article.image_url} 
+                                      alt={article.title} 
+                                      className="w-full h-full object-cover" 
+                                    />
+                                  </div>
+                                )}
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-semibold text-sm text-gray-900 line-clamp-2 mb-2">
+                                    {article.title}
+                                  </h4>
+                                  <p className="text-xs text-gray-600 line-clamp-2 mb-2">
+                                    {article.description}
+                                  </p>
+                                  <div className="flex items-center gap-1 text-xs text-gray-500">
+                                    <Calendar className="h-3 w-3" />
+                                    <span>{formatDate(article.created_at)}</span>
+                                  </div>
                                 </div>
                               </div>
-                            </div>)}
-                        </div>
-                        
-                        {sidebarArticles.length === 0 && featuredArticle && <p className="text-gray-500 text-sm">No other articles available.</p>}
+                            ))}
+                            
+                            {sidebarArticles.length === 0 && (
+                              <p className="text-gray-500 text-sm text-center py-4">
+                                {searchTerm ? "No articles found matching your search." : "No other articles available."}
+                              </p>
+                            )}
+                          </div>
+                        </ScrollArea>
                       </CardContent>
                     </Card>
 
@@ -142,11 +205,14 @@ const EmployeesCorner = () => {
                     </Card>
                   </div>
                 </div>
-              </div>}
+              </div>
+            )}
           </div>
         </section>
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default EmployeesCorner;
