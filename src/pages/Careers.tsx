@@ -105,7 +105,7 @@ const Careers = () => {
                   {careerOpportunities.map((job, index) => <Card key={job.id} className="group hover:shadow-xl transition-all duration-300 border-none animate-fade-in" style={{
                 animationDelay: `${index * 100}ms`
               }}>
-                      <CardContent className="p-8 bg-gray-100 rounded-2xl">
+                      <CardContent className="p-8 rounded-2xl bg-inherit">
                         <div className="space-y-4">
                           <h3 className="font-heading font-bold text-xl group-hover:text-primary transition-colors">
                             {job.title}
