@@ -74,7 +74,7 @@ const management = () => {
             </div>
 
             {/* Journey and Impact */}
-            <section className="py-12 bg-gradient-to-br from-orange-50 to-white">
+            <section className="py-12 bg-gradient-to-br from-orange-0 to-white">
               <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
                   <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4 text-gradient bg-gradient-to-r from-orange-600 to-amber-500 bg-clip-text text-transparent">
